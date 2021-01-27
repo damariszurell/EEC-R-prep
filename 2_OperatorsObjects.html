@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Operators and objects</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R introduction</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R practicals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_GettingStarted.html">1. Getting started in R</a>
+    </li>
+    <li>
+      <a href="2_OperatorsObjects.html">2. Operators and objects</a>
+    </li>
+    <li>
+      <a href="3_DataImportExport.html">3. Data import and export</a>
+    </li>
+    <li>
+      <a href="4_Visualisation.html">4. Visualising data</a>
+    </li>
+    <li>
+      <a href="5_SimpleStats.html">5. Descriptive statistics and random numbers</a>
+    </li>
+    <li>
+      <a href="6_ControlFlows.html">6. Control flows</a>
+    </li>
+    <li>
+      <a href="7_DataWrangling.html">7. Simple data wrangling</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://damariszurell.github.io">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/ZurellLab">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Operators and objects</h1>
+
+</div>
+
+
+<hr />
+<div class="alert alert-info">
+<p><strong>RStudio project</strong></p>
+<p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
+<ul>
+<li>Create a new empty R script by going to the tab “File”, select “New File” and then “R script”</li>
+<li>In the new R script, type <code># Session 2: Operators and objects</code> and save the file in your folder “scripts” within your project folder, e.g. as “2_OperatorsObjects.R”</li>
+</ul>
+</div>
+<div id="operators" class="section level1">
+<h1><span class="header-section-number">1</span> Operators</h1>
+<p>You can use R as simple calculator. Simply type in the expressions; they will be executed immediately.</p>
+<pre class="r"><code>1 + 2 * 3
+(1 + 2) * 3
+2 * 5 - prod (2, 5)
+sqrt(25 ^ 2)
+sin(pi / 2)
+0 / 0</code></pre>
+<p>Check out <code>?Syntax</code> to learn about the precedence of operators. If in doubt (or simply for better overview) use round brackets.</p>
+<p>Useful arithmetic operators:</p>
+<ul>
+<li><code>^</code> or <code>**</code>: power</li>
+<li><code>*</code> / <code>/</code> : multiplication / division</li>
+<li><code>+</code> / <code>-</code> : addition / subtraction</li>
+<li><code>%/%</code> / <code>%%</code> : integer division / modulo</li>
+</ul>
+<p>Useful mathematical functions:</p>
+<ul>
+<li><code>max()</code>, <code>min()</code>, <code>range()</code> : extreme values</li>
+<li><code>abs()</code> : absolute values</li>
+<li><code>sqrt()</code> : square root</li>
+<li><code>round()</code>, <code>floor()</code>, <code>ceiling()</code> : round</li>
+<li><code>sum()</code>, <code>prod()</code> : sum, product</li>
+<li><code>log()</code>, <code>log10()</code>, <code>log2()</code> : logarithm</li>
+<li><code>exp()</code> : exponential function</li>
+<li><code>sin()</code>, <code>cos()</code>, <code>tan()</code>, <code>asin()</code>, <code>acos()</code>, <code>atan()</code> : trigonometric functions</li>
+</ul>
+<p>Numeric constants:</p>
+<ul>
+<li><code>pi</code> : the number <span class="math inline">\(\pi\)</span></li>
+<li><code>Inf</code>, <code>-Inf</code> : infinity</li>
+<li><code>NaN</code> : not defined (<em>not a number</em>)</li>
+<li><code>NA</code> : Missing value (<em>not available</em>)</li>
+<li><code>NULL</code> : empty value</li>
+</ul>
+</div>
+<div id="variablesobjects" class="section level1">
+<h1><span class="header-section-number">2</span> Variables/Objects</h1>
+<p>In principle, all data structures and functions are objects in R. You can get a list with all objects contained in the current workspace by typing:</p>
+<pre class="r"><code>ls()</code></pre>
+<p>We can assign own objects using the assignment operator/arrow <code>&lt;-</code>.</p>
+<pre class="r"><code>x &lt;- seq(1, 5)</code></pre>
+<p>The results of any operation assigned to an object are usually not printed in the console. If you want to see the results in real time, simply enclose the entire command in brackets:</p>
+<pre class="r"><code>(x &lt;- seq(1, 5))</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>R is case sensitive. X is not the same as x.</p>
+<pre class="r"><code>X = 1
+ls()</code></pre>
+<p><em><strong>Naming variables/objects:</strong></em></p>
+<p>There is no single naming convention in R. Even in the same package, multiple conventions might be used <em>simultaneously</em>. But usually, it’s advisable to stay consistent. Basically, thera are <a href="https://www.r-bloggers.com/consistent-naming-conventions-in-r/">five naming conventions</a> to chose from:</p>
+<ul>
+<li>alllowercase: <em>e.g.</em> <code>adjustcolor</code></li>
+<li>period.separated: <em>e.g.</em> <code>plot.new</code></li>
+<li>underscore_separated: <em>e.g.</em> <code>numeric_version</code></li>
+<li>lowerCamelCase: <em>e.g.</em> <code>addTaskCallback</code></li>
+<li>UpperCamelCase: <em>e.g.</em> <code>SignatureMethod</code></li>
+</ul>
+<p>Despite this freedom of choice, there are also some rules. Object names have to begin with a letter and may not contain any special characters except dots (.) and underscores (_). Also be careful not to use names of built-in functions and constants (nothing bad will happen, it may just create confusion), <em>e.g.</em> <code>c()</code>, <code>t()</code>, <code>pi</code>. Reserved words can be found here:</p>
+<pre class="r"><code>?Reserved</code></pre>
+<p>Note that <code>T</code> and <code>F</code> can be used instead of <code>TRUE</code> and <code>FALSE</code>, but they are not reserved for that purpose. This might lead to problems further down the track:</p>
+<pre class="r"><code>T == TRUE
+F == FALSE
+T &lt;- F
+T == TRUE ## T is no longer TRUE</code></pre>
+<p>It is therefore recommended to avoid using <code>T</code> and <code>F</code> and use <code>TRUE</code> and <code>FALSE</code> instead (refer to <a href="http://adv-r.had.co.nz/Style.html">this very short R style guide by Hadley Wickham</a> for further details on best practise in styling your code).</p>
+</div>
+<div id="logic" class="section level1">
+<h1><span class="header-section-number">3</span> Logic</h1>
+<p>Relational and logical operators are mainly relevant for complex data requests or manipulations, and for programming, e.g. in control flows.</p>
+<p>Relations:</p>
+<pre class="r"><code>?Comparison
+4 &lt; 3
+(1 + 3) != 3</code></pre>
+<p>Logical constants and operations:</p>
+<pre class="r"><code>?Logic
+2 &lt; 3 &amp;&amp; 3 &lt; 4
+2 &lt; 3 || 4 &lt; 3
+2 &gt; 3 || 4 &lt; 3
+(3 &lt; 2) &amp;&amp; (4 == (2 ^ 2))</code></pre>
+<p>Examples help understanding the difference between the operators <code>&amp;&amp;</code> resp. <code>||</code> and <code>&amp;</code> resp. <code>|</code>. The shorter form performs elementwise comparisons in much the same way as arithmetic operators. The longer form evaluates left to right examining only the first element of each vector. Evaluation proceeds only until the result is determined. The longer form is appropriate for programming control-flow and typically preferred in if-clauses.</p>
+<pre class="r"><code>c(3 &gt; 2, 3 &gt; 2) # c() means &#39;concatenate&#39; and combines arguments into a vector
+c(3 &gt; 2, 3 &gt; 2) &amp; c(3 &lt; 2, 3 &gt; 2)
+c(3 &gt; 2, 3 &gt; 2) &amp; c(3 &gt; 2, 3 &lt; 2)
+c(3 &gt; 2, 3 &gt; 2) &amp;&amp; c(3 &gt; 2, 3 &lt; 2) # only first elements compared
+c(3 &gt; 2, 3 &gt; 2) &amp;&amp; c(3 &lt; 2, 3 &gt; 2)</code></pre>
+<p>Internally, <code>TRUE</code> is coded as 1 and <code>FALSE</code> as 0. Hence, you can also calculate with logical values. You will learn to appreciate it when doing data manipulations later on.</p>
+<pre class="r"><code>x &lt;- c(3, 5, 1, -4, 0, -2, 4) # creates vector x
+x &lt; 0 # which element of x is smaller than 0?
+sum(x &lt; 0) # How many elements of x are smaller than 0?</code></pre>
+<p>Relational operators:</p>
+<ul>
+<li><code>==</code>, <code>!=</code> : equal, unequal</li>
+<li><code>&gt;</code>, <code>&gt;=</code> : greater than, greater or equal</li>
+<li><code>&lt;</code>, <code>&lt;=</code> : smaller than, smaller or equal</li>
+<li><code>!</code> : negation</li>
+</ul>
+</div>
+<div id="basic-data-types" class="section level1">
+<h1><span class="header-section-number">4</span> Basic data types</h1>
+<p>R distinguishes five basic (atomic) data types:</p>
+<p><em>Character:</em></p>
+<pre class="r"><code>(first_name &lt;- &quot;Damaris&quot;)</code></pre>
+<p><em>Integer:</em></p>
+<pre class="r"><code>(shoe_size &lt;- 41)</code></pre>
+<p><em>Numeric:</em></p>
+<pre class="r"><code>(seminar_hours &lt;- 1.5)</code></pre>
+<p><em>Factor:</em></p>
+<pre class="r"><code>(lunch_today &lt;- factor(&#39;mensa&#39;, levels = c(&#39;mensa&#39;,&#39;bakery&#39;,&#39;chinese&#39;)))</code></pre>
+<p><em>Boolean:</em></p>
+<pre class="r"><code>(married &lt;- TRUE)</code></pre>
+</div>
+<div id="missing-values-na" class="section level1">
+<h1><span class="header-section-number">5</span> Missing values NA</h1>
+<p><code>NA</code> (Not Available) indicates missing values. For example, imagine a dataset with daily weather measurements over a longer period of time. On one day, the batteries of the weather station were empty and no measurements were taken. For integrity reasons, this empty day will still be stored in the data set but will be assigned the missing value ‘NA’. Knowing about NAs in your data is important because per default all functions will return NA if your data include NA.</p>
+<pre class="r"><code>mean(c(1, 5, 2, NA, 10, 4, NA, 7))</code></pre>
+<p>Fortunately, you can exclude NAs from most operations.</p>
+<pre class="r"><code>mean(c(1, 5, 2, NA, 10, 4, NA, 7), na.rm = TRUE)</code></pre>
+<p>You can test for NAs with <code>is.na()</code></p>
+<pre class="r"><code>is.na(c(1, 5, 2, NA, 10, 4, NA, 7))</code></pre>
+</div>
+<div id="data-structures-and-object-types" class="section level1">
+<h1><span class="header-section-number">6</span> Data structures and object types</h1>
+<p>R distinguishes several objects types that differ in complexity of data structure: scalars and vectors, matrices, arrays, data frame and list. Vectors, matrices and arrays can only contain a single data type. Data frames can contain different data types in separate columns but all columns need to have the same length. Lists can contain different object types and data types.</p>
+<p><img src="figures/Object_types.png" width="45%" /></p>
+<p><em><strong>Vectors:</strong></em></p>
+<p>There are many different ways to generate vectors in R. We have already learned concatenating <code>c()</code>.</p>
+<p><em>Sequences:</em></p>
+<pre class="r"><code>1:5
+5:1
+seq(5, 10, by = 0.5)  # create a sequence between 5 and 10 with an interval of 0.5
+seq(5, 10, length = 21) # create a sequence between 5 and 10 with total length of 21
+seq_len(5)  # create a sequence of integers between 1 and 5</code></pre>
+<p><em>Replicates:</em></p>
+<pre class="r"><code>rep(x = 2, times = 10) 
+rep(2, 10)
+rep(c(1, 6, 5), 2) # replicate the vector (1,6,5) twice
+rep(c(1, 6, 5), each = 2)  # replicate each element of the vector (1,6,5) twice</code></pre>
+<p><em><strong>Matrices:</strong></em></p>
+<pre class="r"><code>(x_mat &lt;- matrix(data = 1:4, nrow = 2)) # create a matrix with the numbers (1,2,3,4) ordered in two rows. The function automatically fills up the columns first.
+(x_mat &lt;- matrix(1:4, 2))  # same
+x_mat[2, 1]
+matrix(1:4, 2, byrow = TRUE) # create a matrix with the numbers (1,2,3,4) ordered in two rows but fills up the rows first.</code></pre>
+<p><em><strong>Array:</strong></em></p>
+<pre class="r"><code>(x_arr &lt;- array(1:24, c(4, 3, 2)) # create a three-dimensional array with with four indices in first dimension, three indices in second dimension, and 2 indices in third dimension
+ )
+x_arr[3, 2, 2]</code></pre>
+<p><em><strong>Data frame:</strong></em></p>
+<pre class="r"><code>(veggy_shopping &lt;- data.frame(grams=c(500, 1000, 1000, 300, 200),
+    veggy=c(&#39;salad&#39;, &#39;courgette&#39;, &#39;aubergine&#39;, &#39;onions&#39;, &#39;beetroot&#39;), stringsAsFactors = FALSE))
+veggy_shopping[1, ]</code></pre>
+<p>In data frames (and lists) we can access columns using the <code>$</code>-operator.</p>
+<pre class="r"><code>veggy_shopping$veggy</code></pre>
+<p><em><strong>Lists:</strong></em></p>
+<pre class="r"><code>(shopping &lt;- list(post = &quot;stamps&quot;,
+    farmers_market = veggy_shopping,
+    bank = 60,
+    bakery = c(&#39;whole grain buns&#39;, &#39;rye bread&#39;)))
+shopping[1]
+shopping[[1]]
+shopping[&#39;bakery&#39;]
+shopping[[&#39;farmers_market&#39;]]$veggy</code></pre>
+</div>
+<div id="indexing" class="section level1">
+<h1><span class="header-section-number">7</span> Indexing</h1>
+<p>Each element of an object type is internally assigned an index (positive integer ‘address’) and you can retrieve single elements or a subset of the object by addressing these indices. Square brackets are used for indexing.</p>
+<pre class="r"><code>x[3] # retrieve the 3rd element of vector x
+x[3:4] # use can also address sequences</code></pre>
+<p>Basically, we distinguish four kinds of index vector: logical, positive integer, negative integer for excluding elements (inverse indexing), and character indices if we have named vectors.</p>
+<pre class="r"><code>(x2 &lt;- c(x, NA))
+x2[!is.na(x2)] # logical index vector
+x2[c(1, 3:4)] # index vector with positive integers
+x2[-c(1, 3:4)] # index vector with negative integers
+(Fruits &lt;- c(Orange = 5, Banana = 10, Apple = 1, Pear = 20))
+(Grocery &lt;- Fruits[c(&quot;Orange&quot;,&quot;Apple&quot;)]) # character index</code></pre>
+<p>You can also modify single elements.</p>
+<pre class="r"><code>Fruits[&quot;Banana&quot;] &lt;- 0</code></pre>
+</div>
+<div id="object-structures" class="section level1">
+<h1><span class="header-section-number">8</span> Object structures</h1>
+<p>Use <code>str()</code> for displaying the object structure.</p>
+<pre class="r"><code>str(x_mat)
+str(x_arr)
+str(gcib_schedule)
+str(gcib_course)</code></pre>
+<p>The character vector ‘fun_factor’ in <code>gcib_schedule</code> was automatically converted to factors. This is ok here, but one may want to change this behaviour for other purposes. See the help page <code>?data.frame</code> to find out how.</p>
+</div>
+<div id="problem-solving" class="section level1">
+<h1><span class="header-section-number">9</span> Problem solving</h1>
+<p>Nobody knows an entire coding language and can immediately develop perfect code from scratch that does exactly what we want. More often than not, code will result in errors and perhaps the most integral part of writing and developing code is dealing with errors. Common errors are:</p>
+<p><em>Calling a function without loading its package:</em></p>
+<pre class="r"><code>ggplot() # ggplot2 package not yet loaded</code></pre>
+<pre><code>## Error in ggplot(): konnte Funktion &quot;ggplot&quot; nicht finden</code></pre>
+</div>
+<p><em>Calls to unassigned variables:</em></p>
+<pre class="r"><code>seq(from = k, to = 10, by = 2) # k is not yet assigned</code></pre>
+<pre><code>## Error in seq(from = k, to = 10, by = 2): Objekt &#39;k&#39; nicht gefunden</code></pre>
+<p><em><em>Incorrect function arguments:</em></em></p>
+<pre class="r"><code>seq(from = 2, to = 10, by = 2, 1) # the final 1 is incorrect</code></pre>
+<pre><code>## Error in seq.default(from = 2, to = 10, by = 2, 1): too many arguments</code></pre>
+<pre class="r"><code>seq(from = c(2, 3), to = 10, by = 2) # `from` argument shouldn&#39;t be a vector</code></pre>
+<pre><code>## Error in seq.default(from = c(2, 3), to = 10, by = 2): &#39;from&#39; must be of length 1</code></pre>
+<pre class="r"><code>seq(from = 2, to = 10, by = -2) # `by` argument should be positive</code></pre>
+<pre><code>## Error in seq.default(from = 2, to = 10, by = -2): wrong sign in &#39;by&#39; argument</code></pre>
+<p><em><em>Missing function arguments:</em></em></p>
+<pre class="r"><code>mean(na.rm = TRUE) # missing vector</code></pre>
+<pre><code>## Error in mean.default(na.rm = TRUE): Argument &quot;x&quot; fehlt (ohne Standardwert)</code></pre>
+<p><em><em>Syntax (“grammar”) mistakes:</em></em></p>
+<pre class="r"><code>seq(from = 2, to = 10 by = 2) # mssing a comma
+seq(from == 2, to = 10, by = 2) # extra eq sign
+seq(from = 2, to = 10, by = 2)) # extra closing bracket</code></pre>
+<pre><code>## Error: &lt;text&gt;:1:23: unerwartetes Symbol
+## 1: seq(from = 2, to = 10 by
+##                           ^</code></pre>
+<p>How to solve errors:<br />
+Virtually everything is possible as long as it results in a working solution (and you don’t copy other people’s work without giving proper credit )</p>
+<p>The most common trouble-shooting options: - check the line that “throws” the error - is there a syntax mistake? Are all objects you use defined in the global environment? - are the function arguments correct? (check function help file for required object types, use i.e. <code>class()</code>, <code>str()</code> to understand your data structure better). - do a google search (often it is enough to copy and paste the error message into google - solutions will often be on <a href="https://stackoverflow.com">stack overflow</a>, a massive Q&amp;A community across various coding languages and disciplines) - ask your peers/supervisors/colleagues/friends - check if your version are up-to-date</p>
+<div class="alert alert-info">
+<p><em><strong>Exercises:</strong></em></p>
+<pre class="r"><code>str(iris)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+</div>
+<div id="references" class="section level1">
+<h1><span class="header-section-number">10</span> References</h1>
+</div>
+
+<!DOCTYPE html>
+<html>
+
+<br>
+<hr />
+<div id="footer">
+<p>Damaris Zurell, 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
+</div>
+
+</html>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

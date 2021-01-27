@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Getting started in R</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R introduction</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R practicals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_GettingStarted.html">1. Getting started in R</a>
+    </li>
+    <li>
+      <a href="2_OperatorsObjects.html">2. Operators and objects</a>
+    </li>
+    <li>
+      <a href="3_DataImportExport.html">3. Data import and export</a>
+    </li>
+    <li>
+      <a href="4_Visualisation.html">4. Visualising data</a>
+    </li>
+    <li>
+      <a href="5_SimpleStats.html">5. Descriptive statistics and random numbers</a>
+    </li>
+    <li>
+      <a href="6_ControlFlows.html">6. Control flows</a>
+    </li>
+    <li>
+      <a href="7_DataWrangling.html">7. Simple data wrangling</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://damariszurell.github.io">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/ZurellLab">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Getting started in R</h1>
+
+</div>
+
+
+<hr />
+<div id="what-is-r" class="section level1">
+<h1><span class="header-section-number">1</span> What is R?</h1>
+<ul>
+<li>a very flexible, open source programming environment for (statistical) data analyses and visualisation (www.r-project.org)<br />
+</li>
+<li>an object-oriented and interpreted programming language based on the S language <a href="https://stackoverflow.com/questions/38467631/whats-object-oriented-programming/39086783">(see here)</a></li>
+<li>runs on all common operating systems</li>
+</ul>
+<p><strong>How to operate R:</strong></p>
+<ul>
+<li>R is operated from the command line<br />
+</li>
+<li>work with script files for easier tractability, recycling and modification of commands</li>
+<li>scripts also allow you to send big chunks of code or the entire script to the R console<br />
+</li>
+<li>scripts are the first step for automatizing your data manipulation and analyses<br />
+</li>
+<li>R has a built-in editor, but many people nowadays use R Studio (<a href="http://rstudio.org/" class="uri">http://rstudio.org/</a>) or other text editors</li>
+</ul>
+<p><strong>Additional R resources:</strong> - Tutorial by <a href="http://adamwilson.us/SpatialDataScience/02_graphics.html">Adam Wilson</a> - <a href="https://datacarpentry.org/R-ecology-lesson/04-visualization-ggplot2.html">Data carpentry</a> - Introduction by <a href="https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf">Paul Torfs and Claudia Brauer</a> - R for Beginners by <a href="https://rbasicsworkshop.weebly.com/uploads/1/8/6/0/18603232/paradis_2005_r-forbeginners.pdf">Emmanuel Paradis</a> - Books <a href="http://r4ds.had.co.nz/">R for Data Science</a>, or <span class="citation">Crawley (2007)</span>)</p>
+<p>The RStudio <a href="https://www.rstudio.com/resources/cheatsheets/">cheat sheets</a> are also very helpful!</p>
+</div>
+<div id="create-a-new-project-in-rstudio" class="section level1">
+<h1><span class="header-section-number">2</span> Create a new project in RStudio</h1>
+<p>I recommend using RStudio throughout the course. If you have not already done so, please visit the RStudio website (<a href="http://rstudio.org/" class="uri">http://rstudio.org/</a>) and download and install RStudio for your operating system.</p>
+<p>I also recommend setting up an RStudio project for the entire course (UP students can watch video tutorial in Moodle) and within the RStudio project separate R scripts for each session. To do so:</p>
+<ul>
+<li>Open RStudio</li>
+<li>Go to the tab “File” and select “New Project”</li>
+<li>Select either “New Directory” if you haven’t set up a course folder yet, or select “Existing Directory” to point towards an existing folder. This directory will be the working folder for the course. Navigate to the path of the project folder on your machine (e.g. ’~Documents/Courses/R-intro)</li>
+<li>Name your project<br />
+</li>
+<li>Use your file explorer on your machine, find your project folder, and create four sub-folders: data, scripts, results, and figures</li>
+<li>Create a new empty R script by going to the tab “File”, select “New File” and then “R script”</li>
+<li>In the new R script, type <code># Session 1: Getting started in R</code> and save the file in your folder “scripts” within your project folder, e.g. as “1_GettingStarted.R”</li>
+</ul>
+</div>
+<div id="console-and-prompt" class="section level1">
+<h1><span class="header-section-number">3</span> Console and prompt</h1>
+<p>In the R console you will find the symbol <code>&gt;</code>:</p>
+<pre class="r"><code>&gt;</code></pre>
+<p>This is the so-called <em>prompt</em>, which asks you for the next command.</p>
+<p>The most basic thing you can do now is typing some mathematical calculations. If you see a <code>+</code> instead, then the former command is not completed yet, and R waits for further arguments (maybe you have forgotten the closing bracket?).</p>
+<pre class="r"><code>20 * (5 - 3
+)</code></pre>
+<p>A line break or a semicolon (;) separates commands.</p>
+<pre class="r"><code>2 + 3; 2 + 4</code></pre>
+<p>Anything following a hashmark <code>#</code>, will be interpreted as comment and will, thus, not be executed.</p>
+<pre class="r"><code>1 + 3
+# 1 + 3</code></pre>
+<p>You could type all code examples that are listed here, directly into your R console. You can access them by the cursor keys. However, I highly recommend storing everything into a script file.</p>
+</div>
+<div id="grammar-functions-and-arguments" class="section level1">
+<h1><span class="header-section-number">4</span> Grammar: functions and arguments</h1>
+<p>R comes with a huge list of commands, which we call function. In order to execute a function, it needs to be followed by brackets <code>()</code>.</p>
+<pre class="r"><code>sum()</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>sum(1, 3)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<p>Within the brackets, we can provide additional arguments to the function. Some functions always expect additional arguments, and some functions don’t. In the above example, <code>sum()</code> also works without additional arguments. The function’s default assumes that we have provided a zero vector and thus the output is a <code>0</code>. If we provide a vector of numeric values, the function will return the sum of these values.</p>
+<p>Some functions have named arguments, for example the function <code>rep()</code>, which creates a vector of replicates.</p>
+<pre class="r"><code>rep(x = 2, times = 10)</code></pre>
+<pre><code>##  [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
+<pre class="r"><code>rep(2, 10)</code></pre>
+<pre><code>##  [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
+<p>In this example, both expression give the same results because we provided the arguments in the same order as the function expects. With named arguments, we can also change the order.</p>
+<pre class="r"><code>rep(times = 10, x = 2)</code></pre>
+<pre><code>##  [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
+<pre class="r"><code>rep(10, 2)</code></pre>
+<pre><code>## [1] 10 10</code></pre>
+</div>
+<div id="working-directory" class="section level1">
+<h1><span class="header-section-number">5</span> Working directory</h1>
+<p>R is always pointed at a specific directory on your computer, the working directory. You can check the current working directory by typing:</p>
+<pre class="r"><code>getwd()</code></pre>
+<p>If you set up the RStudio project correctly, then <code>getwd()</code> should show your course folder as working directory. Else, you change the working directory using <code>setwd()</code>. Check out the help page:</p>
+<pre class="r"><code>?setwd</code></pre>
+<p>See the files contained in your folder:</p>
+<pre class="r"><code>dir()</code></pre>
+</div>
+<div id="workspace" class="section level1">
+<h1><span class="header-section-number">6</span> Workspace</h1>
+<p>You can list all objects in your workspace by typing <code>ls()</code>.</p>
+<pre class="r"><code>ls()</code></pre>
+<p>Probably your workspace does not list any objects yet. We can remove objects from the workspace using <code>rm()</code>.</p>
+<pre class="r"><code>x &lt;- 20
+y &lt;- 30
+z &lt;- 40
+
+ls()
+
+rm(x) # removes one or more objects
+
+rm(list = ls()) #removes all objects from workspace</code></pre>
+</div>
+<div id="load-and-install-packages" class="section level1">
+<h1><span class="header-section-number">7</span> Load and install packages</h1>
+<p>There are thousands of additional packages available for R. You can see the list of installed packages by typing: <code>library()</code></p>
+<p>The same command is used for loading a specific package into the workspace = make it available for this session:</p>
+<pre class="r"><code># loads the package raster:
+library(ggplot2)
+# removes package from current workspace:
+detach(package:ggplot2)</code></pre>
+<p>If you don’t have the packages above, install them in the package manager or by running the command</p>
+<pre class="r"><code>install.packages(&quot;ggplot2&quot;, dependencies = TRUE)</code></pre>
+</div>
+<div id="getting-help" class="section level1">
+<h1><span class="header-section-number">8</span> Getting help</h1>
+<p>R comes with an extensive, built-in help system, and several manuals, help pages for every available function and many additional documents.</p>
+<p>You can access the built-in manuals by typing:</p>
+<pre class="r"><code>help.start()</code></pre>
+<p>Help pages for specific functions can be accessed with help() or with abbreviation ?.</p>
+<pre class="r"><code># help page for arithmetic mean:
+help(mean)
+# the same:
+?mean</code></pre>
+<p>Most functions come with examples:</p>
+<pre class="r"><code>example(mean)</code></pre>
+<p>Some function calls need to be surrounded by quotation marks when calling help, e.g. special characters or expression with syntactic meaning such as if, for und function.</p>
+<pre class="r"><code>?&quot;*&quot;
+?&quot;if&quot;</code></pre>
+<p>If you have forgotten the exact name of a function, you can search all function names, titles and keywords by typing:</p>
+<pre class="r"><code>help.search(&quot;mean&quot;)
+# the same:
+??mean</code></pre>
+<p>Search through all (installed) functions that contain the word in their function call:</p>
+<pre class="r"><code>apropos(&quot;mean&quot;)</code></pre>
+<p>Look at all functions contained in <code>base</code> package by typing:</p>
+<pre class="r"><code>library(help = base)</code></pre>
+<p>Some package authors offer additional documents or tutorials called vignettes:</p>
+<pre class="r"><code># list all available vignettes of the installed(!) packages:
+vignette()
+
+# opens the vignette as pdf or html:
+vignette(&quot;ggplot2-specs&quot;)</code></pre>
+<p>Upon opening a new R session, some useful information will be printed to the console, mainly on version number and copyright. You can also extract this and other useful information by typing commands, e.g.</p>
+<pre class="r"><code>sessionInfo()
+citation()</code></pre>
+<p>The last command is important for citing the correct packages in your theses or any other publication.</p>
+<div class="alert alert-info">
+<p><em><strong>Exercises:</strong></em></p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-crawley2007">
+<p>Crawley, Michael J. 2007. <em>The R Book</em>. UK: John Wiley &amp; Sons.</p>
+</div>
+</div>
+</div>
+
+<!DOCTYPE html>
+<html>
+
+<br>
+<hr />
+<div id="footer">
+<p>Damaris Zurell, 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
+</div>
+
+</html>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
