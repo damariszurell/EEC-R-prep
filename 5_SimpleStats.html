@@ -427,7 +427,7 @@ div.tocify {
 <p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
 <li>Create a new empty R script by going to the tab “File”, select “New File” and then “R script”</li>
-<li>In the new R script, type <code># Session 4: Descriptive statistics and random numbers</code> and save the file in your folder “scripts” within your project folder, e.g. as “4_SimpleStats.R”</li>
+<li>In the new R script, type <code># Session 5: Descriptive statistics and random numbers</code> and save the file in your folder “scripts” within your project folder, e.g. as “5_SimpleStats.R”</li>
 </ul>
 </div>
 <p>Statistics are at the heart of R and probably the reason why I learned this language in the first place. Here, I will just provide a brief overview of descriptive summary statistics, probability distributions, and random numbers. I don’t introduce simple linear regression here as we will do a lot of regression in the other weeks.</p>
@@ -473,8 +473,8 @@ dnorm(0, 2, 2) </code></pre>
 <p>We can also draw random numbers from these distributions using the function <code>rnorm()</code>.</p>
 <pre class="r"><code># draw 10 random numbers from the standard normal distribution:
 rnorm(10)</code></pre>
-<pre><code>##  [1]  1.40965834  0.70342996  0.45632624  1.03101202  1.02888925 -0.68034981
-##  [7] -0.03970728 -1.92147397  1.89652389  0.64702966</code></pre>
+<pre><code>##  [1] -0.6121490  0.5579504 -2.0077670  0.2727238  2.7772412 -0.6706685
+##  [7]  1.5587906 -0.1199855 -1.4406711 -1.3652524</code></pre>
 <pre class="r"><code>par(mfrow=c(1,3)) 
 # plot the density function
 curve(dnorm(x), -3, 6, lwd = 2, ylim = c(0, 0.5), xlim=c(-5,10)) 
