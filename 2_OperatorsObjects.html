@@ -620,11 +620,10 @@ str(gcib_course)</code></pre>
 <div id="problem-solving" class="section level1">
 <h1><span class="header-section-number">9</span> Problem solving</h1>
 <p>Nobody knows an entire coding language and can immediately develop perfect code from scratch that does exactly what we want. More often than not, code will result in errors and perhaps the most integral part of writing and developing code is dealing with errors. Common errors are:</p>
-<p><em>Calling a function without loading its package:</em></p>
+<p><em><em>Calling a function without loading its package:</em></em></p>
 <pre class="r"><code>ggplot() # ggplot2 package not yet loaded</code></pre>
 <pre><code>## Error in ggplot(): konnte Funktion &quot;ggplot&quot; nicht finden</code></pre>
-</div>
-<p><em>Calls to unassigned variables:</em></p>
+<p><em><em>Calls to unassigned variables:</em></em></p>
 <pre class="r"><code>seq(from = k, to = 10, by = 2) # k is not yet assigned</code></pre>
 <pre><code>## Error in seq(from = k, to = 10, by = 2): Objekt &#39;k&#39; nicht gefunden</code></pre>
 <p><em><em>Incorrect function arguments:</em></em></p>
@@ -638,7 +637,7 @@ str(gcib_course)</code></pre>
 <pre class="r"><code>mean(na.rm = TRUE) # missing vector</code></pre>
 <pre><code>## Error in mean.default(na.rm = TRUE): Argument &quot;x&quot; fehlt (ohne Standardwert)</code></pre>
 <p><em><em>Syntax (“grammar”) mistakes:</em></em></p>
-<pre class="r"><code>seq(from = 2, to = 10 by = 2) # mssing a comma
+<pre class="r"><code>seq(from = 2, to = 10 by = 2) # missing a comma
 seq(from == 2, to = 10, by = 2) # extra eq sign
 seq(from = 2, to = 10, by = 2)) # extra closing bracket</code></pre>
 <pre><code>## Error: &lt;text&gt;:1:23: unerwartetes Symbol
