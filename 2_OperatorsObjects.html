@@ -422,12 +422,14 @@ div.tocify {
 
 
 <hr />
+<!-- maybe let students do this before? And here only remind them that they should have the file and should open it now?-->
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
 <p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
-<li>Create a new empty R script by going to the tab “File”, select “New File” and then “R script”</li>
-<li>In the new R script, type <code># Session 2: Operators and objects</code> and save the file in your folder “scripts” within your project folder, e.g. as “2_OperatorsObjects.R”</li>
+<li>Open the previously prepared R script file for practical #2.<br />
+</li>
+<li>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script”. In the new R script, type <code># Session 2: Operators and objects</code> and save the file in your folder “scripts” within your project folder, e.g. as “2_OperatorsObjects.R”</li>
 </ul>
 </div>
 <div id="operators" class="section level1">
@@ -480,7 +482,7 @@ sin(pi / 2)
 <pre class="r"><code>X = 1
 ls()</code></pre>
 <p><em><strong>Naming variables/objects:</strong></em></p>
-<p>There is no single naming convention in R. Even in the same package, multiple conventions might be used <em>simultaneously</em>. But usually, it’s advisable to stay consistent. Basically, thera are <a href="https://www.r-bloggers.com/consistent-naming-conventions-in-r/">five naming conventions</a> to chose from:</p>
+<p>There is no single naming convention in R. Even in the same package, multiple conventions might be used <em>simultaneously</em>. But usually, it’s advisable to stay consistent. Basically, there are <a href="https://www.r-bloggers.com/consistent-naming-conventions-in-r/">five naming conventions</a> to chose from:</p>
 <ul>
 <li>alllowercase: <em>e.g.</em> <code>adjustcolor</code></li>
 <li>period.separated: <em>e.g.</em> <code>plot.new</code></li>
@@ -648,13 +650,28 @@ Virtually everything is possible as long as it results in a working solution (an
 <p>The most common trouble-shooting options: - check the line that “throws” the error - is there a syntax mistake? Are all objects you use defined in the global environment? - are the function arguments correct? (check function help file for required object types, use i.e. <code>class()</code>, <code>str()</code> to understand your data structure better). - do a google search (often it is enough to copy and paste the error message into google - solutions will often be on <a href="https://stackoverflow.com">stack overflow</a>, a massive Q&amp;A community across various coding languages and disciplines) - ask your peers/supervisors/colleagues/friends - check if your version are up-to-date</p>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<pre class="r"><code>str(iris)</code></pre>
+<p>Save all your R code in the R script file and use comments to make your code understandable also for other persons.</p>
+<p>Basic R comes with several exemplary data sets - type <code>data()</code> to see a list of these. The <code>iris</code> data set gives, for example, the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris (see also the help file). We load the dataset by using the aforementioned function <code>data()</code> and the name of the dataset.</p>
+<pre class="r"><code>data(iris)
+str(iris)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<ul>
+<li><p>What are the 3 different Iris species? <!-- learn how to read the different elements esp. factors --></p></li>
+<li><p>Calculate the mean sepal length and width for each species. Which species has on average the greatest sepal length? <!-- students should select by species and apply a function --></p></li>
+</ul>
+<p>Now, let’s have a look at the data set <code>airquality</code>:</p>
+<ul>
+<li><p>What is the structure of the data set? Which variables were measured? <!-- use str() --></p></li>
+<li><p>In which city and year were these variables measured? Add this information as additional columns <code>city</code> and <code>year</code>. <!-- use the help file + add to an existing data.frame --></p></li>
+<li><p>Are there any missing values? Select only those measurements where you have information on all variables and store it in another object. <!-- use is.na(), assign to new object --></p></li>
+<li><p>Calculate the mean values with and without accounting for missing values. <!-- select from a data.frame and apply function --></p></li>
+<li><p>What was the coldest month? What was the warmest month? Was the average temperature in August greater than in July? <!-- use logic operator --></p></li>
+</ul>
 </div>
 </div>
 <div id="references" class="section level1">
@@ -667,7 +684,7 @@ Virtually everything is possible as long as it results in a working solution (an
 <br>
 <hr />
 <div id="footer">
-<p>Damaris Zurell, 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
+<p>Damaris Zurell, Simon Kapitza, Jette Reeg 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
 </div>
 
 </html>
