@@ -532,12 +532,49 @@ p + geom_point() + geom_smooth(method = &quot;loess&quot;)</code></pre>
 <p>Boxplot:</p>
 <pre class="r"><code>ggplot(data = iris, mapping = aes(x = Species, y = Sepal.Length)) +
   geom_boxplot()</code></pre>
+<p><img src="4_Visualisation_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
+<p>Task 1: <!-- Let students repeat exercises of the tutorial --> * Select I. versicolor and plot correlation between petal width and length with base r graphics. Include a regression line and make sure axis titles are meaningful.</p>
+<ul>
+<li><p>Add values for I. setosa and I. virginica.</p></li>
+<li><p>Save the graphic in folder <code>/graphics</code>.</p></li>
+</ul>
+<p><br></p>
+<p>Task 2: Load the survey data set <code>data/surveys_pract3_correct.csv</code>.<br />
+<!-- Let students solve of common problems --> * How do you want to deal with <code>NA</code> values? (?complete.cases)</p>
+<!-- Students are free to find interesting relationships -->
+<ul>
+<li><p>What could be interesting relationships?</p>
+<ul>
+<li>Maybe it makes sense to calculate mean, sum or standard deviation?</li>
+</ul></li>
+</ul>
+<!-- Let students use a cheatsheet-->
+<ul>
+<li>Make sure you have accurate axis titles. Can you make the graph nicer by having the background white? Maybe the ggplot2 cheatsheet can help!</li>
+</ul>
+<!-- one more complex exercise covering all steps so far-->
+<p><br> Task 3: Let’s have a look at mobility data in 2020 and 2021 compared to 2019. Download the data sets for <a href="https://damariszurell.github.io/EEC-R-prep/data/mobility_public_transport.csv">long distance public transport</a> and <a href="https://damariszurell.github.io/EEC-R-prep/data/daily_mobility_germany.csv">general daily mobility in the federal states of Germany</a>. <!-- NOTE: include ref: https://www.destatis.de/DE/Service/EXDAT/Datensaetze/mobilitaetsindikatoren-mobilfunkdaten.html --></p>
+<ul>
+<li><p>Investigate both data sets: What information can you find in these data sets? Is the structure the same or different?</p></li>
+<li><p>Was the mobility in trains, flights and on the road decreased with the beginning of the lockdown? For which transport can you see the biggest decrease?</p>
+<ul>
+<li>Plot the change in long distance public transport for all types of transports in one graph. Make sure to have meaningful titles for the x- and y-axis. Include a legend for the three different types of public transport. Do you need to transform the column for ‘Day’? Check <code>str()</code>. Google is your friend for solving this problem.</li>
+</ul></li>
+<li><p>Are there differences in the daily mobility between the different federal states of Germany? Which federal state had the strongest decrease? Is there even a state which had a strong increase?</p>
+<ul>
+<li>Plot the change in daily mobility for each state. Is there a way to have a multi-panel plot so each state will appear in a single subplot? (hint: use the ggplot2 cheatsheet)</li>
+</ul></li>
+</ul>
+<!-- Goals:
+  download 2 data sets; 
+  read in 2 data sets; 
+  differences in data sets: 
+    public transport: each type a single column / daily mobility: states as single column with different factors
+  difficulty in the data sets: 'Day' column needs to be transformed. Students need to google.-->
 </div>
-</div>
-<div id="references" class="section level1">
-<h1><span class="header-section-number">3</span> References</h1>
+<!-- # References -->
 </div>
 
 <!DOCTYPE html>

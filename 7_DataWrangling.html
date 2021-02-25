@@ -492,15 +492,54 @@ rowMeans(Xmat)
 rowSums(Xmat)
 
 # Calculate the mean and sum of all columns
+
 colMeans(Xmat)
 colSums(Xmat)</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
+<p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. Download and load the package. The package functions return different related data sets. You will notice that the data represented as <code>tibble</code>, which is a data type from the <code>tidyverse</code> (google for more info). A <code>tibble</code> is very similar to a <code>data.frame</code> object and most R functions you would use for a data frame can also be used on a <code>tibble</code>. To keep things consistent for now, let’s convert the data set to the <code>data.frame</code> class: <code>flights &lt;- as.data.frame(flights)</code>.</p>
+<p>Task 1: Become more familiar with the NYC flights data set (Hint: use <code>str()</code>, <code>?</code>, and google the data set to find out more).</p>
+<ul>
+<li>How many NYC airports are covered in the data set?<br />
+</li>
+<li>How many domestic flights departed from each NYC airport in 2013?</li>
+<li>How many different airlines departed from New York in 2013?<br />
+</li>
+<li>What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations?<br />
+</li>
+<li>Create quarterly summaries of departure delays. Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected? <!-- They learn to get familiar with unknown data sets better --></li>
+</ul>
+<p><br></p>
+<p>Task 2: Visualise flight delays.</p>
+<ul>
+<li>How did daily flight delays vary throughout the year 2013? Are there seasonal patterns? (hint: calculate the mean departure delay for each day, make a time series plot and add a smooth line to the plot)</li>
+<li>plot a summary of delays for each airport. Are there differences?<br />
+</li>
+<li>plot a summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than 3,000 mi) flights across all airports. Are there differences? (Hint: to group your data for plotting, you first need to create a column that flags which haul-category each flight belongs to.)</li>
+</ul>
+<p><br></p>
+<p>Task 3: What are factors influencing flight delays?</p>
+<ul>
+<li>Are flight delays influenced by weather patterns? (hint: merge the hourly weather data set with the flights data and plot trends between flight delays and some weather variables you think might influence delays)</li>
+<li>Are flight delays influenced by the aircraft type? (hint: merge the aircraft data set with the flights data and plot delay summaries for each aircraft type) <!-- merging several data sets together using the merge function (with defaults because columns have matching names across the data). Visualising relationships between measured variables contained in the data set. --></li>
+</ul>
+<p><br></p>
+<p>Task 4: Useful functions.</p>
+<ul>
+<li>write a function that converts from miles to km</li>
+<li>write a function that converts from Fahrenheit to Celsius</li>
+<li>apply both functions to convert <code>distance</code> from miles to km and <code>temp</code> from Fahrenheit to Celsius. Attach the new columns to your flights data frame.</li>
+</ul>
 </div>
 </div>
 </div>
-<div id="references" class="section level1">
-<h1><span class="header-section-number">4</span> References</h1>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-Wickham2019">
+<p>Wickham, Hadley. 2019. <em>Nycflights13: Flights That Departed Nyc in 2013</em>. <a href="https://CRAN.R-project.org/package=nycflights13">https://CRAN.R-project.org/package=nycflights13</a>.</p>
+</div>
+</div>
 </div>
 
 <!DOCTYPE html>

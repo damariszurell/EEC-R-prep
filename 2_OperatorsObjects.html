@@ -422,7 +422,7 @@ div.tocify {
 
 
 <hr />
-<!-- maybe let students do this before? And here only remind them that they should have the file and should open it now?-->
+<!-- In exercise 1 we have asked the students to prepare the r scripts for the other practicals. So now they should actually only open the r scripts.  -->
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
 <p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
@@ -647,11 +647,11 @@ seq(from = 2, to = 10, by = 2)) # extra closing bracket</code></pre>
 ##                           ^</code></pre>
 <p>How to solve errors:<br />
 Virtually everything is possible as long as it results in a working solution (and you don’t copy other people’s work without giving proper credit )</p>
-<p>The most common trouble-shooting options: - check the line that “throws” the error - is there a syntax mistake? Are all objects you use defined in the global environment? - are the function arguments correct? (check function help file for required object types, use i.e. <code>class()</code>, <code>str()</code> to understand your data structure better). - do a google search (often it is enough to copy and paste the error message into google - solutions will often be on <a href="https://stackoverflow.com">stack overflow</a>, a massive Q&amp;A community across various coding languages and disciplines) - ask your peers/supervisors/colleagues/friends - check if your version are up-to-date</p>
+<p>The most common trouble-shooting options: - check the line that “throws” the error - is there a syntax mistake? Are all objects you use defined in the global environment? - are the function arguments correct? (check function help file for required object types, use i.e. <code>class()</code>, <code>str()</code> to understand your data structure better). - do a google search (often it is enough to copy and paste the error message into google - solutions will often be on <a href="https://stackoverflow.com">stack overflow</a>, a massive Q&amp;A community across various coding languages and disciplines) - ask your peers/supervisors/colleagues/friends - check if your version is up-to-date</p>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
 <p>Save all your R code in the R script file and use comments to make your code understandable also for other persons.</p>
-<p>Basic R comes with several exemplary data sets - type <code>data()</code> to see a list of these. The <code>iris</code> data set gives, for example, the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris (see also the help file). We load the dataset by using the aforementioned function <code>data()</code> and the name of the dataset.</p>
+<p>Task 1: Basic R comes with several exemplary data sets - type <code>data()</code> to see a list of these. The <code>iris</code> data set gives, for example, the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris (see also the help file). We load the dataset by using the aforementioned function <code>data()</code> and the name of the dataset.</p>
 <pre class="r"><code>data(iris)
 str(iris)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
@@ -664,7 +664,8 @@ str(iris)</code></pre>
 <li><p>What are the 3 different Iris species? <!-- learn how to read the different elements esp. factors --></p></li>
 <li><p>Calculate the mean sepal length and width for each species. Which species has on average the greatest sepal length? <!-- students should select by species and apply a function --></p></li>
 </ul>
-<p>Now, let’s have a look at the data set <code>airquality</code>:</p>
+<p><br></p>
+<p>Task 2: Now, let’s have a look at the data set <code>airquality</code>:</p>
 <ul>
 <li><p>What is the structure of the data set? Which variables were measured? <!-- use str() --></p></li>
 <li><p>In which city and year were these variables measured? Add this information as additional columns <code>city</code> and <code>year</code>. <!-- use the help file + add to an existing data.frame --></p></li>
@@ -673,9 +674,7 @@ str(iris)</code></pre>
 <li><p>What was the coldest month? What was the warmest month? Was the average temperature in August greater than in July? <!-- use logic operator --></p></li>
 </ul>
 </div>
-</div>
-<div id="references" class="section level1">
-<h1><span class="header-section-number">10</span> References</h1>
+<!-- # References -->
 </div>
 
 <!DOCTYPE html>
