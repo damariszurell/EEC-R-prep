@@ -1,0 +1,6 @@
+"grams","veggy"
+500,"salad"
+1000,"courgette"
+1000,"aubergine"
+300,"onions"
+200,"beetroot"

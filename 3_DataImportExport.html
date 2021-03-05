@@ -434,64 +434,72 @@ div.tocify {
 <div id="read-text-data" class="section level1">
 <h1><span class="header-section-number">1</span> Read text data</h1>
 <!-- Links to the fils need to be updated-->
-<p>Download the data files <a href="https://damariszurell.github.io/EEC-Macro/data/myData.txt"><code>myData.txt</code></a>, <a href="https://damariszurell.github.io/EEC-Macro/data/myData.csv"><code>myData.csv</code></a> and <a href="https://damariszurell.github.io/EEC-Macro/data/myColumn.csv"><code>myColumn.txt</code></a> and move them to your project folder.</p>
+<p>Download the data files <code>data/myData.txt</code>, <code>data/myData.csv</code> and <code>data/myColumn.txt</code>and move them to your project folder.</p>
 <p>Now, list all files in your project folder by typing:</p>
 <pre class="r"><code>list.files()
 
 # alternative that also lists folders:
 dir()</code></pre>
-<p>Read the file <code>myData.txt</code>. The file is in table format (data frame); every column has a name, and columns are separated by comma. This information is important for correct reading:</p>
-<pre class="r"><code>my_df &lt;- read.table(&#39;myData.txt&#39;)</code></pre>
+<p>Read the file <code>veggyshopping.txt</code>. The file is in table format (data frame); every column has a name, and columns are separated by comma. This information is important for correct reading:</p>
+<pre class="r"><code>my_df &lt;- read.table(&#39;data/veggyshopping.txt&#39;)</code></pre>
 <p>There may be several reasons for an error message. Is the data table correct? Do all columns contain the same number of elements? Yes, the data file is correct. Then, it probably has to do with the arguments passed to <code>read.table()</code>. Have a look at the help page and the default settings.</p>
 <p>Important arguments: - <code>file</code>: (path) and file name - <code>header</code>: logical value indicating whether file contains column names; defaults to <code>FALSE</code> - <code>sep</code>: column separator. Default: &quot; &quot; (white space or tab) - <code>dec</code>: character used for decimal points. Default: “.” - <code>colClasses</code>: optional vector giving data types for each column - <code>stringsAsFactors</code>: set to <code>FALSE</code> to avoid automatic transformation of character to factor.</p>
 <p>R expects white spaces as field separator but we had separated our data columns by comma when saving the file. Also, R does not assume column names. So, we have to tell R. correct reading:</p>
-<pre class="r"><code>(my_df &lt;- read.table(&#39;myData.txt&#39;, sep = &#39;,&#39;, header = TRUE))
+<pre class="r"><code>(my_df &lt;- read.table(&#39;data/veggyshopping.txt&#39;, sep = &#39;,&#39;, header = TRUE))
 str(my_df)
 names(my_df)
 summary(my_df)</code></pre>
 <p>There are also some useful modifications for common formats, e.g. for comma-separated files (csv):</p>
-<pre class="r"><code>read.csv(&#39;myData.txt&#39;)
-read.csv(&#39;myData.csv&#39;)</code></pre>
+<pre class="r"><code>read.csv(&#39;data/veggyshopping.txt&#39;)
+read.csv(&#39;data/veggyshopping.csv&#39;)</code></pre>
 <p>Sometimes, using read.table() or its modifications is not meaningful. The next example file does not contain a data table but only a (very long) vector. <code>read.table()</code> will still work but it will be slow, and will create a data frame object with many rows in only one column, which is not very sensible.</p>
-<pre class="r"><code>read.table(&quot;myColumn.txt&quot;)</code></pre>
+<pre class="r"><code>read.table(&quot;data/myColumn.txt&quot;)</code></pre>
 <p>For such one-row or one-column data files, it is better to use functions like <code>scan()</code>. With some exercise, this command can also be used for reading very complex data structures.</p>
-<pre class="r"><code>scan(&quot;myColumn.txt&quot;)</code></pre>
+<pre class="r"><code>scan(&quot;data/myColumn.txt&quot;)</code></pre>
 <p>Other packages are available that provide more convenient functions for data import, e.g. <code>tidyverse</code> or <code>data.table</code>. Often, these functions will automatically detect the data structure in the files.</p>
 <pre class="r"><code>library(tidyverse)
-read_delim(&quot;myData.txt&quot;)
+read_delim(&quot;data/veggyshopping.txt&quot;)
 
 # so, read_delim does not detect the column separator
-read_delim(&quot;myData.txt&quot;, delim = &#39;,&#39;)
-read_csv(&quot;myData.txt&quot;)
+read_delim(&quot;data/veggyshopping.txt&quot;, delim = &#39;,&#39;)
+read_csv(&quot;data/veggyshopping.txt&quot;)
 
 library(data.table)
-fread(&#39;myData.txt&#39;)</code></pre>
+fread(&#39;data/veggyshopping.txt&#39;)</code></pre>
 </div>
 <div id="write-text-data" class="section level1">
 <h1><span class="header-section-number">2</span> Write text data</h1>
 <p>All objects created in R can be exported to file. Data frame can be written to file by <code>write.table</code> and its variants:</p>
-<pre class="r"><code>write.table(veggy_shopping, &quot;myData.txt&quot;, row.names = FALSE, col.names = TRUE, sep = &#39;,&#39;)
-write.csv(veggy_shopping, &quot;myData.csv&quot;)</code></pre>
+<pre class="r"><code>write.table(veggy_shopping, &quot;data/veggyshopping.txt&quot;, row.names = FALSE, col.names = TRUE, sep = &#39;,&#39;)
+write.csv(veggy_shopping, &quot;data/veggyshopping.csv&quot;)</code></pre>
 <p>This will automatically overwrite the two files you downloaded above because the file paths are identical to those of the downloaded files.</p>
 <p>Important arguments: - <code>file</code>: (path) and file name - <code>sep</code>: column separator. Default: &quot; &quot; (white space or tab) - <code>dec</code>: character used for decimal points. Default: “.”</p>
 <p>The function <code>write()</code> allows writing vectors and matrices to file. However, it contains some surprising default settings. Check out the help pages and below example. For demonstration purpose, we pipe the output into the console (&quot;&quot;).</p>
 <pre class="r"><code># Write vector:
-write(x, &quot;&quot;)
-write(1:1000, file = &quot;myColumn.txt&quot;)
+x &lt;- 1:500
+write(x, &quot;&quot;) # prints to console
 
 # Write matrix:
 (Xmat &lt;- matrix(1:10, ncol = 5))
-write(Xmat, &quot;&quot;)</code></pre>
+write(Xmat, &quot;&quot;) # prints to console</code></pre>
 <p>Surprisingly, the matrix is not exported in the right structure. Check out the help page <code>?write</code> to find out more about it.</p>
 <pre class="r"><code># transpose matrix before exporting: works!
 write(t(Xmat), &quot;&quot;)</code></pre>
 </div>
 <div id="read-and-write-r-objects" class="section level1">
 <h1><span class="header-section-number">3</span> Read and write R objects</h1>
-<p>A very useful option is to save R objects (<code>save()</code>) or the entire workspace (<code>save.image()</code>). With the latter, you can simply continue an R session at any later time. Saving single objects may be useful, for example, for saving statistical models that were estimated and analysed but that you want to keep for later references, for repeating some analyses etc.</p>
-<pre class="r"><code># save object Xmat
-save(Xmat, file = &quot;Xmat.Rdata&quot;)</code></pre>
-<p>You can load R objects or workspaces using <code>load()</code>.</p>
+<p>When your data structure is more complex then simple data frames or matrices, other formats are likely preferable to text files.</p>
+<ul>
+<li><code>save()</code>: saves R objects to <code>.Rdata</code> format. When you load an <code>.Rdata</code> file (<code>load()</code>), objects saved within appear in your global environment under the same name they were stored with.</li>
+<li><code>saveRDS()</code>: stores R objects to <code>.rds</code> format. Arguably the most efficient way of storing any type of data that only needs to be accessed by R. <code>readRDS()</code> loads <code>.rds</code> files and you can assign the loaded data to a new object name (unlike <code>load()</code> which automatically assigns the object name of the data from when it was stored).</li>
+<li><code>save.image()</code>: stores your entire workspace (equivalent to <code>save()</code>, but fall all the data currently in the global environment). This way, you can simply continue an R session at any later time by loading the stored workspace image (<code>load()</code>. When you are working in an RStudio project, workspace images are stored upon exiting the project by default. When your loaded objects take up a lot of memory, saving and loading can become pretty slow and it sometimes might be preferable to disable this setting.</li>
+</ul>
+<pre class="r"><code># save object Xmat to Rdata format
+save(Xmat, file = &quot;data/Xmat.Rdata&quot;)
+load(&quot;data/Xmat.Rdata&quot;) # object Xmat will be loaded into global environment
+
+saveRDS(Xmat, file = &quot;data/Xmat.rds&quot;)
+Xmat_differentname &lt;- readRDS(&quot;data/Xmat.Rdata&quot;) # same matrix, but is loaded into a different object name in global environment</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
 <!--
@@ -500,11 +508,14 @@ save(Xmat, file = &quot;Xmat.Rdata&quot;)</code></pre>
 * generate data sets with missing headers, incomplete rows, factors/characters
 * write table without rownames
 -->
-<p>Task 1: Download the file <code>data/surveys_.csv_pract3.txt</code> and save it in the data folder of your R-project. The data set contains survey data with information about the month, day, year, plot_id, species_id, sex, hindfoot_length and weight.</p>
+<p>Task 1: Download the file <code>data/surveys_pract3.txt</code> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight).</p>
 <ul>
-<li><p>Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()). <!-- students will get an error message as one column header is missing ('year'), error message doesn't specifically state that --></p></li>
-<li><p>Do all columns belong to the correct type? What is the difference between sex and species_id? Do you notice something ‘strange’ happening for the sex column? (compare txt file and data.frame in r)</p></li>
-<li><p>Make sure that all columns have the correct type and missing values are filled as <code>NA</code>. <!-- there are several missing values (empty cells), for numerical columns, R automatically insert NAs, for characters it doesn't, but also don't give an error message as it is assumed to be a character and not a factor --></p></li>
+<li><p>Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()) (hint: when you see an error message, you may have to open the file in a text editor to see what the problem might be!) <!-- students will get an error message as one column header is missing ('year'), error message doesn't specifically state that --></p></li>
+<li>Are the data types of the columns correct? (hint: categorical variables should be <code>factor</code> and not <code>character</code>)<br />
+</li>
+<li>Do you notice something about the <code>sex</code> column?<br />
+</li>
+<li><p>Load the data again, this time making sure that all columns have the correct type and missing values are filled with <code>NA</code>. <!-- there are several missing values (empty cells), for numerical columns, R automatically insert NAs, for characters it doesn't, but also don't give an error message as it is assumed to be a character and not a factor --></p></li>
 <li><p>Save the data set as <code>data/surveys_pract3_correct.csv</code> in the data folder. Specify a suitable separator.</p></li>
 </ul>
 </div>

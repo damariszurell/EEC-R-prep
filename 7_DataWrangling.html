@@ -494,41 +494,44 @@ rowSums(Xmat)
 # Calculate the mean and sum of all columns
 
 colMeans(Xmat)
-colSums(Xmat)</code></pre>
+colSums(Xmat)
+
+# Get unique entries (meaningful when you have recurring categories)
+
+unique(Xmat[,1])</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. Download and load the package. The package functions return different related data sets. You will notice that the data represented as <code>tibble</code>, which is a data type from the <code>tidyverse</code> (google for more info). A <code>tibble</code> is very similar to a <code>data.frame</code> object and most R functions you would use for a data frame can also be used on a <code>tibble</code>. To keep things consistent for now, let’s convert the data set to the <code>data.frame</code> class: <code>flights &lt;- as.data.frame(flights)</code>.</p>
-<p>Task 1: Become more familiar with the NYC flights data set (Hint: use <code>str()</code>, <code>?</code>, and google the data set to find out more).</p>
+<p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. You can find four parts of the data set in the <a href="https://damariszurell.github.io/EEC-R-prep/data/">course repository</a>. Alternatively, the data is also available directly through the <code>nycflights13</code> package.</p>
+<p>Task 1: Download and import the <code>flights</code> data. Explore the data set (Hint: use <code>str()</code> to understnad how the dat set is structured).</p>
 <ul>
 <li>How many NYC airports are covered in the data set?<br />
 </li>
-<li>How many domestic flights departed from each NYC airport in 2013?</li>
-<li>How many different airlines departed from New York in 2013?<br />
-</li>
-<li>What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations?<br />
-</li>
-<li>Create quarterly summaries of departure delays. Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected? <!-- They learn to get familiar with unknown data sets better --></li>
+<li>How many domestic flights departed from each NYC airport?</li>
+<li>How many different airlines departed from New York?</li>
+<li>What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations? (hint: check if the data is sorted correctly before determining the last flights)</li>
+<li>Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected? (hint: you can define a function to calculate the proportion of delayed flights in all flights and apply that function to different groups of the data set, using <code>aggregate()</code>. <!-- They learn to get familiar with unknown data sets better --></li>
 </ul>
 <p><br></p>
 <p>Task 2: Visualise flight delays.</p>
 <ul>
-<li>How did daily flight delays vary throughout the year 2013? Are there seasonal patterns? (hint: calculate the mean departure delay for each day, make a time series plot and add a smooth line to the plot)</li>
-<li>plot a summary of delays for each airport. Are there differences?<br />
-</li>
-<li>plot a summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than 3,000 mi) flights across all airports. Are there differences? (Hint: to group your data for plotting, you first need to create a column that flags which haul-category each flight belongs to.)</li>
+<li>How did daily flight delays at each airport vary throughout the year 2013? Are there seasonal patterns? (hint: use <code>aggregate</code> to calculate the mean delay of delayed flights (not the ones that left early or on time!) for each day and airport and add a new date column (google if you get stuck!). Use <code>ggplot</code> to make a scatter plot of delays for each airports (remember how you can group data for plotting in ggplot) and add a simple smooth line to the plot.</li>
+<li>plot a summary of daily delays for each airport. Are there differences? (hint: which plot type provides statistical summaries of data?)</li>
+<li>plot a meaningful summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than 3,000 mi) flights at each airport. Are there differences? (Hint: You first need to create a column that flags which haul-category each flight belongs to. Use <code>ggplot</code> and group your plot by airport and haul-category. Can you think of a way to transform the delay data so you can compare them better on your plot?)</li>
 </ul>
 <p><br></p>
-<p>Task 3: What are factors influencing flight delays?</p>
+<p>Task 3: What are factors influencing flight delays? (hint: you need to download and import other parts of the <code>nycflights13</code> data set, check the course repo)</p>
 <ul>
-<li>Are flight delays influenced by weather patterns? (hint: merge the hourly weather data set with the flights data and plot trends between flight delays and some weather variables you think might influence delays)</li>
-<li>Are flight delays influenced by the aircraft type? (hint: merge the aircraft data set with the flights data and plot delay summaries for each aircraft type) <!-- merging several data sets together using the merge function (with defaults because columns have matching names across the data). Visualising relationships between measured variables contained in the data set. --></li>
+<li>Are flight delays influenced by weather patterns? (hint: we’re interested in trends, so you can plot smooth lines only)</li>
+<li>Are flight delays related to the aircraft manufacturer? <!-- merging several data sets together using the merge function (with defaults because columns have matching names across the data). Visualising relationships between measured variables contained in the data set. --></li>
 </ul>
 <p><br></p>
 <p>Task 4: Useful functions.</p>
 <ul>
-<li>write a function that converts from miles to km</li>
-<li>write a function that converts from Fahrenheit to Celsius</li>
-<li>apply both functions to convert <code>distance</code> from miles to km and <code>temp</code> from Fahrenheit to Celsius. Attach the new columns to your flights data frame.</li>
+<li>write a function that converts from miles to km<br />
+</li>
+<li>write a function that converts a value from Fahrenheit to Celsius<br />
+</li>
+<li>apply both functions to convert <code>distance</code> from miles to km and <code>temp</code> from Fahrenheit to Celsius and attach the new columns to your flights data frame</li>
 </ul>
 </div>
 </div>
