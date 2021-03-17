@@ -426,8 +426,9 @@ div.tocify {
 <p><strong>RStudio project</strong></p>
 <p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
-<li>Create a new empty R script by going to the tab “File”, select “New File” and then “R script”</li>
-<li>In the new R script, type <code># Session 5: Descriptive statistics and random numbers</code> and save the file in your folder “scripts” within your project folder, e.g. as “5_SimpleStats.R”</li>
+<li>Open the previously prepared R script file for practical #4.<br />
+</li>
+<li>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script”. In the new R script, type <code># Session 5: Descriptive statistics and random numbers</code> and save the file in your folder “scripts” within your project folder, e.g. as “5_SimpleStats.R”</li>
 </ul>
 </div>
 <p>Statistics are at the heart of R and probably the reason why I learned this language in the first place. Here, I will just provide a brief overview of descriptive summary statistics, probability distributions, and random numbers. I don’t introduce simple linear regression here as we will do a lot of regression in the other weeks.</p>
@@ -473,8 +474,8 @@ dnorm(0, 2, 2) </code></pre>
 <p>We can also draw random numbers from these distributions using the function <code>rnorm()</code>.</p>
 <pre class="r"><code># draw 10 random numbers from the standard normal distribution:
 rnorm(10)</code></pre>
-<pre><code>##  [1] -0.06697494  2.55054746  0.31359034  0.68857137  0.15470349 -1.53050107
-##  [7] -1.63509263  0.02675697  0.43444959  0.71939466</code></pre>
+<pre><code>##  [1] -0.7385396 -0.6133260 -0.3855164 -0.1767632  0.2938091 -0.1668546
+##  [7] -1.3861925  1.6070742  1.1279589  1.0871101</code></pre>
 <pre class="r"><code>par(mfrow=c(1,3)) 
 # plot the density function
 curve(dnorm(x), -3, 6, lwd = 2, ylim = c(0, 0.5), xlim=c(-5,10)) 
@@ -483,7 +484,7 @@ hist(rnorm(1000), freq=F, col=NULL, add=T)
 
 # change parameter mean 
 curve(dnorm(x, mean = 2), -3, 6, col = &quot;red&quot;, lwd = 2,  ylim = c(0, 0.5), xlim=c(-5,10)) 
-hist(rnorm(1000, mean=2), freq=F, col=NULL,  add=T)
+hist(rnorm(1000, mean=2), freq=F, col=NULL,  add=T) 
 
 # change parameters mean and sd 
 curve(dnorm(x, mean = 2, sd = 2), -3, 6, col = &quot;green&quot;, lwd = 2,  ylim = c(0, 0.5), xlim=c(-5,10))
@@ -500,9 +501,9 @@ sample(1:30, size = 20, replace = TRUE) # with replacement
 sample(letters, 10)</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Task 1: Distributions - What other probability distributions do you think could be useful and why? - Create a sample with <code>n = 1000</code> draws from the log-normal distribution (use default parameters) and plot the density curve and barplot (analogous to what you learned about the normal distribution). <!-- This makes them think about probability distributions, they will have to google distributions and their applications, figure out how to parametrize (if there are no defaults) and draw a sample. --> - how do the log-normal distribution parameters differ from the normal distribution parameters? Can you transform the log-normal data so they follow the shape of the normal distribution?</p>
+<p>Task 1: What other probability distributions do you think could be useful and why? Create a sample with <code>n = 1000</code> draws from one of these distributions. <!-- This makes them think about probability distributions, they will have to google distributions and their applications, figure out how to parametrize (if there are no defaults) and draw a sample. --></p>
 <p><br></p>
-<p>Task 2: Bootstrapping parameters - Use the sample to estimate the parameters of the lognormal density function you applied for the random draw (they should be the default parameters). Do the estimates differ from the ones you specified to draw the sample? (Hint: you can use the R documentation for the lognormal distribution or try google to work out how to calculate the parameters from your samples). <!-- they have to find out how to estimate the parameters of the lnorm density function (i.e. in the case of the normal distribution it would be mean and sd) and compare those parameters with the ones they used to fit. The aim is for themn to learn how the distribution parameters and sampled values are linked. --></p>
+<p>Task 2: Use the sample to estimate the parameters of the density function you applied for the random draw. Do these estimated parameters differ from the ones you specified to draw the sample? (Hint: you can use the R documentation for your probability function or try google to work out how to calculate the parameters from your samples) <!-- they have to find out how to estimate the parameters of their chosen p density function (i.e. in the case of the normal distribution it would be mean and sd) and compare those parameters with the ones they used to fit. The aim is for themn to learn how the distribution parameters and sampled values are linked. --></p>
 <p><br></p>
 </div>
 <!-- # References -->

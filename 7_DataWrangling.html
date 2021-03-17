@@ -426,8 +426,9 @@ div.tocify {
 <p><strong>RStudio project</strong></p>
 <p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
-<li>Create a new empty R script by going to the tab “File”, select “New File” and then “R script”</li>
-<li>In the new R script, type <code># Session 7: Simple data wrangling</code> and save the file in your folder “scripts” within your project folder, e.g. as “7_DataWrangling.R”</li>
+<li>Open the previously prepared R script file for practical #7.<br />
+</li>
+<li>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script”. In the new R script, type <code># Session 7: Simple data wrangling</code> and save the file in your folder “scripts” within your project folder, e.g. as “7_DataWrangling.R”</li>
 </ul>
 </div>
 <p>R offers different options for inspecting, subsetting and manipulating data. We use the iris data that is contained in the R distribution</p>
@@ -499,30 +500,48 @@ colSums(Xmat)
 # Get unique entries (meaningful when you have recurring categories)
 
 unique(Xmat[,1])</code></pre>
+</div>
+<div id="aggregate" class="section level2">
+<h2><span class="header-section-number">3.2</span> aggregate()</h2>
+<p><code>aggregate()</code> lets you calculate summaries of groups of your data. The grouping can be expressed with the <code>by</code> argument, but you can also use a formula syntax. In both cases, you can also summarize by multiple grouping variables. The function returns a data frame containing the calculated summaries for each group. You can think of the function as “summarizing variable x by groups Z, using function f”.</p>
+<pre class="r"><code># calculate standard deviation and mean of the petal length for each iris species
+
+# grouping via &quot;by&quot; argument
+aggregate(iris$Petal.Length, by = list(iris$Species), FUN = &#39;mean&#39;) # mean
+aggregate(iris$Petal.Length, by = list(iris$Species), FUN = &#39;sd&#39;) # standard dev
+
+# grouping via formula syntax
+aggregate(Petal.Length ~ Species, data = iris, FUN = &#39;mean&#39;) # mean
+aggregate(Petal.Length ~ Species, data = iris, FUN = &#39;sd&#39;) # mean
+
+# user-defined function: calculating the percentage of flowers with petals longer than 4.5 cm within each species
+aggregate(Petal.Length ~ Species, data = iris, FUN = function(x) length(which(x &gt; 4.5))/length(x) * 100)</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. You can find four parts of the data set in the course repository (<a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_airlines.txt">nycflights13_airlines.txt</a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_flights.rds">nycflights13_flights.rds</a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_planes.csv">nycflights13_planes.csv</a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_weather.rds">nycflights13_weather.rds</a>). Alternatively, the data are also available directly through the <code>nycflights13</code> package.</p>
+<p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. You can find some parts of the data set in the course repository (<a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_airlines.txt"><code>nycflights13_airlines.txt</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_flights.rds"><code>nycflights13_flights.rds</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_planes.csv"><code>nycflights13_planes.csv</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_weather.rds"><code>nycflights13_weather.rds</code></a>).</p>
+<p>The different formats of the files are intended to help you practise downloading and importing different types of data.</p>
 <p>Task 1: Download and import the <code>flights</code> data. Explore the data set (Hint: use <code>str()</code> to understnad how the dat set is structured).</p>
 <ul>
 <li>How many NYC airports are covered in the data set?<br />
 </li>
 <li>How many domestic flights departed from each NYC airport?</li>
 <li>How many different airlines departed from New York?</li>
-<li>What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations? (hint: check if the data is sorted correctly before determining the last flights)</li>
-<li>Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected? (hint: you can define a function to calculate the proportion of delayed flights in all flights and apply that function to different groups of the data set, using <code>aggregate()</code>. <!-- They learn to get familiar with unknown data sets better --></li>
+<li>What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations?<br />
+</li>
+<li>Create quarterly summaries of departure delays. Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected? <!-- They learn to get familiar with unknown data sets better --></li>
 </ul>
 <p><br></p>
 <p>Task 2: Visualise flight delays.</p>
 <ul>
-<li>How did daily flight delays at each airport vary throughout the year 2013? Are there seasonal patterns? (hint: use <code>aggregate</code> to calculate the mean delay of delayed flights (not the ones that left early or on time!) for each day and airport and add a new date column (google if you get stuck!). Use <code>ggplot</code> to make a scatter plot of delays for each airports (remember how you can group data for plotting in ggplot) and add a simple smooth line to the plot.</li>
-<li>plot a summary of daily delays for each airport. Are there differences? (hint: which plot type provides statistical summaries of data?)</li>
-<li>plot a meaningful summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than 3,000 mi) flights at each airport. Are there differences? (Hint: You first need to create a column that flags which haul-category each flight belongs to. Use <code>ggplot</code> and group your plot by airport and haul-category. Can you think of a way to transform the delay data so you can compare them better on your plot?)</li>
+<li>How did daily flight delays vary throughout the year 2013? Are there seasonal patterns? (hint: calculate the mean departure delay for each day, make a time series plot and add a smooth line to the plot)</li>
+<li>plot a summary of delays for each airport. Are there differences? (hint: which plot type provides statistical summaries of data?)</li>
+<li>plot a summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than 3,000 mi) flights across all airports. Are there differences? (Hint: to group your data for plotting. You first need to create a column that flags which haul-category each flight belongs to.)</li>
 </ul>
 <p><br></p>
 <p>Task 3: What are factors influencing flight delays? (hint: you need to download and import other parts of the <code>nycflights13</code> data set, check the course repo)</p>
 <ul>
-<li>Are flight delays influenced by weather patterns? (hint: we’re interested in trends, so you can plot smooth lines only)</li>
-<li>Are flight delays related to the aircraft manufacturer? <!-- merging several data sets together using the merge function (with defaults because columns have matching names across the data). Visualising relationships between measured variables contained in the data set. --></li>
+<li>Are flight delays influenced by weather patterns?</li>
+<li>Are flight delays influenced by the aircraft type? <!-- merging several data sets together using the merge function (with defaults because columns have matching names across the data). Visualising relationships between measured variables contained in the data set. --></li>
 </ul>
 <p><br></p>
 <p>Task 4: Useful functions.</p>
@@ -531,7 +550,11 @@ unique(Xmat[,1])</code></pre>
 </li>
 <li>write a function that converts a value from Fahrenheit to Celsius<br />
 </li>
-<li>apply both functions to convert <code>distance</code> from miles to km and <code>temp</code> from Fahrenheit to Celsius and attach the new columns to your flights data frame</li>
+<li>apply both functions to convert <code>distance</code> from miles to km and <code>temp</code> from Fahrenheit to Celsius (hint: you already learned about two ways to apply a function to a whole column and not just a single value)<br />
+</li>
+<li>Optional: can you think of ways to adjust your functions so they can process whole vectors of values in the place of single elements?<br />
+</li>
+<li>Attach the new columns to your flights data frame</li>
 </ul>
 </div>
 </div>

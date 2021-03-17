@@ -426,52 +426,57 @@ div.tocify {
 <p><strong>RStudio project</strong></p>
 <p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
-<li><p>Open the previously prepared R script file for practical #3.</p></li>
-<li><p>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script” In the new R script, type <code># Session 3: Data import and export</code> and save the file in your folder “scripts” within your project folder, e.g. as “3_DataImportExport.R”</p></li>
+<li>Open the previously prepared R script file for practical #3.<br />
+</li>
+<li>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script”. In the new R script, type <code># Session 3: Data import and export</code> and save the file in your folder “scripts” within your project folder, e.g. as “3_DataImportExport.R”</li>
 </ul>
 </div>
 <p>R offers several options for accessing different data formats. Standard formats include text files (in ASCII format), binary files, R files (single objects or entire workspaces), and databases. These data can be read in from files using a file path, but also from the Internet using an URL path or from the clipboard. Of course, you can also write to these same devices. A good overview is provided in the manual „R Data Import/Export“ <span class="citation">(R Core Team 2019)</span>, which you can access by typing help.start(). The manual also contains information on some useful packages, e.g. <code>foreign</code>, which provides access to datasets created with different statistical software such as SAS, SPSS, S-PLUS etc. Data import using the package <code>tidyverse</code> is briefly explained in the <a href="https://www.rstudio.com/resources/cheatsheets/">RStudio cheat sheets</a>.</p>
 <div id="read-text-data" class="section level1">
 <h1><span class="header-section-number">1</span> Read text data</h1>
 <!-- Links to the fils need to be updated-->
-<p>Download the data files (<a href="https://damariszurell.github.io/EEC-R-prep/data/myColumn.txt">myColumn.txt</a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/veggyshopping.txt">veggyshooping.txt</a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/veggyshopping.csv">veggyshopping.csv</a>) and move them to your project folder.</p>
-<p>Now, list all files in your project folder by typing:</p>
-<pre class="r"><code>list.files()
+<p>Download the data files <a href="https://damariszurell.github.io/EEC-R-prep/data/veggyshopping.txt"><code>veggyshopping.txt</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/veggyshopping.txt"><code>veggyshopping.csv</code></a> and <a href="https://damariszurell.github.io/EEC-R-prep/data/myColumn.txt"><code>myColumn.txt</code></a> from the course data repository and move them to your project folder.</p>
+<p>Since you are working in an R project the R session already points to the project directory, so when we want to load data from the data folder that is contained within the project directory, all we need to do is specify the <em>relative path</em> to the data folder. This is best done using file.path(), because this function builds the path automatically using the correct slash (<code>/</code> on Unix systems, <code>\</code> on Windows). Let’s list the files inside the data folder:</p>
+<pre class="r"><code># file.path() constructs the path with the correct slash (they are different on different operating systems). The point is a placehodler for your current folder
 
-# alternative that also lists folders:
-dir()</code></pre>
-<p>Read the file <code>veggyshopping.txt</code>. The file is in table format (data frame); every column has a name, and columns are separated by comma. This information is important for correct reading:</p>
-<pre class="r"><code>my_df &lt;- read.table(&#39;data/veggyshopping.txt&#39;)</code></pre>
+file.path(&quot;.&quot;, &quot;data&quot;) # the . is a placeholder for your current working directory. It can be omitted, but we keep it as an example of how paths are built.
+
+list.files(path = file.path(&quot;.&quot;, &quot;data&quot;))
+
+# Since we are not navigating to subfolders within the data folder, in this specific case we can also use:
+list.files(path = &quot;data&quot;)</code></pre>
+<p>Read the file <code>sveggyshopping.txt</code> from your data folder. The file is in table format (data frame); every column has a name, and columns are separated by comma. This information is important for correct reading:</p>
+<pre class="r"><code>my_df &lt;- read.table(file.path(&#39;.&#39;, &#39;data&#39;, &#39;veggyshopping.txt&#39;))</code></pre>
 <p>There may be several reasons for an error message. Is the data table correct? Do all columns contain the same number of elements? Yes, the data file is correct. Then, it probably has to do with the arguments passed to <code>read.table()</code>. Have a look at the help page and the default settings.</p>
 <p>Important arguments: - <code>file</code>: (path) and file name - <code>header</code>: logical value indicating whether file contains column names; defaults to <code>FALSE</code> - <code>sep</code>: column separator. Default: &quot; &quot; (white space or tab) - <code>dec</code>: character used for decimal points. Default: “.” - <code>colClasses</code>: optional vector giving data types for each column - <code>stringsAsFactors</code>: set to <code>FALSE</code> to avoid automatic transformation of character to factor.</p>
 <p>R expects white spaces as field separator but we had separated our data columns by comma when saving the file. Also, R does not assume column names. So, we have to tell R. correct reading:</p>
-<pre class="r"><code>(my_df &lt;- read.table(&#39;data/veggyshopping.txt&#39;, sep = &#39;,&#39;, header = TRUE))
+<pre class="r"><code>(my_df &lt;- read.table(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;), sep = &#39;,&#39;, header = TRUE))
 str(my_df)
 names(my_df)
 summary(my_df)</code></pre>
 <p>There are also some useful modifications for common formats, e.g. for comma-separated files (csv):</p>
-<pre class="r"><code>read.csv(&#39;data/veggyshopping.txt&#39;)
-read.csv(&#39;data/veggyshopping.csv&#39;)</code></pre>
+<pre class="r"><code>read.csv(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;))
+read.csv(file.path(&quot;data&quot;, &quot;veggyshopping.csv&quot;))</code></pre>
 <p>Sometimes, using read.table() or its modifications is not meaningful. The next example file does not contain a data table but only a (very long) vector. <code>read.table()</code> will still work but it will be slow, and will create a data frame object with many rows in only one column, which is not very sensible.</p>
-<pre class="r"><code>read.table(&quot;data/myColumn.txt&quot;)</code></pre>
+<pre class="r"><code>read.table(file.path(&quot;data&quot;, &quot;myColumn.txt&quot;))</code></pre>
 <p>For such one-row or one-column data files, it is better to use functions like <code>scan()</code>. With some exercise, this command can also be used for reading very complex data structures.</p>
-<pre class="r"><code>scan(&quot;data/myColumn.txt&quot;)</code></pre>
+<pre class="r"><code>scan(file.path(&quot;data&quot;, &quot;myColumn.txt&quot;))</code></pre>
 <p>Other packages are available that provide more convenient functions for data import, e.g. <code>tidyverse</code> or <code>data.table</code>. Often, these functions will automatically detect the data structure in the files.</p>
 <pre class="r"><code>library(tidyverse)
-read_delim(&quot;data/veggyshopping.txt&quot;)
+read_delim(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;))
 
 # so, read_delim does not detect the column separator
-read_delim(&quot;data/veggyshopping.txt&quot;, delim = &#39;,&#39;)
-read_csv(&quot;data/veggyshopping.txt&quot;)
+read_delim(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;), delim = &#39;,&#39;)
+read_csv(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;))
 
 library(data.table)
-fread(&#39;data/veggyshopping.txt&#39;)</code></pre>
+fread(&quot;data&quot;, &quot;veggyshopping.txt&#39;)</code></pre>
 </div>
 <div id="write-text-data" class="section level1">
 <h1><span class="header-section-number">2</span> Write text data</h1>
 <p>All objects created in R can be exported to file. Data frame can be written to file by <code>write.table</code> and its variants:</p>
-<pre class="r"><code>write.table(veggy_shopping, &quot;data/veggyshopping.txt&quot;, row.names = FALSE, col.names = TRUE, sep = &#39;,&#39;)
-write.csv(veggy_shopping, &quot;data/veggyshopping.csv&quot;)</code></pre>
+<pre class="r"><code>write.table(veggy_shopping, file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;), row.names = FALSE, col.names = TRUE, sep = &#39;,&#39;)
+write.csv(veggy_shopping, file.path(&quot;data&quot;, &quot;veggyshopping.csv&quot;))</code></pre>
 <p>This will automatically overwrite the two files you downloaded above because the file paths are identical to those of the downloaded files.</p>
 <p>Important arguments: - <code>file</code>: (path) and file name - <code>sep</code>: column separator. Default: &quot; &quot; (white space or tab) - <code>dec</code>: character used for decimal points. Default: “.”</p>
 <p>The function <code>write()</code> allows writing vectors and matrices to file. However, it contains some surprising default settings. Check out the help pages and below example. For demonstration purpose, we pipe the output into the console (&quot;&quot;).</p>
@@ -495,11 +500,11 @@ write(t(Xmat), &quot;&quot;)</code></pre>
 <li><code>save.image()</code>: stores your entire workspace (equivalent to <code>save()</code>, but fall all the data currently in the global environment). This way, you can simply continue an R session at any later time by loading the stored workspace image (<code>load()</code>. When you are working in an RStudio project, workspace images are stored upon exiting the project by default. When your loaded objects take up a lot of memory, saving and loading can become pretty slow and it sometimes might be preferable to disable this setting.</li>
 </ul>
 <pre class="r"><code># save object Xmat to Rdata format
-save(Xmat, file = &quot;data/Xmat.Rdata&quot;)
-load(&quot;data/Xmat.Rdata&quot;) # object Xmat will be loaded into global environment
+save(Xmat, file = file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;)
+load(file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;)) # object Xmat will be loaded into global environment
 
-saveRDS(Xmat, file = &quot;data/Xmat.rds&quot;)
-Xmat_differentname &lt;- readRDS(&quot;data/Xmat.Rdata&quot;) # same matrix, but is loaded into a different object name in global environment</code></pre>
+saveRDS(Xmat, file = file.path(&quot;data&quot;, &quot;Xmat.rds&quot;))
+Xmat_differentname &lt;- readRDS(file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;) # same matrix, but is loaded into a different object name in global environment</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
 <!--
@@ -508,7 +513,7 @@ Xmat_differentname &lt;- readRDS(&quot;data/Xmat.Rdata&quot;) # same matrix, but
 * generate data sets with missing headers, incomplete rows, factors/characters
 * write table without rownames
 -->
-<p>Task 1: Download the file <a href="https://damariszurell.github.io/EEC-R-prep/data/surveys_pract3.txt">surveys_pract3.txt</a> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight).</p>
+<p>Task 1: Download the file <code>surveys_pract3.txt</code> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight) <span class="citation">(<span class="citeproc-not-found" data-reference-id="ernest_portal_2018"><strong>???</strong></span>)</span>.</p>
 <ul>
 <li><p>Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()) (hint: when you see an error message, you may have to open the file in a text editor to see what the problem might be!) <!-- students will get an error message as one column header is missing ('year'), error message doesn't specifically state that --></p></li>
 <li>Are the data types of the columns correct? (hint: categorical variables should be <code>factor</code> and not <code>character</code>)<br />
@@ -516,7 +521,7 @@ Xmat_differentname &lt;- readRDS(&quot;data/Xmat.Rdata&quot;) # same matrix, but
 <li>Do you notice something about the <code>sex</code> column?<br />
 </li>
 <li><p>Load the data again, this time making sure that all columns have the correct type and missing values are filled with <code>NA</code>. <!-- there are several missing values (empty cells), for numerical columns, R automatically insert NAs, for characters it doesn't, but also don't give an error message as it is assumed to be a character and not a factor --></p></li>
-<li><p>Save the data set as <code>data/surveys_pract3_correct.csv</code> in the data folder. Specify a suitable separator.</p></li>
+<li><p>Save the data set as <code>surveys_pract3_correct.csv</code> in the data folder. Specify a suitable separator.</p></li>
 </ul>
 </div>
 </div>
