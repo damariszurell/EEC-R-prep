@@ -474,8 +474,8 @@ dnorm(0, 2, 2) </code></pre>
 <p>We can also draw random numbers from these distributions using the function <code>rnorm()</code>.</p>
 <pre class="r"><code># draw 10 random numbers from the standard normal distribution:
 rnorm(10)</code></pre>
-<pre><code>##  [1] -0.7385396 -0.6133260 -0.3855164 -0.1767632  0.2938091 -0.1668546
-##  [7] -1.3861925  1.6070742  1.1279589  1.0871101</code></pre>
+<pre><code>##  [1] -0.1149904 -0.2927501 -0.8794179 -0.7420134  0.2963912  1.4559174
+##  [7] -0.2469890  0.4642328  0.1853540  1.5307904</code></pre>
 <pre class="r"><code>par(mfrow=c(1,3)) 
 # plot the density function
 curve(dnorm(x), -3, 6, lwd = 2, ylim = c(0, 0.5), xlim=c(-5,10)) 
@@ -501,9 +501,9 @@ sample(1:30, size = 20, replace = TRUE) # with replacement
 sample(letters, 10)</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Task 1: What other probability distributions do you think could be useful and why? Create a sample with <code>n = 1000</code> draws from one of these distributions. <!-- This makes them think about probability distributions, they will have to google distributions and their applications, figure out how to parametrize (if there are no defaults) and draw a sample. --></p>
+<p>Task 1: Create a sample with <code>n = 1000</code> draws from the log-normal distribution. <!-- This makes them think about another distribution, they will have to figure out how to parametrize (if there are no defaults) and draw a sample. --></p>
 <p><br></p>
-<p>Task 2: Use the sample to estimate the parameters of the density function you applied for the random draw. Do these estimated parameters differ from the ones you specified to draw the sample? (Hint: you can use the R documentation for your probability function or try google to work out how to calculate the parameters from your samples) <!-- they have to find out how to estimate the parameters of their chosen p density function (i.e. in the case of the normal distribution it would be mean and sd) and compare those parameters with the ones they used to fit. The aim is for themn to learn how the distribution parameters and sampled values are linked. --></p>
+<p>Task 2: Use the sample to estimate the parameters of the density function you applied for the random draw. Do these estimated parameters differ from the ones you specified to draw the sample? (Hint: you can use the R documentation for the log-normal function or try google to work out how to calculate the parameters from your samples) <!-- they have to find out how to estimate the parameters of the log-normal p density function and compare those parameters with the ones they used to fit. The aim is for themn to learn how the distribution parameters and sampled values are linked. --></p>
 <p><br></p>
 </div>
 <!-- # References -->

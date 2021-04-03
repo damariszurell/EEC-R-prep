@@ -458,37 +458,45 @@ if (no_weeks &lt; 4) {
 renew</code></pre>
 <pre><code>## [1] &quot;By a month and then see&quot;</code></pre>
 <p>The function <code>ifelse()</code> allows elementwise evaluation of the condition.</p>
-<pre class="r"><code>x &lt;- 5
-ifelse (x %in% c(5, 6), TRUE, FALSE)</code></pre>
+<pre class="r"><code>x &lt;- 31
+ifelse (x &lt;= 30, &quot;I am 30 or younger&quot;, &quot;I&#39;m older than 30&quot;)</code></pre>
 <p><code>ifelse()</code> is most useful for evaluating elements of a vector according to a specific condition.</p>
 <pre class="r"><code>(x &lt;- sample(1:20, 30, replace = TRUE))
-ifelse(x &lt;= 10, 0, 1)</code></pre>
+ifelse(x &lt;= 10, 0, 1)
+ifelse(x &lt;= 10, FALSE, TRUE)</code></pre>
 </div>
 </div>
 <div id="for-loops" class="section level1">
 <h1><span class="header-section-number">2</span> For-Loops</h1>
-<p>You will often hear that loops should be avoided in R codes wherever possible as they tend to make your codes slower. Nevertheless, they are an important element in programming. We use them, for example, for iterating (parts of) code blocks with different parameters or initial values. R offers three different loop structures: <code>repeat</code>, <code>while</code> and <code>for</code>, where the latter is the most commonly used.</p>
+<p>You will often hear that loops should be avoided in R code wherever possible because in certain cases they can make your code slower. Nevertheless, they are an important element in programming. We use them, for example, for iterating (parts of) code blocks with different parameters or initial values. R offers three different loop structures: <code>repeat</code>, <code>while</code> and <code>for</code>, where the latter is the most commonly used.</p>
 <p>The <code>for</code> loop iterates through all elements of a provided vector: <code>for (i in M) {command block}</code>. See the help page <code>?&quot;for&quot;</code>.</p>
 <pre class="r"><code>x &lt;- c(1:100)
-# roll a dy 100 times and print result into console
+# roll a die 100 times and print result into console
 for (i in x) {
   print(sample(1:6, 1))
 }
 
-# roll a dice 100 times and build the cumulative sum of the faces
+# roll a die 100 times and build the cumulative sum of the faces
 y &lt;- numeric(length(x))
 for (i in 2:length(x)){
   y[i] &lt;- sample(1:6, 1) + y[i-1]
 }
 y
 
-# Stop rolling the dy as soon as the cumulative sum is higher than 150
+# Stop rolling the die as soon as the cumulative sum is higher than 150
 y &lt;- numeric(length(x))
 for (i in 2:length(x)){
   y[i] &lt;- sample(1:6, 1) + y[i-1]
   if (y[i] &gt;=150) {
     break
   }
+}
+y
+
+# This does almost the same thing, but using a while loop. The main difference to for loop is that this while-loop finishes before reaching 150, and the for loop above finishes after reaching 150.
+y &lt;- 0
+while(tail(y, 1) &lt; 150){
+  y &lt;- c(y, tail(y, 1) + sample(1:6, 1))
 }
 y</code></pre>
 </div>
@@ -531,10 +539,11 @@ km_to_miles(80)</code></pre>
 <pre><code>## [1] 80.46735</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Task 1: Write a function that returns the number of months after which an annual streaming subscription becomes cheaper than paying monthly, for any monthly and annual subscription price.</p>
+<p>Task 1: Write a function that returns the number of months after which an annual streaming subscription becomes cheaper than paying monthly, for any monthly and annual subscription price (hint: you will have to use function <code>floor()</code>)</p>
 <p><br></p>
-<p>Task 2: Use your distribution parameters from the previous section to make several random draws each of sizes <code>n = 500</code>, <code>n = 50</code> and <code>n = 5</code>. For each random draw, calculate the distribution parameters (this is called <em>bootstrapping</em>). What do you observe when you compare the estimated parameters on the draws you made for each <code>n</code> with the ones you initially specified? (hint: you can use a for loop to make draws and estimate parameters for each draw. Think about a good way to store the <em>estimated</em> parameters so you can compare them easily with the ones you initially <em>specified</em>). <!-- This teaches them to build a for loop for a very simple bootstrapping routine and come up with a simple data structure to store results.--></p>
-<!-- # References -->
+<p>Task 2: Use the log-normal default parameters to make 10 draws each of sizes <code>n = 500</code>, <code>n = 50</code> and <code>n = 5</code>. For each random draw, calculate the distribution parameters (this is called <em>bootstrapping</em>). Compare the parameters estimated from your draws with the default parameters. What do you observe between different sample sizes? (hint: you can use a for loop to make draws and estimate parameters for each draw. Think about a good way to store the <em>estimated</em> parameters so you can compare them easily with the ones you initially <em>specified</em>). <!-- This teaches them to build a for loop for a very simple bootstrapping routine and come up with a simple data structure to store results.
+
+<!-- # References --></p>
 </div>
 
 <!DOCTYPE html>

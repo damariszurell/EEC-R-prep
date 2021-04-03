@@ -7,7 +7,7 @@ data(iris)
 str(iris)
 
 # three iris species
-str(iris$Species)
+unique(iris$Species)
 
 # What were the longest and shortest sepal lengths measured in the survey?
 min(iris$Sepal.Length)

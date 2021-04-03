@@ -457,7 +457,7 @@ subset(iris, Species == &#39;virginica&#39;)
 subset(iris, Species == &#39;virginica&#39; &amp; Sepal.Length &gt; 6.5)</code></pre>
 </div>
 <div id="joinmerge-data" class="section level1">
-<h1><span class="header-section-number">2</span> Join/Merge data</h1>
+<h1><span class="header-section-number">2</span> Join/merge data</h1>
 <p>When processing data, it is often necessary to join/merge different data sets. As a simple example, we create two data frames, one with a price list for groceries and one with our shopping list.</p>
 <pre class="r"><code>prices_market &lt;- data.frame(product=c(&#39;apples&#39;, &#39;tomatoes&#39;, &#39;blueberries&#39;, &#39;strawberries&#39;), price_per_kg = c(2.5, 3.5, 5.20, 4.50))
 shopping_list &lt;- data.frame(product = c(&#39;apples&#39;, &#39;strawberries&#39;, &#39;bananas&#39;), amount_in_kg = c(1.5, 0.5, 2))</code></pre>
@@ -485,8 +485,9 @@ apply(Xmat, 2, mean) </code></pre>
 
 apply(Xdf, 1, FUN = function(x) {sum(x) ^ 2})</code></pre>
 <p>Also check out `<code>lapply()</code> and <code>sapply()</code> that are useful functions for operations over vectors or lists.</p>
-<div id="rowsums-rowmeans-etc" class="section level2">
-<h2><span class="header-section-number">3.1</span> rowSums(), rowMeans() etc</h2>
+</div>
+<div id="rowsums-rowmeans-etc" class="section level1">
+<h1><span class="header-section-number">4</span> rowSums(), rowMeans() etc</h1>
 <p>There are some convenient and fast implementations to form row and column sums and means for numeric matrices (or arrays) and data frames. They are equivalent to using the function <code>mean</code> or <code>sum</code> with <code>apply()</code> as above but probably easier to handle for you.</p>
 <pre class="r"><code># Calculate the mean and sum of all rows
 rowMeans(Xmat)
@@ -501,8 +502,8 @@ colSums(Xmat)
 
 unique(Xmat[,1])</code></pre>
 </div>
-<div id="aggregate" class="section level2">
-<h2><span class="header-section-number">3.2</span> aggregate()</h2>
+<div id="aggregate" class="section level1">
+<h1><span class="header-section-number">5</span> aggregate()</h1>
 <p><code>aggregate()</code> lets you calculate summaries of groups of your data. The grouping can be expressed with the <code>by</code> argument, but you can also use a formula syntax. In both cases, you can also summarize by multiple grouping variables. The function returns a data frame containing the calculated summaries for each group. You can think of the function as “summarizing variable x by groups Z, using function f”.</p>
 <pre class="r"><code># calculate standard deviation and mean of the petal length for each iris species
 
@@ -517,7 +518,7 @@ aggregate(Petal.Length ~ Species, data = iris, FUN = &#39;sd&#39;) # mean
 # user-defined function: calculating the percentage of flowers with petals longer than 4.5 cm within each species
 aggregate(Petal.Length ~ Species, data = iris, FUN = function(x) length(which(x &gt; 4.5))/length(x) * 100)</code></pre>
 <div class="alert alert-info">
-<p><em><strong>Exercises:</strong></em></p>
+<p><em><strong>Main exercise block 2:</strong></em></p>
 <p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. You can find some parts of the data set in the course repository (<a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_airlines.txt"><code>nycflights13_airlines.txt</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_flights.rds"><code>nycflights13_flights.rds</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_planes.csv"><code>nycflights13_planes.csv</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_weather.rds"><code>nycflights13_weather.rds</code></a>).</p>
 <p>The different formats of the files are intended to help you practise downloading and importing different types of data.</p>
 <p>Task 1: Download and import the <code>flights</code> data. Explore the data set (Hint: use <code>str()</code> to understnad how the dat set is structured).</p>
@@ -556,7 +557,6 @@ aggregate(Petal.Length ~ Species, data = iris, FUN = function(x) length(which(x 
 </li>
 <li>Attach the new columns to your flights data frame</li>
 </ul>
-</div>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">

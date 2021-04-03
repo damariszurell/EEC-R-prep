@@ -449,6 +449,25 @@ sin(pi / 2)
 <li><code>+</code> / <code>-</code> : addition / subtraction</li>
 <li><code>%/%</code> / <code>%%</code> : integer division / modulo</li>
 </ul>
+<p>Relational operators:</p>
+<ul>
+<li><code>==</code>, <code>!=</code> : equal, unequal</li>
+<li><code>&gt;</code>, <code>&gt;=</code> : greater than, greater or equal</li>
+<li><code>&lt;</code>, <code>&lt;=</code> : smaller than, smaller or equal</li>
+<li><code>!</code> : negation</li>
+</ul>
+<p>Logical operators:</p>
+<ul>
+<li><code>&amp;&amp;</code>: <code>and</code>, only first element is compared</li>
+<li><code>&amp;</code>: <code>and</code>, pairwise comparison</li>
+<li><code>||</code>: <code>or</code>, only first element is compared</li>
+<li><code>|</code>: <code>or</code>, pairwise comparison</li>
+</ul>
+<p>Accessing data:</p>
+<ul>
+<li><code>$ @</code>: component / slot extraction</li>
+<li><code>[ [[</code>: indexing</li>
+</ul>
 <p>Useful mathematical functions:</p>
 <ul>
 <li><code>max()</code>, <code>min()</code>, <code>range()</code> : extreme values</li>
@@ -460,12 +479,16 @@ sin(pi / 2)
 <li><code>log()</code>, <code>log10()</code>, <code>log2()</code> : logarithm</li>
 <li><code>exp()</code> : exponential function</li>
 <li><code>sin()</code>, <code>cos()</code>, <code>tan()</code>, <code>asin()</code>, <code>acos()</code>, <code>atan()</code> : trigonometric functions</li>
-<li><p><code>unique()</code> : unique values of a vector Numeric constants:</p></li>
+<li><code>unique()</code> : unique values of a vector</li>
+<li><code>na.omit()</code> : removes vector elements that are <code>NA</code>, or rows from matrices and data frames that contain at least one <code>NA</code> element.</li>
+</ul>
+<p>Numeric constants:</p>
+<ul>
 <li><code>pi</code> : the number <span class="math inline">\(\pi\)</span></li>
 <li><code>Inf</code>, <code>-Inf</code> : infinity</li>
 <li><code>NaN</code> : not defined (<em>not a number</em>)</li>
 <li><code>NA</code> : Missing value (<em>not available</em>)</li>
-<li><p><code>NULL</code> : empty value</p></li>
+<li><code>NULL</code> : empty value</li>
 </ul>
 </div>
 <div id="variablesobjects" class="section level1">
@@ -521,13 +544,6 @@ c(3 &gt; 2, 3 &gt; 2) &amp;&amp; c(3 &lt; 2, 3 &gt; 2)</code></pre>
 <pre class="r"><code>x &lt;- c(3, 5, 1, -4, 0, -2, 4) # creates vector x
 x &lt; 0 # which element of x is smaller than 0?
 sum(x &lt; 0) # How many elements of x are smaller than 0?</code></pre>
-<p>Relational operators:</p>
-<ul>
-<li><code>==</code>, <code>!=</code> : equal, unequal</li>
-<li><code>&gt;</code>, <code>&gt;=</code> : greater than, greater or equal</li>
-<li><code>&lt;</code>, <code>&lt;=</code> : smaller than, smaller or equal</li>
-<li><code>!</code> : negation</li>
-</ul>
 </div>
 <div id="basic-data-types" class="section level1">
 <h1><span class="header-section-number">4</span> Basic data types</h1>
@@ -615,15 +631,18 @@ x2[-c(1, 3:4)] # index vector with negative integers
 <p>Use <code>str()</code> for displaying the object structure.</p>
 <pre class="r"><code>str(x_mat)
 str(x_arr)
-str(gcib_schedule)
-str(gcib_course)</code></pre>
-<p>The character vector ‘fun_factor’ in <code>gcib_schedule</code> was automatically converted to factors. This is ok here, but one may want to change this behaviour for other purposes. See the help page <code>?data.frame</code> to find out how.</p>
+str(veggy_shopping)
+str(shopping)</code></pre>
 </div>
 <div id="problem-solving" class="section level1">
 <h1><span class="header-section-number">9</span> Problem solving</h1>
 <p>Nobody knows an entire coding language and can immediately develop perfect code from scratch that does exactly what we want. More often than not, code will result in errors and perhaps the most integral part of writing and developing code is dealing with errors. Common errors are:</p>
 <p><em><em>Calling a function without loading its package:</em></em></p>
-<pre class="r"><code>ggplot() # ggplot2 package not yet loaded</code></pre>
+<pre class="r"><code># unload ggplot package (for illustration only)
+detach(&quot;package:ggplot2&quot;, unload = TRUE)</code></pre>
+<pre><code>## Error in detach(&quot;package:ggplot2&quot;, unload = TRUE): invalid &#39;name&#39; argument</code></pre>
+<pre class="r"><code># try to load ggplot function
+ggplot() # ggplot2 package not loaded</code></pre>
 <pre><code>## Error in ggplot(): konnte Funktion &quot;ggplot&quot; nicht finden</code></pre>
 <p><em><em>Calls to unassigned variables:</em></em></p>
 <pre class="r"><code>seq(from = k, to = 10, by = 2) # k is not yet assigned</code></pre>
@@ -658,7 +677,7 @@ Virtually everything is possible as long as it results in a working solution (an
 </ul>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Save all your R code in the R script file and use comments to make your code understandable also for other persons.</p>
+<p>Save the R code (grey boxes) from the practical in your R script file and use comments to make your code interpretable for others.</p>
 <p>Task 1: Basic R comes with several exemplary data sets - type <code>data()</code> to see a list of these. The <code>iris</code> data set gives, for example, the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris (see also the help file). We load the dataset by using the aforementioned function <code>data()</code> and the name of the dataset.</p>
 <ul>
 <li><p>What are the 3 different Iris species? <!-- learn how to read the different elements esp. factors --></p></li>
