@@ -462,8 +462,8 @@ renew</code></pre>
 ifelse (x &lt;= 30, &quot;I am 30 or younger&quot;, &quot;I&#39;m older than 30&quot;)</code></pre>
 <p><code>ifelse()</code> is most useful for evaluating elements of a vector according to a specific condition.</p>
 <pre class="r"><code>(x &lt;- sample(1:20, 30, replace = TRUE))
-ifelse(x &lt;= 10, 0, 1)
-ifelse(x &lt;= 10, FALSE, TRUE)</code></pre>
+ifelse(x &lt;= 10, &quot;a&quot;, &quot;b&quot;)
+ifelse(x &lt;= 10, 1, 0)</code></pre>
 </div>
 </div>
 <div id="for-loops" class="section level1">
@@ -493,7 +493,8 @@ for (i in 2:length(x)){
 }
 y
 
-# This does almost the same thing, but using a while loop. The main difference to for loop is that this while-loop finishes before reaching 150, and the for loop above finishes after reaching 150.
+# This does almost the same thing, but using a while loop.
+
 y &lt;- 0
 while(tail(y, 1) &lt; 150){
   y &lt;- c(y, tail(y, 1) + sample(1:6, 1))
@@ -541,7 +542,7 @@ km_to_miles(80)</code></pre>
 <p><em><strong>Exercises:</strong></em></p>
 <p>Task 1: Write a function that returns the number of months after which an annual streaming subscription becomes cheaper than paying monthly, for any monthly and annual subscription price (hint: you will have to use function <code>floor()</code>)</p>
 <p><br></p>
-<p>Task 2: Use the log-normal default parameters to make 10 draws each of sizes <code>n = 500</code>, <code>n = 50</code> and <code>n = 5</code>. For each random draw, calculate the distribution parameters (this is called <em>bootstrapping</em>). Compare the parameters estimated from your draws with the default parameters. What do you observe between different sample sizes? (hint: you can use a for loop to make draws and estimate parameters for each draw. Think about a good way to store the <em>estimated</em> parameters so you can compare them easily with the ones you initially <em>specified</em>). <!-- This teaches them to build a for loop for a very simple bootstrapping routine and come up with a simple data structure to store results.
+<p>Task 2: Use the log-normal default parameters to make 10 draws each of sizes <code>n = 500</code>, <code>n = 50</code> and <code>n = 5</code>. For each random draw, calculate the distribution parameters. Compare the parameters estimated from your draws with the default parameters. What do you observe between different sample sizes? (hint: you can use a for loop to make draws and estimate parameters for each draw. Think about a good way to store the <em>estimated</em> parameters so you can compare them easily with the ones you initially <em>specified</em>). <!-- This teaches them to build a for loop for a very simple bootstrapping routine and come up with a simple data structure to store results.
 
 <!-- # References --></p>
 </div>

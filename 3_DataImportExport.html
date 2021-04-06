@@ -480,7 +480,7 @@ read_delim(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;), delim = &
 read_csv(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;))
 
 library(data.table)
-fread(&quot;data&quot;, &quot;veggyshopping.txt&#39;)</code></pre>
+fread(file.path(&quot;data&quot;, &quot;veggyshopping.txt&#39;))</code></pre>
 </div>
 <div id="write-text-data" class="section level1">
 <h1><span class="header-section-number">2</span> Write text data</h1>
@@ -491,7 +491,7 @@ write.csv(veggy_shopping, file.path(&quot;data&quot;, &quot;veggyshopping.csv&qu
 <p>Important arguments:</p>
 <ul>
 <li><code>file</code>: (path) and file name</li>
-<li><code>sep</code>: column separator. Default: &quot; &quot; (white space or tab)</li>
+<li><code>sep</code>: column separator. Default: &quot; &quot; or “,” (depending on function)</li>
 <li><code>dec</code>: character used for decimal points. Default: “.”</li>
 </ul>
 <p>The function <code>write()</code> allows writing vectors and matrices to file. However, it contains some surprising default settings. Check out the help pages and below example. For demonstration purpose, we pipe the output into the console (&quot;&quot;).</p>
@@ -515,11 +515,11 @@ write(t(Xmat), &quot;&quot;)</code></pre>
 <li><code>save.image()</code>: stores your entire workspace (equivalent to <code>save()</code>, but fall all the data currently in the global environment). This way, you can simply continue an R session at any later time by loading the stored workspace image (<code>load()</code>). When you are working in an RStudio project, workspace images are stored upon exiting the project by default. When your loaded objects take up a lot of memory, saving and loading can become pretty slow and it sometimes might be preferable to disable this setting.</li>
 </ul>
 <pre class="r"><code># save object Xmat to Rdata format
-save(Xmat, file = file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;)
+save(Xmat, file = file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;))
 load(file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;)) # object Xmat will be loaded into global environment
 
 saveRDS(Xmat, file = file.path(&quot;data&quot;, &quot;Xmat.rds&quot;))
-Xmat_differentname &lt;- readRDS(file.path(&quot;data&quot;, &quot;Xmat.Rdata&quot;) # same matrix, but is loaded into a different object name in global environment</code></pre>
+Xmat_differentname &lt;- readRDS(file.path(&quot;data&quot;, &quot;Xmat.rds&quot;)) # same matrix, but is loaded into a different object name in global environment</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
 <!--
@@ -528,7 +528,7 @@ Xmat_differentname &lt;- readRDS(file.path(&quot;data&quot;, &quot;Xmat.Rdata&qu
 * generate data sets with missing headers, incomplete rows, factors/characters
 * write table without rownames
 -->
-<p>Task 1: Download the file <code>surveys_pract3.txt</code> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight) <span class="citation">(Ernest et al. 2018)</span>.</p>
+<p>Task 1: Download the file <a href="https://damariszurell.github.io/EEC-R-prep/data/surveys_pract3.txt"><code>surveys_pract3.txt</code></a> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight) <span class="citation">(Ernest et al. 2018)</span>.</p>
 <ul>
 <li><p>Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()) (hint: when you see an error message, you may have to open the file in a text editor to see what the problem might be!) <!-- students will get an error message as one column header is missing ('year'), error message doesn't specifically state that --></p></li>
 <li>Are the data types of the columns correct? (hint: categorical variables should be <code>factor</code> and not <code>character</code>)<br />

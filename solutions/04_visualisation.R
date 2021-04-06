@@ -33,8 +33,9 @@ legend("bottomright",
   
 # Task 2: Load the survey data set `data/surveys_pract3_correct.csv`.  
 
-survey_data <- read.table("data/surveys_pract3.txt", header = T, sep = "\t", na.strings = "", stringsAsFactors = TRUE)
-complete.cases(survey_data)
+survey_data <- read.csv(file.path("data", "surveys_pract3_correct.csv"), header = TRUE, sep = ",", stringsAsFactors = TRUE)
+
+any(!complete.cases(survey_data))
 
 # How do you want to deal with `NA` values? (?complete.cases)  
 # Kick them out
@@ -86,3 +87,4 @@ boxplot(mobility_daily$Daily.mobility ~ mobility_daily$State) # Mc pom
 require(ggplot2)
 mobility_daily$Day <- as.Date(mobility_daily$Day)
 ggplot(mobility_daily, aes(x = Day, y = Daily.mobility)) + geom_line() + facet_wrap(~State) + xlab("d")
+

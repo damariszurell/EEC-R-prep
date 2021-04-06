@@ -518,7 +518,11 @@ ls()</code></pre>
 <pre class="r"><code>T == TRUE
 F == FALSE
 T &lt;- F
-T == TRUE ## T is no longer TRUE</code></pre>
+T == TRUE ## T is no longer TRUE
+
+# Let&#39;s assign back, so we don&#39;t accidentally run into trouble later on
+T &lt;- TRUE
+F &lt;- FALSE</code></pre>
 <p>It is therefore recommended to avoid using <code>T</code> and <code>F</code> and use <code>TRUE</code> and <code>FALSE</code> instead (refer to <a href="http://adv-r.had.co.nz/Style.html">this very short R style guide by Hadley Wickham</a> for further details on best practise in styling your code).</p>
 </div>
 <div id="logic" class="section level1">
@@ -617,6 +621,7 @@ shopping[[&#39;farmers_market&#39;]]$veggy</code></pre>
 <pre class="r"><code>x[3] # retrieve the 3rd element of vector x
 x[3:4] # use can also address sequences</code></pre>
 <p>Basically, we distinguish four kinds of index vector: logical, positive integer, negative integer for excluding elements (inverse indexing), and character indices if we have named vectors.</p>
+<p><strong>Indexing vectors (one dimension):</strong></p>
 <pre class="r"><code>(x2 &lt;- c(x, NA))
 x2[!is.na(x2)] # logical index vector
 x2[c(1, 3:4)] # index vector with positive integers
@@ -625,6 +630,16 @@ x2[-c(1, 3:4)] # index vector with negative integers
 (Grocery &lt;- Fruits[c(&quot;Orange&quot;,&quot;Apple&quot;)]) # character index</code></pre>
 <p>You can also modify single elements.</p>
 <pre class="r"><code>Fruits[&quot;Banana&quot;] &lt;- 0</code></pre>
+<p><strong>Indexing matrices and data frames:</strong> Matrices and data frames are structured in rows and columns. In both cases, indexing a single element requires two index values - the first specifying the row and the second one the column.</p>
+<pre class="r"><code># Matrix and dataframe
+x_mat[2,1] # element in second row, first column (returns single value)
+x_mat[ ,2] # whole second column (returns vector)
+x_mat[1, ] # whole first row (returns vector)
+
+# only dataframe
+veggy_shopping$grams #column `grams`, using `$` operator and column name (returns vector)
+
+veggy_shopping[&quot;grams&quot;] #column `grams`, using character index</code></pre>
 </div>
 <div id="object-structures" class="section level1">
 <h1><span class="header-section-number">8</span> Object structures</h1>
@@ -638,9 +653,6 @@ str(shopping)</code></pre>
 <h1><span class="header-section-number">9</span> Problem solving</h1>
 <p>Nobody knows an entire coding language and can immediately develop perfect code from scratch that does exactly what we want. More often than not, code will result in errors and perhaps the most integral part of writing and developing code is dealing with errors. Common errors are:</p>
 <p><em><em>Calling a function without loading its package:</em></em></p>
-<pre class="r"><code># unload ggplot package (for illustration only)
-detach(&quot;package:ggplot2&quot;, unload = TRUE)</code></pre>
-<pre><code>## Error in detach(&quot;package:ggplot2&quot;, unload = TRUE): invalid &#39;name&#39; argument</code></pre>
 <pre class="r"><code># try to load ggplot function
 ggplot() # ggplot2 package not loaded</code></pre>
 <pre><code>## Error in ggplot(): konnte Funktion &quot;ggplot&quot; nicht finden</code></pre>

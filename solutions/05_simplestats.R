@@ -8,6 +8,6 @@ hist(s, add = TRUE, col = NULL, freq = FALSE)
 
 # Task 2: Use the sample to estimate the parameters of the density function you applied for the random draw. Do these estimated parameters differ from the ones you specified to draw the sample? (Hint: you can use the R documentation for the log-normal function or try google to work out how to calculate the parameters from your samples)
 
-mean(log(s)) # the mean of the logs, should approximate 1
-sd(log(s)) # the sd of the logs, should approximate 0
+mean(log(s)) # the mean of the logs, should approximate 0
+sd(log(s)) # the sd of the logs, should approximate 1
 
