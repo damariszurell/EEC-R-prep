@@ -19,14 +19,21 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -40,11 +47,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -57,32 +59,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -92,10 +69,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -112,40 +85,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -173,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -185,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -196,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -211,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -337,7 +295,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -412,7 +370,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -424,7 +382,7 @@ div.tocify {
 <hr />
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
-<p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
+<p>Open the RStudio project that we created in the previous session. We recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
 <li>Open the previously prepared R script file for practical #7.<br />
 </li>
@@ -485,9 +443,8 @@ apply(Xmat, 2, mean) </code></pre>
 
 apply(Xdf, 1, FUN = function(x) {sum(x) ^ 2})</code></pre>
 <p>Also check out `<code>lapply()</code> and <code>sapply()</code> that are useful functions for operations over vectors or lists.</p>
-</div>
-<div id="rowsums-rowmeans-etc" class="section level1">
-<h1><span class="header-section-number">4</span> rowSums(), rowMeans() etc</h1>
+<div id="rowsums-rowmeans-etc" class="section level2">
+<h2><span class="header-section-number">3.1</span> rowSums(), rowMeans() etc</h2>
 <p>There are some convenient and fast implementations to form row and column sums and means for numeric matrices (or arrays) and data frames. They are equivalent to using the function <code>mean</code> or <code>sum</code> with <code>apply()</code> as above but probably easier to handle for you.</p>
 <pre class="r"><code># Calculate the mean and sum of all rows
 rowMeans(Xmat)
@@ -502,8 +459,11 @@ colSums(Xmat)
 
 unique(Xmat[,1])</code></pre>
 </div>
-<div id="aggregate" class="section level1">
-<h1><span class="header-section-number">5</span> aggregate()</h1>
+</div>
+<div id="manipulate-data" class="section level1">
+<h1><span class="header-section-number">4</span> Manipulate data</h1>
+<div id="analyse-data-by-groups" class="section level2">
+<h2><span class="header-section-number">4.1</span> Analyse data by groups</h2>
 <p><code>aggregate()</code> lets you calculate summaries of groups of your data. The grouping can be expressed with the <code>by</code> argument, but you can also use a formula syntax. In both cases, you can also summarize by multiple grouping variables. The function returns a data frame containing the calculated summaries for each group. You can think of the function as “summarizing variable x by groups Z, using function f”.</p>
 <pre class="r"><code># calculate standard deviation and mean of the petal length for each iris species
 
@@ -517,53 +477,109 @@ aggregate(Petal.Length ~ Species, data = iris, FUN = &#39;sd&#39;) # mean
 
 # user-defined function: calculating the percentage of flowers with petals longer than 4.5 cm within each species
 aggregate(Petal.Length ~ Species, data = iris, FUN = function(x) length(which(x &gt; 4.5))/length(x) * 100)</code></pre>
+</div>
+<div id="manipulating-character-strings" class="section level2">
+<h2><span class="header-section-number">4.2</span> Manipulating character strings</h2>
+<p>Manipulation of strings is important for piecing together character strings, e.g. for automatically processing a list of files, for generating formulas, or when you want to add text or mathematical annotations to a plot. Here are some useful functions for string manipulations:</p>
+<ul>
+<li><code>paste()</code>: Concatenate vectors after conversion to character</li>
+<li><code>strsplit()</code>: Split characters strings into substrings</li>
+<li><code>nchar</code>: Count number of characters</li>
+<li><code>grep()</code>: Pattern matching</li>
+<li><code>sub()</code>, <code>gsub</code>: Pattern replacement</li>
+<li><code>substr()</code>, <code>substring</code>: Extract or replace substrings</li>
+<li><code>toupper()</code>, <code>tolower()</code>: Translate characters from lower to upper case and vice versa</li>
+</ul>
+<p>Let’s take a look at some examples.</p>
+<pre class="r"><code># make variable names
+(varnames &lt;- paste(&#39;Variable&#39;, 1:10, sep=&#39;_&#39;))
+
+# Split variable names at the underscore
+strsplit(varnames[1:2],&#39;_&#39;)
+
+# Replace an expression
+sub(&#39;Variable&#39;,&#39;Covariate&#39;,varnames)
+
+# Find variable 10
+grep(&#39;10&#39;, varnames) # finds index
+grep(&#39;10&#39;, varnames, value=T) # returns name</code></pre>
+<!--
+<div class="alert alert-info">
+_**Main exercise block 2:**_   
+
+The recent R package `nycflights13` [@Wickham2019] contains data of all flights that departed New York in 2013. You can find some parts of the data set in the course repository ([`nycflights13_airlines.txt`](data/nycflights13_airlines.txt), [`nycflights13_flights.rds`](data/nycflights13_flights.rds), [`nycflights13_planes.csv`](data/nycflights13_planes.csv), [`nycflights13_weather.rds`](data/nycflights13_weather.rds)).
+
+The different formats of the files are intended to help you practise downloading and importing different types of data.
+
+Task 1: Download and import the `flights` data. Explore the data set (Hint: use `str()` to understand how the data set is structured).
+
+- How many NYC airports are covered in the data set?  
+- How many domestic flights departed from each NYC airport? 
+- How many different airlines departed from New York? 
+- What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations?  
+- Create quarterly summaries of departure delays. Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected?
+
+<br>
+
+Task 2: Visualise flight delays.  
+
+- How did daily flight delays vary throughout the year 2013? Are there seasonal patterns? (hint: calculate the mean departure delay for each day, make a time series plot and add a smooth line to the plot)
+- plot a summary of delays for each airport. Are there differences?  (hint: which plot type provides statistical summaries of data?)
+- plot a summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than  3,000 mi) flights across all airports. Are there differences? (Hint: to group your data for plotting. You first need to create a column that flags which haul-category each flight belongs to.)  
+
+<br>
+
+Task 3: What are factors influencing flight delays? (hint: you need to download and import other parts of the `nycflights13` data set, check the course repo)
+
+- Are flight delays influenced by weather patterns?
+- Are flight delays influenced by the aircraft type?
+
+<br>
+
+Task 4: Useful functions.
+
+- write a function that converts from miles to km (hint: we did that in prac 6) 
+- write a function that converts a value from Fahrenheit to Celsius (hint: we already ask you to prepare this in prac 6) 
+- apply both functions to convert `distance` from miles to km and `temp` from Fahrenheit to Celsius (hint: you already learned about two ways to apply a function to a whole column and not just a single value)  
+- Optional: can you think of ways to adjust your functions so they can process whole vectors of values in the place of single elements?  
+- Attach the new columns to your flights data frame  
+
+</div> -->
 <div class="alert alert-info">
 <p><em><strong>Main exercise block 2:</strong></em></p>
-<p>The recent R package <code>nycflights13</code> <span class="citation">(Wickham 2019)</span> contains data of all flights that departed New York in 2013. You can find some parts of the data set in the course repository (<a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_airlines.txt"><code>nycflights13_airlines.txt</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_flights.rds"><code>nycflights13_flights.rds</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_planes.csv"><code>nycflights13_planes.csv</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/nycflights13_weather.rds"><code>nycflights13_weather.rds</code></a>).</p>
-<p>The different formats of the files are intended to help you practise downloading and importing different types of data.</p>
-<p>Task 1: Download and import the <code>flights</code> data. Explore the data set (Hint: use <code>str()</code> to understnad how the dat set is structured).</p>
+<p>We use a dataset on bird abundances at Hubbard Brook (1969-2010) and on three replicate plots (1986-2000) in the White Mountain National Forest <span class="citation">(Holmes 2019)</span> that you can download here <a href="data/hb_bird.txt"><code>hb_bird.txt</code></a>, <a href="data/mk_bird.txt"><code>mk_bird.txt</code></a>, <a href="rp_bird.txt"><code>rp_bird.txt</code></a>, <a href="data/sm_bird.txt"><code>sm_bird.txt</code></a> Read more about the metadata <a href="https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-hbr.81.7">here</a>.</p>
+<p>Task 1: Download and import the <code>hb_bird.txt</code> data.</p>
 <ul>
-<li>How many NYC airports are covered in the data set?<br />
-</li>
-<li>How many domestic flights departed from each NYC airport?</li>
-<li>How many different airlines departed from New York?</li>
-<li>What were the first and last recorded departure times on each NYC airport in 2013, which airlines conducted the respective flights and what where the destinations?<br />
-</li>
-<li>Create quarterly summaries of departure delays. Which airlines had the highest proportion of delayed flights? Which airports had the highest proportion of delayed flights? Which destinations were affected? <!-- They learn to get familiar with unknown data sets better --></li>
+<li>Read in the <code>hb_bird</code> data using the reading function <code>read.delim()</code></li>
+<li>What is the main difference between <code>read.delim()</code> and <code>read.table()</code>?</li>
 </ul>
 <p><br></p>
-<p>Task 2: Visualise flight delays.</p>
+<p>Task 2: Explore the data set (Hint: use <code>str()</code> to understand how the data set is structured).</p>
 <ul>
-<li>How did daily flight delays vary throughout the year 2013? Are there seasonal patterns? (hint: calculate the mean departure delay for each day, make a time series plot and add a smooth line to the plot)</li>
-<li>plot a summary of delays for each airport. Are there differences? (hint: which plot type provides statistical summaries of data?)</li>
-<li>plot a summary of delays for short-haul (less than 700 mi), medium-haul and long-haul (more than 3,000 mi) flights across all airports. Are there differences? (Hint: to group your data for plotting. You first need to create a column that flags which haul-category each flight belongs to.)</li>
+<li>How many bird species are included in the <code>hb_bird</code> data?</li>
+<li>Missing data are indicated by a “t”. Find these and replace them with an <code>NA</code>. To do so:</li>
+<li>Write a <code>for</code> loop that loops through each year column (meaning ignore the first column). Hint: the loop start could look like <code>for (i in 2:ncol(hb_bird))</code></li>
+<li>In the loop, select the column (<code>hb_bird[,i]</code>) and search for the element that contains a “t” using the function <code>grep()</code>. Replace this element with <code>NA</code>.</li>
+<li>Also in the loop, turn the column into numeric values using the function <code>as.numeric()</code></li>
+<li>Use <code>summary()</code> to explore your resulting data frame.</li>
+<li>In which year do you have most <code>NA</code>s ?</li>
+<li>Which bird species has the highest avreage abundance? Hint: use <code>rowMeans()</code> and take care to ignore <code>NA</code> by adding the argument <code>na.rm=T</code> in the function call.</li>
 </ul>
 <p><br></p>
-<p>Task 3: What are factors influencing flight delays? (hint: you need to download and import other parts of the <code>nycflights13</code> data set, check the course repo)</p>
+<p>Task 3: Visualise bird abundance</p>
 <ul>
-<li>Are flight delays influenced by weather patterns?</li>
-<li>Are flight delays influenced by the aircraft type? <!-- merging several data sets together using the merge function (with defaults because columns have matching names across the data). Visualising relationships between measured variables contained in the data set. --></li>
+<li>Plot the abundance over time for the bird species with the highest average abundance and the bird species with the lowest average abundance.</li>
+<li>Select three years (e.g. 1970, 1990, and 2010) and plot the abundances of all species in boxplots.</li>
+<li>Do the same data wrangling and visualisation for another bird dataset. Compare, for example the difference in total species numbers.</li>
 </ul>
-<p><br></p>
-<p>Task 4: Useful functions.</p>
-<ul>
-<li>write a function that converts from miles to km<br />
-</li>
-<li>write a function that converts a value from Fahrenheit to Celsius<br />
-</li>
-<li>apply both functions to convert <code>distance</code> from miles to km and <code>temp</code> from Fahrenheit to Celsius (hint: you already learned about two ways to apply a function to a whole column and not just a single value)<br />
-</li>
-<li>Optional: can you think of ways to adjust your functions so they can process whole vectors of values in the place of single elements?<br />
-</li>
-<li>Attach the new columns to your flights data frame</li>
-</ul>
+</div>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 <div id="refs" class="references">
-<div id="ref-Wickham2019">
-<p>Wickham, Hadley. 2019. <em>Nycflights13: Flights That Departed Nyc in 2013</em>. <a href="https://CRAN.R-project.org/package=nycflights13">https://CRAN.R-project.org/package=nycflights13</a>.</p>
+<div id="ref-Holmes2019">
+<p>Holmes, Richard T. 2019. “Bird Abundances at the Hubbard Brook Experimental Forest (1969-Present) and on Three Replicate Plots (1986-2000) in the White Mountain National Forest.” Environmental Data Initiative. <a href="https://doi.org/10.6073/PASTA/FA7380ACE83ABCB62C35872522D118D4">https://doi.org/10.6073/PASTA/FA7380ACE83ABCB62C35872522D118D4</a>.</p>
 </div>
 </div>
 </div>
@@ -607,7 +623,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -616,6 +632,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
