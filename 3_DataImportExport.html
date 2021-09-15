@@ -19,14 +19,21 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -40,11 +47,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -57,32 +59,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -92,10 +69,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -112,40 +85,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -173,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -185,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -196,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -211,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -337,7 +295,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -412,7 +370,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -424,7 +382,7 @@ div.tocify {
 <hr />
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
-<p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
+<p>Open the RStudio project that we created in the previous session. We recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
 <li>Open the previously prepared R script file for practical #3.<br />
 </li>
@@ -435,9 +393,9 @@ div.tocify {
 <div id="read-text-data" class="section level1">
 <h1><span class="header-section-number">1</span> Read text data</h1>
 <!-- Links to the fils need to be updated-->
-<p>Download the data files <a href="https://damariszurell.github.io/EEC-R-prep/data/veggyshopping.txt"><code>veggyshopping.txt</code></a>, <a href="https://damariszurell.github.io/EEC-R-prep/data/veggyshopping.txt"><code>veggyshopping.csv</code></a> and <a href="https://damariszurell.github.io/EEC-R-prep/data/myColumn.txt"><code>myColumn.txt</code></a> from the course data repository and move them to the data folder inside your project folder.</p>
+<p>Download the data files <a href="data/veggyshopping.txt"><code>veggyshopping.txt</code></a>, <a href="data/veggyshopping.txt"><code>veggyshopping.csv</code></a> and <a href="data/myColumn.txt"><code>myColumn.txt</code></a> from the course data repository and move them to the data folder inside your project folder.</p>
 <p>Since you are working in an R project the R session already points to the project directory, so when we want to load data from the data folder that is contained within the project directory, all we need to do is specify the <em>relative path</em> to the data folder. This is best done using file.path(), because this function builds the path automatically using the correct slash (<code>/</code> on Unix systems, <code>\</code> on Windows). Let’s list the files inside the data folder:</p>
-<pre class="r"><code># file.path() constructs the path with the correct slash (they are different on different operating systems). The point is a placehodler for your current folder
+<pre class="r"><code># file.path() constructs the path with the correct slash (they are different on different operating systems). The point is a placeholder for your current folder
 
 file.path(&quot;.&quot;, &quot;data&quot;) # the . is a placeholder for your current working directory. It can be omitted, but we keep it as an example of how paths are built.
 
@@ -480,7 +438,7 @@ read_delim(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;), delim = &
 read_csv(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;))
 
 library(data.table)
-fread(file.path(&quot;data&quot;, &quot;veggyshopping.txt&#39;))</code></pre>
+fread(file.path(&quot;data&quot;, &quot;veggyshopping.txt&quot;))</code></pre>
 </div>
 <div id="write-text-data" class="section level1">
 <h1><span class="header-section-number">2</span> Write text data</h1>
@@ -528,15 +486,15 @@ Xmat_differentname &lt;- readRDS(file.path(&quot;data&quot;, &quot;Xmat.rds&quot
 * generate data sets with missing headers, incomplete rows, factors/characters
 * write table without rownames
 -->
-<p>Task 1: Download the file <a href="https://damariszurell.github.io/EEC-R-prep/data/surveys_pract3.txt"><code>surveys_pract3.txt</code></a> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight) <span class="citation">(Ernest et al. 2018)</span>.</p>
+<p>Task 1: Download the file <a href="data/surveys_pract3.txt"><code>surveys_pract3.txt</code></a> and save it in the data folder of your R-project. The data set contains vertebrate survey data with information about the survey date (year, month and day columns), the survey plot and information on the surveyed species (species id, sex, hindfoot length and weight) <span class="citation">(Ernest et al. 2018)</span>.</p>
 <ul>
-<li><p>Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()) (hint: when you see an error message, you may have to open the file in a text editor to see what the problem might be!) <!-- students will get an error message as one column header is missing ('year'), error message doesn't specifically state that --></p></li>
+<li>Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()) (hint: when you see an error message, you may have to open the file in a text editor to see what the problem might be!) <!-- students will get an error message as one column header is missing ('year'), error message doesn't specifically state that --></li>
 <li>Are the data types of the columns correct? (hint: categorical variables should be <code>factor</code> and not <code>character</code>)<br />
 </li>
 <li>Do you notice something about the <code>sex</code> column?<br />
 </li>
-<li><p>Load the data again, this time making sure that all columns have the correct type and missing values are filled with <code>NA</code>. <!-- there are several missing values (empty cells), for numerical columns, R automatically insert NAs, for characters it doesn't, but also don't give an error message as it is assumed to be a character and not a factor --></p></li>
-<li><p>Save the data set as <code>surveys_pract3_correct.csv</code> in the data folder. Specify a suitable separator.</p></li>
+<li>Load the data again, this time making sure that all columns have the correct type and missing values are filled with <code>NA</code>. <!-- there are several missing values (empty cells), for numerical columns, R automatically insert NAs, for characters it doesn't, but also don't give an error message as it is assumed to be a character and not a factor --></li>
+<li>Save the data set as <code>surveys_pract3_correct.csv</code> in the data folder. Specify a suitable separator.</li>
 </ul>
 </div>
 </div>
@@ -591,7 +549,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -600,6 +558,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

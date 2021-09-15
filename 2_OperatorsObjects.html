@@ -19,14 +19,21 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -40,11 +47,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -57,32 +59,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -92,10 +69,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -112,40 +85,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -173,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -185,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -196,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -211,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -337,7 +295,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -412,7 +370,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -425,7 +383,7 @@ div.tocify {
 <!-- In exercise 1 we have asked the students to prepare the r scripts for the other practicals. So now they should actually only open the r scripts.  -->
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
-<p>Open the RStudio project that we created in the previous session. I recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
+<p>Open the RStudio project that we created in the previous session. We recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
 <ul>
 <li>Open the previously prepared R script file for practical #2.<br />
 </li>
@@ -552,15 +510,19 @@ sum(x &lt; 0) # How many elements of x are smaller than 0?</code></pre>
 <div id="basic-data-types" class="section level1">
 <h1><span class="header-section-number">4</span> Basic data types</h1>
 <p>R distinguishes five basic (atomic) data types:</p>
-<p><em>Character:</em></p>
+<p><em>Character:</em> represents string values (letters, words, sentences, etc.) in R</p>
 <pre class="r"><code>(first_name &lt;- &quot;Charlie&quot;)</code></pre>
-<p><em>Integer:</em></p>
+<p><em>Integer:</em> a simple integer number (positive or negative)</p>
 <pre class="r"><code>(shoe_size &lt;- 41)</code></pre>
-<p><em>Numeric:</em></p>
+<p><em>Numeric:</em> a decimal number</p>
 <pre class="r"><code>(seminar_hours &lt;- 1.5)</code></pre>
-<p><em>Factor:</em></p>
-<pre class="r"><code>(lunch_today &lt;- factor(&#39;mensa&#39;, levels = c(&#39;mensa&#39;,&#39;bakery&#39;,&#39;chinese&#39;)))</code></pre>
-<p><em>Boolean:</em></p>
+<p><em>Factor:</em> refers to a categorical variable. R stores the value of the factor as well as the levels (categories) that it could potentially take.</p>
+<pre class="r"><code># When declaring a factor, you can explicitly say what are the other levels/categories 
+(gender &lt;- factor(&#39;female&#39;, levels = c(&#39;female&#39;,&#39;male&#39;,&#39;diverse&#39;)))
+
+# Alternatively, you can convert another data type (here, character) to factor
+(gender_groupA &lt;- factor( c(&#39;female&#39;,&#39;male&#39;,&#39;diverse&#39;,&#39;female&#39;,&#39;female&#39;,&#39;male&#39;) ))</code></pre>
+<p><em>Boolean:</em> true and false values</p>
 <pre class="r"><code>(hungry &lt;- TRUE)</code></pre>
 </div>
 <div id="missing-values-na" class="section level1">
@@ -590,56 +552,111 @@ seq_len(5)  # create a sequence of integers between 1 and 5</code></pre>
 rep(2, 10)
 rep(c(1, 6, 5), 2) # replicate the vector (1,6,5) twice
 rep(c(1, 6, 5), each = 2)  # replicate each element of the vector (1,6,5) twice</code></pre>
-<p><em><strong>Matrices:</strong></em></p>
-<pre class="r"><code>(x_mat &lt;- matrix(data = 1:4, nrow = 2)) # create a matrix with the numbers (1,2,3,4) ordered in two rows. The function automatically fills up the columns first.
-(x_mat &lt;- matrix(1:4, 2))  # same
-x_mat[2, 1]
-matrix(1:4, 2, byrow = TRUE) # create a matrix with the numbers (1,2,3,4) ordered in two rows but fills up the rows first.</code></pre>
-<p><em><strong>Array:</strong></em></p>
-<pre class="r"><code>(x_arr &lt;- array(1:24, c(4, 3, 2)) # create a three-dimensional array with with four indices in first dimension, three indices in second dimension, and 2 indices in third dimension
- )
-x_arr[3, 2, 2]</code></pre>
-<p><em><strong>Data frame:</strong></em></p>
+<p><em><strong>Matrices:</strong></em> two-dimensional object with rows and columns containing a single data type (e.g. numeric, character, etc.)</p>
+<pre class="r"><code># create a matrix with the numbers (1,2,3,4) ordered in two rows. The function automatically fills up the columns first.
+(x_mat &lt;- matrix(data = 1:4, nrow = 2)) 
+
+# same as above: 
+(x_mat &lt;- matrix(1:4, 2))  
+
+# create a matrix with the numbers (1,2,3,4) ordered in two rows but fills up the rows first:
+matrix(1:4, 2, byrow = TRUE) </code></pre>
+<p><em><strong>Array:</strong></em> more-dimensional object containing a single data type (e.g. numeric, character, etc.)</p>
+<pre class="r"><code># create a three-dimensional array with with four indices in first dimension, three indices in second dimension, and 2 indices in third dimension
+(x_arr &lt;- array(1:24, c(4, 3, 2)) 
+ )</code></pre>
+<p><em><strong>Data frame:</strong></em> two-dimensional table with rows and columns where different columns can contain different data types.</p>
 <pre class="r"><code>(veggy_shopping &lt;- data.frame(grams=c(500, 1000, 1000, 300, 200),
-    veggy=c(&#39;salad&#39;, &#39;courgette&#39;, &#39;aubergine&#39;, &#39;onions&#39;, &#39;beetroot&#39;), stringsAsFactors = FALSE))
-veggy_shopping[1, ]</code></pre>
-<p>In data frames (and lists) we can access columns using the <code>$</code>-operator.</p>
-<pre class="r"><code>veggy_shopping$veggy</code></pre>
-<p><em><strong>Lists:</strong></em></p>
+    veggy=c(&#39;salad&#39;, &#39;courgette&#39;, &#39;aubergine&#39;, &#39;onions&#39;, &#39;beetroot&#39;), stringsAsFactors = FALSE))</code></pre>
+<p><em><strong>Lists:</strong></em> contain different “slots” with different object types.</p>
 <pre class="r"><code>(shopping &lt;- list(post = &quot;stamps&quot;,
     farmers_market = veggy_shopping,
     bank = 60,
-    bakery = c(&#39;whole grain buns&#39;, &#39;rye bread&#39;)))
-shopping[1]
-shopping[[1]]
-shopping[&#39;bakery&#39;]
-shopping[[&#39;farmers_market&#39;]]$veggy</code></pre>
+    bakery = c(&#39;whole grain buns&#39;, &#39;rye bread&#39;)))</code></pre>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>Make a sequence from 2.5 to 10 with intervals of 0.25</li>
+<li>Make a 6x6 matrix containing the numbers of 11 to 16 (use replicates). Fill up the matrix by row (meaning each row should contain identical numbers between 11 and 16).</li>
+<li>Make a shopping list for at least three different items, e.g. fruits, using the data.frame()</li>
+<li>Make a list containing the above three objects.</li>
+</ul>
+</div>
 </div>
 <div id="indexing" class="section level1">
 <h1><span class="header-section-number">7</span> Indexing</h1>
 <p>Each element of an object type is internally assigned an index (positive integer ‘address’) and you can retrieve single elements or a subset of the object by addressing these indices. Square brackets are used for indexing.</p>
-<pre class="r"><code>x[3] # retrieve the 3rd element of vector x
-x[3:4] # use can also address sequences</code></pre>
-<p>Basically, we distinguish four kinds of index vector: logical, positive integer, negative integer for excluding elements (inverse indexing), and character indices if we have named vectors.</p>
+<pre class="r"><code>x # look at the object x again
+x[3] # retrieve the 3rd element of vector x
+x[3:4] # retrieve a sequence</code></pre>
+<p>Basically, we distinguish four kinds of index vectors: logical, positive integer, negative integer for excluding elements (inverse indexing), and character indices if we have named vectors.</p>
 <p><strong>Indexing vectors (one dimension):</strong></p>
-<pre class="r"><code>(x2 &lt;- c(x, NA))
-x2[!is.na(x2)] # logical index vector
-x2[c(1, 3:4)] # index vector with positive integers
-x2[-c(1, 3:4)] # index vector with negative integers
+<pre class="r"><code># Logical index vector: We ask which values in x are above 0, then we use this expression as index
+x &gt; 0
+x[x &gt; 0]
+
+# We add a missing value NA to vector x and store it in a new object:
+(x2 &lt;- c(x, NA))
+
+# logical index vector: we first ask whether any value in vector x2 is NA, then we use this as logical index vectpr
+!is.na(x2) 
+x2[!is.na(x2)] 
+
+ # index vector with positive integers: we can use sequences, but also concetenate any positive integers for indexing using c():
+x2[c(1, 3:4)]
+
+# index vector with negative integers: negative indexing results in ignoring the values
+x2[-c(1, 3:4)] 
+
+# Character indexing: We first define a vector with named elements, then we can access the values by their names:
 (Fruits &lt;- c(Orange = 5, Banana = 10, Apple = 1, Pear = 20))
 (Grocery &lt;- Fruits[c(&quot;Orange&quot;,&quot;Apple&quot;)]) # character index</code></pre>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>How can you show x2 with only the NA remaining?</li>
+<li>Play around with the positive and negative integer index vectors: from object <code>x2</code> show elements 1, 3, 5 using positive and negative integers</li>
+<li>in the <code>Fruits</code> object, change the number of oranges from 5 to 7</li>
+<li>Add 1 pineapple to <code>Grocery</code> without changing <code>Fruits</code></li>
+</ul>
+</div>
 <p>You can also modify single elements.</p>
 <pre class="r"><code>Fruits[&quot;Banana&quot;] &lt;- 0</code></pre>
 <p><strong>Indexing matrices and data frames:</strong> Matrices and data frames are structured in rows and columns. In both cases, indexing a single element requires two index values - the first specifying the row and the second one the column.</p>
 <pre class="r"><code># Matrix and dataframe
 x_mat[2,1] # element in second row, first column (returns single value)
-x_mat[ ,2] # whole second column (returns vector)
-x_mat[1, ] # whole first row (returns vector)
+x_mat[ ,2] # entire second column (returns vector)
+x_mat[1, ] # entire first row (returns vector)
 
-# only dataframe
-veggy_shopping$grams #column `grams`, using `$` operator and column name (returns vector)
+# Character indexing: We define a matrix with column names and row names, then we can access rows, columns, or specific values vy their names
+mat2 &lt;- matrix(3:14, ncol=3)  # define matrix
+colnames(mat2) &lt;- c(&#39;Length&#39;, &#39;Size&#39;, &#39;Weight&#39;)   # add column names
+rownames(mat2) &lt;- c(&#39;plant_1&#39;, &#39;plant_2&#39;, &#39;plant_3&#39;, &#39;plant_4&#39;) # add row names
+mat2
+mat2[,&#39;Length&#39;]
+mat2[&#39;plant_2&#39;,]
+mat2[&#39;plant_4&#39;,&#39;Weight&#39;]</code></pre>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>How can you access several columns of <code>mat2</code>, e.g. columns 1 and 3?</li>
+</ul>
+</div>
+<p>Data frames can also be indexed with positive integer index, negative integer index, logical index and character index. Additionally, in data frames (and lists) we can access columns using the $-operator.</p>
+<pre class="r"><code># character index
+veggy_shopping[&quot;grams&quot;] #column `grams`, using character index
 
-veggy_shopping[&quot;grams&quot;] #column `grams`, using character index</code></pre>
+# in dataframes abd lists, elements can be accessed using the $-operator
+veggy_shopping$grams # column `grams`</code></pre>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>Make a data frame containing plant height and weight measurements. Use the data below, put these into columns, and name the columns recognizably.</li>
+<li>height = c(10, 13, 18, 9, 16, 35, 11, 14)</li>
+<li>weight = c(5, 3.8, 2.7, 6.2, 4.9, 3.9, 5.1, 4.5)</li>
+<li>Inspect the data. Could there be a measurement error, meaning an unusually high or low number (an outlier)? Use an index vector to replace it with NA.</li>
+</ul>
+</div>
 </div>
 <div id="object-structures" class="section level1">
 <h1><span class="header-section-number">8</span> Object structures</h1>
@@ -655,10 +672,10 @@ str(shopping)</code></pre>
 <p><em><em>Calling a function without loading its package:</em></em></p>
 <pre class="r"><code># try to load ggplot function
 ggplot() # ggplot2 package not loaded</code></pre>
-<pre><code>## Error in ggplot(): konnte Funktion &quot;ggplot&quot; nicht finden</code></pre>
+<pre><code>## Error in ggplot(): could not find function &quot;ggplot&quot;</code></pre>
 <p><em><em>Calls to unassigned variables:</em></em></p>
 <pre class="r"><code>seq(from = k, to = 10, by = 2) # k is not yet assigned</code></pre>
-<pre><code>## Error in seq(from = k, to = 10, by = 2): Objekt &#39;k&#39; nicht gefunden</code></pre>
+<pre><code>## Error in seq(from = k, to = 10, by = 2): object &#39;k&#39; not found</code></pre>
 <p><em><em>Incorrect function arguments:</em></em></p>
 <pre class="r"><code>seq(from = 2, to = 10, by = 2, 1) # the final 1 is incorrect</code></pre>
 <pre><code>## Error in seq.default(from = 2, to = 10, by = 2, 1): too many arguments</code></pre>
@@ -668,12 +685,12 @@ ggplot() # ggplot2 package not loaded</code></pre>
 <pre><code>## Error in seq.default(from = 2, to = 10, by = -2): wrong sign in &#39;by&#39; argument</code></pre>
 <p><em><em>Missing function arguments:</em></em></p>
 <pre class="r"><code>mean(na.rm = TRUE) # missing vector</code></pre>
-<pre><code>## Error in mean.default(na.rm = TRUE): Argument &quot;x&quot; fehlt (ohne Standardwert)</code></pre>
+<pre><code>## Error in mean.default(na.rm = TRUE): argument &quot;x&quot; is missing, with no default</code></pre>
 <p><em><em>Syntax (“grammar”) mistakes:</em></em></p>
 <pre class="r"><code>seq(from = 2, to = 10 by = 2) # missing a comma
 seq(from == 2, to = 10, by = 2) # extra eq sign
 seq(from = 2, to = 10, by = 2)) # extra closing bracket</code></pre>
-<pre><code>## Error: &lt;text&gt;:1:23: unerwartetes Symbol
+<pre><code>## Error: &lt;text&gt;:1:23: unexpected symbol
 ## 1: seq(from = 2, to = 10 by
 ##                           ^</code></pre>
 <p>How to solve errors:<br />
@@ -689,20 +706,24 @@ Virtually everything is possible as long as it results in a working solution (an
 </ul>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Save the R code (grey boxes) from the practical in your R script file and use comments to make your code interpretable for others.</p>
 <p>Task 1: Basic R comes with several exemplary data sets - type <code>data()</code> to see a list of these. The <code>iris</code> data set gives, for example, the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris (see also the help file). We load the dataset by using the aforementioned function <code>data()</code> and the name of the dataset.</p>
 <ul>
-<li><p>What are the 3 different Iris species? <!-- learn how to read the different elements esp. factors --></p></li>
-<li><p>What were the longest and shortest sepal lengths measured in the survey? <!-- students should select the sepal length column and apply the max, min or summary functions --></p></li>
+<li>What are the 3 different Iris species? <!-- learn how to read the different elements esp. factors --><br />
+</li>
+<li>What were the longest and shortest sepal lengths measured in the survey? <!-- students should select the sepal length column and apply the max, min or summary functions --></li>
 </ul>
 <p><br></p>
 <p>Task 2: Now, let’s have a look at the data set <code>airquality</code>:</p>
 <ul>
-<li><p>Which variables were measured? <!-- use str() --></p></li>
-<li><p>In which city and year were these variables measured? Add this information as additional columns <code>city</code> and <code>year</code>. <!-- use the help file + add to an existing data.frame --></p></li>
-<li><p>Are there any missing values? Select only those measurements where you have information on all variables and store it in another object. <!-- use na.omit(), assign to new object --></p></li>
-<li><p>Calculate the mean temperature with and without accounting for missing values. <!-- select from a data.frame and apply function --></p></li>
-<li><p>What was the mean temperature in May? Was it colder or warmer than in September? <!-- use logic operator --></p></li>
+<li>Which variables were measured? <!-- use str() --></li>
+<li>In which city and year were these variables measured? Add this information as additional columns <code>city</code> and <code>year</code>. <!-- use the help file + add to an existing data.frame --><br />
+</li>
+<li>Are there any missing values? Select only those measurements where you have information on all variables and store it in another object. <!-- use na.omit(), assign to new object --><br />
+</li>
+<li>Calculate the mean temperature with and without accounting for missing values. <!-- select from a data.frame and apply function --><br />
+</li>
+<li>What was the mean temperature in May? Was it colder or warmer than in September? <!-- use logic operator --><br />
+</li>
 </ul>
 </div>
 <!-- # References -->
@@ -747,7 +768,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -756,6 +777,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

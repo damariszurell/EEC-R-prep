@@ -19,14 +19,21 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -40,11 +47,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -57,32 +59,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -92,10 +69,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -112,40 +85,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -173,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -185,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -196,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -211,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -337,7 +295,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -412,7 +370,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -494,6 +452,14 @@ legend(&quot;bottomright&quot;,
        col = c(&quot;salmon&quot;, &quot;CornFlowerBlue&quot;), 
        pch = c(19, 19))</code></pre>
 <p><img src="4_Visualisation_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>Load the data set “Orange” using <code>data()</code>. Plot <em>circumference</em> against <em>age</em> of the Orange trees.</li>
+<li>Use a triangle as plotting symbol (defined using the argument <code>pch</code>). Check out the help page <code>?points</code> to find out which <code>pch</code> number corresponds to a triangle. Plot green triangles.</li>
+<li>Add a regression line to the plot.</li>
+</ul>
+</div>
 </div>
 <div id="plotting-with-ggplot2" class="section level1">
 <h1><span class="header-section-number">2</span> Plotting with <code>ggplot2</code></h1>
@@ -509,6 +475,12 @@ legend(&quot;bottomright&quot;,
 <pre class="r"><code># you can also do it in one go
 ggplot(data = iris, mapping = aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()</code></pre>
 <p><img src="4_Visualisation_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>Use the `ggplot2 functions to plot <em>circumference</em> against <em>age</em> of the Orange trees as you did above.</li>
+</ul>
+</div>
 <p>We can modify this plot by adding colours, transparency etc.</p>
 <pre class="r"><code>p + geom_point(color = &#39;salmon&#39;)
 
@@ -538,35 +510,32 @@ p + geom_point() + geom_smooth(method = &quot;loess&quot;)</code></pre>
 <p><em><strong>Main exercise block 1:</strong></em></p>
 <p>Task 1: <!-- Let students repeat exercises of the tutorial --> * Select I. versicolor and plot correlation between petal width and length with base r graphics. Include a regression line and make sure axis titles are meaningful.</p>
 <ul>
-<li><p>Add points for I. setosa and I. virginica. (hint: when you add values the x and y-axis range isn’t adjusted and some values might not be shown. Adjust the x and y axis ranges to make sure all values are shown)</p></li>
-<li><p>add a legend</p></li>
-<li><p>Save the graphic in folder <code>/figures</code>.</p></li>
+<li>Add points for I. setosa and I. virginica. (hint: when you add values the x and y-axis range isn’t adjusted and some values might not be shown. Adjust the x and y axis ranges to make sure all values are shown. Use the <code>ylim</code> argument in the <code>plot()</code> function for this.)</li>
+<li>Add a legend</li>
+<li>Save the graphic in folder <code>/figures</code>.</li>
 </ul>
 <p><br></p>
 <p>Task 2: Load the survey data set from the previous practical: <code>surveys_pract3_correct.csv</code>.<br />
-<!-- Let students solve of common problems --> * How do you want to deal with <code>NA</code> values? (?complete.cases)</p>
-<!-- Students are free to find interesting relationships -->
+<!-- Let students solve of common problems --></p>
 <ul>
-<li>What could be interesting relationships? Use ggplot. Remember you can also use different colors.</li>
-</ul>
-<!-- Let students use a cheatsheet-->
-<ul>
+<li>How do you want to deal with <code>NA</code> values? (?complete.cases)<br />
+<!-- Students are free to find interesting relationships --></li>
+<li>What could be interesting relationships? Use ggplot. Remember you can also use different colors. <!-- Let students use a cheatsheet--></li>
 <li>Make sure you have meaningful axis titles. Can you make the graph nicer by having the background white? Maybe the ggplot2 cheatsheet can help!</li>
 </ul>
 <!-- one more complex exercise covering all steps so far-->
 <p><br></p>
 <p>Task 3: Let’s have a look at a data set containing German population mobility data from 2019-2021 (<a href="https://www.destatis.de/EN/Service/EXDAT/_node.html;jsessionid=E428AE94EB6565C3699F2338C07820A8.internet732">more information</a>).</p>
-<p>We have provided some of the data for you: <a href="https://damariszurell.github.io/EEC-R-prep/data/mobility_public_transport.csv">long distance public transport</a> and <a href="https://damariszurell.github.io/EEC-R-prep/data/daily_mobility_germany.csv">general daily mobility in the federal states of Germany</a>. <!-- NOTE: include ref: https://www.destatis.de/DE/Service/EXDAT/Datensaetze/mobilitaetsindikatoren-mobilfunkdaten.html --></p>
+<p>We have provided some of the data for you: <a href="data/mobility_public_transport.csv">long distance public transport</a> and <a href="data/daily_mobility_germany.csv">general daily mobility in the federal states of Germany</a>. <!-- NOTE: include ref: https://www.destatis.de/DE/Service/EXDAT/Datensaetze/mobilitaetsindikatoren-mobilfunkdaten.html --></p>
 <ul>
-<li><p>Investigate both data sets: What information can you find in these data sets? Is the structure the same or different?</p></li>
-<li><p>Which transport type denoted the biggest decrease compared to the same day in 2019? On which days?</p>
-<ul>
-<li>Plot the change in long distance public transport for all types of transports in one graph. Make sure to have meaningful titles for the x- and y-axis. Include a legend for the three different types of public transport. Do you need to transform the column for ‘Day’? Check <code>str()</code>. Google is your friend for solving this problem.</li>
-</ul></li>
-<li><p>Are there differences in the daily mobility between the different federal states of Germany? Which federal state had the strongest decrease? Is there even a state which had a strong increase?</p>
-<ul>
+<li>Investigate both data sets: What information can you find in these data sets? Is the structure the same or different?<br />
+</li>
+<li>Which transport type denoted the biggest decrease compared to the same day in 2019? On which days?</li>
+<li>Plot the change in long distance public transport for all types of transports in one graph. Make sure to have meaningful titles for the x- and y-axis. Include a legend for the three different types of public transport. Do you need to transform the column for ‘Day’? Check <code>str()</code>. Google is your friend for solving this problem.<br />
+</li>
+<li>Are there differences in the daily mobility between the different federal states of Germany? Which federal state had the strongest decrease? Is there even a state which had a strong increase?<br />
+</li>
 <li>Plot the change in daily mobility for each state. Is there a way to have a multi-panel plot so each state will appear in a single subplot? (hint: use the ggplot2 cheatsheet)</li>
-</ul></li>
 </ul>
 <!-- Goals:
   download 2 data sets; 
@@ -617,7 +586,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -626,6 +595,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
