@@ -508,8 +508,11 @@ p + geom_point() + geom_smooth(method = &quot;loess&quot;)</code></pre>
 <p><img src="4_Visualisation_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <div class="alert alert-info">
 <p><em><strong>Main exercise block 1:</strong></em></p>
-<p>Task 1: <!-- Let students repeat exercises of the tutorial --> * Select I. versicolor and plot correlation between petal width and length with base r graphics. Include a regression line and make sure axis titles are meaningful.</p>
+<p>Task 1: Use the Iris data set</p>
+<!-- Let students repeat exercises of the tutorial -->
 <ul>
+<li>Select <em>I. versicolor</em> and plot correlation between petal width and length with base r graphics. Include a regression line and make sure axis titles are meaningful.<br />
+</li>
 <li>Add points for I. setosa and I. virginica. (hint: when you add values the x and y-axis range isn’t adjusted and some values might not be shown. Adjust the x and y axis ranges to make sure all values are shown. Use the <code>ylim</code> argument in the <code>plot()</code> function for this.)</li>
 <li>Add a legend</li>
 <li>Save the graphic in folder <code>/figures</code>.</li>
@@ -525,7 +528,7 @@ p + geom_point() + geom_smooth(method = &quot;loess&quot;)</code></pre>
 </ul>
 <!-- one more complex exercise covering all steps so far-->
 <p><br></p>
-<p>Task 3: Let’s have a look at a data set containing German population mobility data from 2019-2021 (<a href="https://www.destatis.de/EN/Service/EXDAT/_node.html;jsessionid=E428AE94EB6565C3699F2338C07820A8.internet732">more information</a>).</p>
+<p><strong>Extra challenge</strong> Task 3: Let’s have a look at a data set containing German population mobility data from 2019-2021 (<a href="https://www.destatis.de/EN/Service/EXDAT/_node.html;jsessionid=E428AE94EB6565C3699F2338C07820A8.internet732">more information</a>).</p>
 <p>We have provided some of the data for you: <a href="data/mobility_public_transport.csv">long distance public transport</a> and <a href="data/daily_mobility_germany.csv">general daily mobility in the federal states of Germany</a>. <!-- NOTE: include ref: https://www.destatis.de/DE/Service/EXDAT/Datensaetze/mobilitaetsindikatoren-mobilfunkdaten.html --></p>
 <ul>
 <li>Investigate both data sets: What information can you find in these data sets? Is the structure the same or different?<br />

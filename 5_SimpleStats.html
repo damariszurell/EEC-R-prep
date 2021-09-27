@@ -393,7 +393,8 @@ div.tocify {
 <div id="descriptive-statistics" class="section level1">
 <h1><span class="header-section-number">1</span> Descriptive statistics</h1>
 <p>These describe data samples, for example the central tendency, spread and variance, or relationships in cases of bi- or multivariate data.</p>
-<p>Important functions to know for first and second order moments are:</p>
+<p>Below is a list of important functions to know for first and second order moments are.</p>
+<p><strong><em>Disclaimer:</em></strong> <em>We introduce these functions for completeness, although we will only cover these in detail in the Statistics module BIO-O-KM2. Thus, feel free to regard it as placeholder for future reference.</em></p>
 <ul>
 <li><code>mean(x)</code>, <code>weighted.mean(x)</code>, <code>median(x)</code> : arithmetic mean, weighted mean, and median of a vector (here: x)</li>
 <li><code>quantile(x, probs = p)</code> : the p% quantile of vector x</li>
@@ -401,12 +402,13 @@ div.tocify {
 <li><code>mad(x)</code> : median absolute deviation</li>
 <li><code>range(x)</code> : minimum and maximum values</li>
 <li><code>diff(range(x))</code> : spread</li>
-<li><code>diff(quantile(x,c(0.25,0.75)))</code> : interquartile range</li>
+<li><code>IQR()</code> : interquartile range</li>
 <li><code>cor(x,y)</code>, <code>cov(x,y)</code> : correlation coefficient, and covariance</li>
 </ul>
 </div>
 <div id="probability-distribution-and-random-numbers" class="section level1">
 <h1><span class="header-section-number">2</span> Probability distribution and random numbers</h1>
+<p><strong><em>Disclaimer:</em></strong> <em>For completeness, we also introduce probability distributions and random numbers here, although we will only cover these in detail in the Statistics module BIO-O-KM2. Thus, feel free to regard it as placeholder for future reference.</em></p>
 <p>R offers several built-in probability distributions, which usually come with four functions: probability density function (prefix <code>d</code> for density), cumulative distribution function (prefix <code>p</code> for probability), a function for calculating quantiles (prefix <code>q</code> for quantiles) and a function for generating (pseudo-) random numbers (prefix <code>r</code> for random).</p>
 <p>Have a look at the help pages to find all the built-in distributions: <code>?Distributions</code></p>
 <p>Let’s have a look at the normal distribution. As default, R assumes the standard normal distribution with <code>mean=0</code> and <code>sd=1</code>. We first look at the probability density function. This shows us the probability (or relative likelihood) that a random sample from a population (or the sample space) takes a specific value.</p>
@@ -432,8 +434,8 @@ dnorm(0, 2, 2) </code></pre>
 <p>We can also draw random numbers from these distributions using the function <code>rnorm()</code>. ?dnorm</p>
 <pre class="r"><code># draw 10 random numbers from the standard normal distribution:
 rnorm(10)</code></pre>
-<pre><code>##  [1]  1.0904282  1.0709467  0.5751336 -0.5172438 -0.2712958 -0.1244627
-##  [7] -1.0444191 -1.4364639 -0.6225608  1.1218846</code></pre>
+<pre><code>##  [1]  0.346337649 -1.153367095 -0.477690090 -0.055518764 -0.430078457
+##  [6]  0.719124747  0.004324531  0.620226658  0.598864620 -0.784511507</code></pre>
 <pre class="r"><code>par(mfrow=c(1,3)) 
 # plot the density function
 curve(dnorm(x), -3, 6, lwd = 2, ylim = c(0, 0.5), xlim=c(-5,10)) 
