@@ -1,6 +1,7 @@
 # Task 1: Download the file `data/surveys_.csv_pract3.txt` and save it in the data folder of your R-project. The data set contains survey data with information about the month, day, year, plot_id, species_id, sex, hindfoot_length and weight.
 
-# Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()). THey have to correc tthe year header before reading.
+# Read the file to your workspace (hint: separator? header?) and inspect the data set (e.g. str(), summary()). 
+# Solution: add year header before reading.
 survey_data <- read.table(file.path("data", "surveys_pract3.txt"), header = TRUE, sep = "\t")
 str(survey_data)
 

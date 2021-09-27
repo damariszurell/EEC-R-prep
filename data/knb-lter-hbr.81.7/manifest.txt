@@ -1,0 +1,8 @@
+Manifest file for knb-lter-hbr.81.7-4c9184f37cff01bcdc32dc486ec36961.zip created on Sat May 30 15:15:27 MDT 2020
+hb_bird.txt (5852 bytes)
+mk_bird.txt (2851 bytes)
+rp_bird.txt (2848 bytes)
+sm_bird.txt (2933 bytes)
+knb-lter-hbr.81.7.xml (119586 bytes)
+knb-lter-hbr.81.7.txt (52726 bytes)
+knb-lter-hbr.81.7.report.xml (76062 bytes)

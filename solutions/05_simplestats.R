@@ -6,8 +6,12 @@ x <- 1:100
 curve(dlnorm(x), 0, 100, col = "red",lwd = 2) # default parameters
 hist(s, add = TRUE, col = NULL, freq = FALSE)
 
-# Task 2: Use the sample to estimate the parameters of the density function you applied for the random draw. Do these estimated parameters differ from the ones you specified to draw the sample? (Hint: you can use the R documentation for the log-normal function or try google to work out how to calculate the parameters from your samples)
+# Task2: Make a random subset of the iris data set. 
+# Randomly sample n=30 rows. Hints: make a sequence ranging from 1 to the number of rows in ìris, 
+# use sample to draw a random subset and use the resulting vector as index vector to subset the rows of iris.
 
-mean(log(s)) # the mean of the logs, should approximate 0
-sd(log(s)) # the sd of the logs, should approximate 1
+# create index vector
+A <- sample(1:150, size=30)
 
+# create subset using the predefined rows
+iris_30 <- iris[A,]

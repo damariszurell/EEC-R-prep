@@ -1,0 +1,1720 @@
+Dataset title:  Bird Abundances at the Hubbard Brook Experimental Forest
+    (1969-present) and on three replicate plots (1986-2000) in the
+    White Mountain National Forest
+
+Dataset ID:  hbr0081
+Dataset Creator
+
+	Name:		Richard T. Holmes
+	Organization:	Dartmouth College
+
+
+Metadata Provider
+
+	Organization:	Hubbard Brook Experimental Forest
+      LTER
+	
+	Address:
+			234 Mirror Lake Road
+			North Woodstock, NH 03262  USA
+	
+	Phone:		(603) 726-8902
+	URL:		http://www.hubbardbrook.org
+
+
+Dataset Abstract
+
+	Bird abundances have been determined from timed
+      censuses, territory maps and nest locations at the Hubbard
+      Brook Experimental Forest from 1969 to the present. This data
+      set includes counts of the number of adult birds (males and
+      females) per 10 ha at HBEF (1969 - present) and on three
+      additional plots within the White Mountain National Forest
+      (1986 - 2000).
+	These data were gathered as part of the Hubbard Brook
+      Ecosystem Study (HBES). The HBES is a collaborative effort at
+      the Hubbard Brook Experimental Forest, which is operated and
+      maintained by the USDA Forest Service, Northern Research
+      Station.
+
+
+Dataset Keywords
+
+	animals
+	birds
+	ecosystems
+	forests
+	HBEF Bird Area
+	HBR
+	Hubbard Brook LTER
+	organism
+	White Mountain National
+      Forest
+	populations
+
+
+Intellectual Rights
+
+	This information is released under the Creative Commons
+      license - Attribution - CC BY
+      (https://creativecommons.org/licenses/by/4.0/). The consumer
+      of these data ("Data User" herein) is required to cite it
+      appropriately in any publication that results from its use.
+      The Data User should realize that these data may be actively
+      used by others for ongoing research and that coordination may
+      be necessary to prevent duplicate publication. The Data User
+      is urged to contact the authors of these data if any
+      questions about methodology or results occur. Where
+      appropriate, the Data User is encouraged to consider
+      collaboration or co-authorship with the authors. The Data
+      User should realize that misinterpretation of data may occur
+      if used out of context of the original study.
+	While substantial efforts are made to ensure the
+      accuracy of data and associated documentation, complete
+      accuracy of data sets cannot be guaranteed. All data are made
+      available "as is." The Data User should be aware, however,
+      that data are updated periodically and it is the
+      responsibility of the Data User to check for new versions of
+      the data. The data authors and the repository where these
+      data were obtained shall not be liable for damages resulting
+      from any use or misinterpretation of the data. Thank
+      you.
+
+
+Distribution
+
+	Online distribution:  
+        http://data.hubbardbrook.org/data/dataset.php?id=81
+
+
+Geographic Coverage
+
+
+	Bounding Coordinates
+
+		Geographic description:	Hubbard Brook Experimental Forest
+        bird inventory plots.
+		West bounding coordinate:	
+          -71.804985
+		East bounding coordinate:	
+          -71.697350
+		North bounding coordinate:	
+          43.962128
+		South bounding coordinate:	
+          43.915932
+	
+		Geographic description:	Mount Moosilauke bird inventory
+        plot, Woodstock NH.
+		West bounding coordinate:	
+          -71.773936
+		East bounding coordinate:	
+          -71.773936
+		North bounding coordinate:	
+          43.990567
+		South bounding coordinate:	
+          43.990567
+	
+		Geographic description:	Stinson Mountain bird inventory
+        plot, Rumney NH.
+		West bounding coordinate:	
+          -71.773936
+		East bounding coordinate:	
+          -71.773936
+		North bounding coordinate:	
+          43.83500
+		South bounding coordinate:	
+          43.83500
+	
+		Geographic description:	Russell Pond bird inventory plot,
+        Thornton NH.
+		West bounding coordinate:	
+          -71.645864
+		East bounding coordinate:	
+          -71.645864
+		North bounding coordinate:	
+          44.004677
+		South bounding coordinate:	
+          44.004677
+	
+
+
+
+Temporal Coverage
+
+	Start Date:  1969
+	End Date:  2015
+
+
+Dataset Contact
+
+
+
+Methods
+
+
+
+	Method Step 
+
+		Description 
+
+
+
+		Citation
+
+			Holmes, R.T. , F.W.  Sturges. 1975. Bird community dynamics and energetics in a
+          northern hardwoods ecosystem. J. Anim. Ecol., 44: 175-200.
+
+
+			Sherry, T.W. 1986. Bird community dynamics in a temperate deciduous
+          forest: long-term trends at Hubbard Brook. Ecol. Monogr., 56(3): 201-220.
+
+
+			1988. Assessing population trends of New Hampshire
+          forest birds: Local versus regional patterns. The Auk, 105: 756-768.
+
+
+			1988. Thirty-year bird population trends in an
+          unfragmented temperate deciduous forest: the importance
+          of habitat change. The Auk, 118: 589-610.
+
+
+
+Data Table
+
+	Entity Name:  hb_bird
+	Entity Description:  The file hb_bird.txt contains Hubbard
+      Brook bird abundance data.
+	Object Name:  hb_bird.txt
+
+
+
+Data Format
+
+	Number of Header Lines:  1
+	Attribute Orientation:  column
+	Field Delimiter:  0x2c
+
+
+
+Attributes
+
+	Attribute Name:  Bird Species-Hubbard Brook
+	Attribute Label:  
+	Attribute Definition:  Species name
+	Storage Type:  
+	Measurement Scale: 
+		Species name. Please visit the source
+                  link provided in the NOTES ON DATA section to
+                  view the species checklist from which these names
+                  were obtained
+	Missing Value Code: 
+
+
+	Attribute Name:  1969
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1970
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1971
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1972
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1973
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1974
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1975
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1976
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1977
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1978
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1979
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1980
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1981
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1982
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1983
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1984
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1985
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1986
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1987
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1988
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1989
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1990
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1991
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1992
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1993
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1994
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1995
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1996
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1997
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1998
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1999
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2000
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2001
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2002
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2003
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2004
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2005
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2006
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2007
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2008
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2009
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2010
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2011
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2012
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2013
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2014
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2015
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  Bird Species-Moosilauke
+	Attribute Label:  
+	Attribute Definition:  Species name
+	Storage Type:  
+	Measurement Scale: 
+		Species name. Please visit the source
+                  link provided in the NOTES ON DATA section to
+                  view the species checklist from which these names
+                  were obtained
+	Missing Value Code: 
+
+
+	Attribute Name:  1986
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1987
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1988
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1989
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1990
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1991
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1992
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1993
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1994
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1995
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1996
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1997
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1998
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1999
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2000
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  Bird Species-Russell Pond
+	Attribute Label:  
+	Attribute Definition:  Species name
+	Storage Type:  
+	Measurement Scale: 
+		Species name. Please visit the source
+                  link provided in the NOTES ON DATA section to
+                  view the species checklist from which these names
+                  were obtained
+	Missing Value Code: 
+
+
+	Attribute Name:  1986
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1987
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1988
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1989
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1990
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1991
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1992
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1993
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1994
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1995
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1996
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1997
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1998
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1999
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2000
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  Bird Species-Stinson Mtn.
+	Attribute Label:  
+	Attribute Definition:  Species name
+	Storage Type:  
+	Measurement Scale: 
+		Species name. Please visit the source
+                  link provided in the NOTES ON DATA section to
+                  view the species checklist from which these names
+                  were obtained
+	Missing Value Code: 
+
+
+	Attribute Name:  1986
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1987
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1988
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1989
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1990
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1991
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1992
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1993
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1994
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1995
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1996
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1997
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1998
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  1999
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+
+	Attribute Name:  2000
+	Attribute Label:  
+	Attribute Definition:  The number of adult birds (males and
+          females) per 10 ha, taking into account territories that
+          partially overlap the 10 hectare
+          area
+	Storage Type:  
+	Measurement Scale: 
+		Units:  number
+		Precision:  .1
+		Number Type:  real
+	Missing Value Code: t  (Species present but occurring at very
+            low numbers (<0.5 individuals/10 ha) are indicated
+            by the letter t (= trace))
+
+

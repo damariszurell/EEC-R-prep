@@ -5,14 +5,14 @@ versicolor <- iris[iris$Species == "versicolor", ]
 
 # explicitly provide x and y axis
 
-plot(x = versicolor$Sepal.Width, y = versicolor$Sepal.Length, pch = 19, col = 'salmon',
-     xlab = 'Sepal width [cm]', ylab = 'Sepal length [cm]',
-     main = 'Relationship between I. versicolor sepal width and length',
-     xlim = c(0,max(iris$Sepal.Width)),
-     ylim = c(0,max(iris$Sepal.Length)))
+plot(x = versicolor$Petal.Width, y = versicolor$Petal.Length, pch = 19, col = 'salmon',
+     xlab = 'Petal width [cm]', ylab = 'Petal length [cm]',
+     main = 'Relationship between I. versicolor petal width and length',
+     xlim = c(0,max(iris$Petal.Width)),
+     ylim = c(0,max(iris$Petal.Length)))
 
 # add regression line
-abline(lm(versicolor$Sepal.Length ~ versicolor$Sepal.Width), col = 'salmon3', lwd = 2)
+abline(lm(versicolor$Petal.Length ~ versicolor$Petal.Width), col = 'salmon3', lwd = 2)
 
 # add other species
 setosa <- iris[iris$Species == "setosa", ]
@@ -35,9 +35,9 @@ legend("bottomright",
 
 survey_data <- read.csv(file.path("data", "surveys_pract3_correct.csv"), header = TRUE, sep = ",", stringsAsFactors = TRUE)
 
-any(!complete.cases(survey_data))
 
-# How do you want to deal with `NA` values? (?complete.cases)  
+# How do you want to deal with `NA` values? (?complete.cases) 
+any(!complete.cases(survey_data))
 # Kick them out
 survey_data <- na.omit(survey_data)
 
