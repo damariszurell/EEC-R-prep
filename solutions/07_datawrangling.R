@@ -37,14 +37,43 @@ library(ggplot2)
 # min: Pileated Woodpecker (row 3)
 min(rowMeans(hb_bird[,-1], na.rm=TRUE))
 
-# still missing
+# base R version
+# create subsets 
+b_wood <- subset(b_abun, species == "Pileated Woodpecker")
+b_vireo <- subset(b_abun, species == "Red-eyed Vireo")
+
+# plot the abundance for one species. Make sure to adjust the limit of the y scale 
+plot(x = b_vireo$year, y = b_vireo$abundance, col = "salmon3", pch = 19,
+     xlab = "year",
+     ylab = "abundance",
+     ylim=c(0,33))
+
+# and add the other one
+points(x = b_wood$year, y = b_wood$abundance, col = 'CornFlowerBlue', pch = 19)
+
+### ggplot version
+# create two data frames containing the information you need and combine them using rbind
+b_abun <- rbind(data.frame(species = "Pileated Woodpecker", year = seq(1969, 2015, by=1), abundance = as.numeric(hb_bird[3,-1])),
+                data.frame(species = "Red-eyed Vireo", year = seq(1969, 2015, by=1), abundance = as.numeric(hb_bird[22,-1])))
+
+p <- ggplot(data = b_abun, mapping = aes(x = year, y = abundance)) +
+  geom_line(aes(color = species)) 
+  
 
 # 2) Select three years (e.g. 1970, 1990, and 2010) and plot the abundances of all species in boxplots.
 
-# still missing
+# prepare a data frame with the data you need. Make sure to include the years as factors to later on split them in the boxplot
+b_years <- rbind(data.frame(year = as.factor(1970), abundance = hb_bird[,3]),
+                 data.frame(year = as.factor(1990), abundance = hb_bird[,23]),
+                 data.frame(year = as.factor(2010), abundance = hb_bird[,43]))
+
+# base R version
+boxplot(abundance ~ year, data = b_years) 
+
+# ggplot version
+(p2 <- ggplot(data = b_years, mapping = aes(x = year, y = abundance)) +
+  geom_boxplot()) 
 
 # 3) Do the same data wrangling and visualisation for another bird dataset. Compare, for example the difference in total species numbers.
-
-# still missing
-
+# no solutions for this, as this is similar to task 1 and 2.
 
