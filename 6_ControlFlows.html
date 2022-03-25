@@ -13,7 +13,8 @@
 
 <title>Control flows - ifelse, loops and functions</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -34,6 +35,10 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -64,6 +69,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -84,6 +90,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -309,7 +318,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -322,7 +331,7 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     R practicals
      
     <span class="caret"></span>
@@ -332,16 +341,16 @@ div.tocify {
       <a href="1_GettingStarted.html">1. Getting started in R</a>
     </li>
     <li>
-      <a href="2_OperatorsObjects.html">2. Operators and objects</a>
+      <a href="2_GrammarPackagesHelp.html">2. Grammar, packages, help</a>
     </li>
     <li>
-      <a href="3_DataImportExport.html">3. Data import and export</a>
+      <a href="3_Visualisation.html">3. Visualising data</a>
     </li>
     <li>
-      <a href="4_Visualisation.html">4. Visualising data</a>
+      <a href="4_OperatorsObjects.html">4. Operators and objects</a>
     </li>
     <li>
-      <a href="5_SimpleStats.html">5. Descriptive statistics and random numbers</a>
+      <a href="5_DataImportExport.html">5. Data import and export</a>
     </li>
     <li>
       <a href="6_ControlFlows.html">6. Control flows</a>
@@ -374,33 +383,51 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Control flows - ifelse, loops and functions</h1>
+<h1 class="title toc-ignore">Control flows - ifelse, loops and
+functions</h1>
 
 </div>
 
 
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('right', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
 <hr />
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
-<p>Open the RStudio project that we created in the previous session. We recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
+<p>Open the RStudio project that we created in the previous session. We
+recommend to use this RStudio project for the entire course and within
+the RStudio project create separate R scripts for each session.</p>
 <ul>
-<li>Open the previously prepared R script file for practical #6.<br />
-</li>
-<li>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script”. In the new R script, type <code># Session 6: Control flows - ifelse, loops and functions</code> and save the file in your folder “scripts” within your project folder, e.g. as “6_ControlFlows.R”</li>
+<li>Create a new empty R script by going to the tab “File”, select “New
+File” and then “R script”. In the new R script, type
+<code># Session 6: Control flows - ifelse, loops and functions</code>
+and save the file in your folder “scripts” within your project folder,
+e.g. as “6_ControlFlows.R”</li>
 </ul>
 </div>
-<div id="control-flows" class="section level1">
+<div id="control-flows" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Control flows</h1>
-<p>Control-flow constructs are among the most important <em>building blocks</em> in programming because they help structuring the workflow. We use loops for repeating workflows, and conditional expressions and switch statements for making choices between alternative control flows based on some conditions.</p>
-<div id="if-else-ifelse" class="section level2">
+<p>Control-flow constructs are among the most important <em>building
+blocks</em> in programming because they help to structure the workflow.
+We use loops for repeating workflows, and conditional expressions and
+switch statements for making choices between alternative control flows
+based on some conditions.</p>
+<div id="if-else-ifelse" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> If, else, ifelse</h2>
-<p>We use conditional expressions if specific computations and actions should only be performed under certain conditions. R knows three conditional expressions:</p>
+<p>We use conditional expressions if specific computations and actions
+should only be performed under certain conditions. R knows three
+conditional expressions:</p>
 <ul>
 <li><code>if (condition) {command block}</code></li>
 <li><code>if (condition) {command block} else {alternative command block}</code></li>
 <li><code>ifelse (condition, command block, alternative command block)</code></li>
 </ul>
-<p>These functions always require a Boolean condition, meaning that it needs to evaluate to <code>TRUE</code> or <code>FALSE</code>. Single commands do not need to be surrounded by curly brackets. Still, for beginners, they facilitate overview.</p>
+<p>These functions always require a Boolean condition, meaning that it
+needs to evaluate to <code>TRUE</code> or <code>FALSE</code>. Single
+commands do not need to be surrounded by curly brackets. Still, for
+beginners, they facilitate overview.</p>
 <pre class="r"><code>a &lt;- 12
 
 if (a &gt;= 10)
@@ -411,7 +438,8 @@ if (a &gt;= 10)
 <div class="alert alert-success" role="alert">
 <p><strong>Test it yourself</strong></p>
 <ul>
-<li>Assign different values to <code>a</code> and run the if-clause again. What happens if a is smaller than 10?</li>
+<li>Assign different values to <code>a</code> and run the if-clause
+again. What happens if a is smaller than 10?</li>
 </ul>
 </div>
 <pre class="r"><code>a &lt;- 12
@@ -423,7 +451,8 @@ if (a &gt;= 10)
   print(&quot;a is smaller than 10&quot;)
 }</code></pre>
 <pre><code>## [1] &quot;a is greater than or equal to 10&quot;</code></pre>
-<p>Conditional expressions may be nested, meaning that another if-clause follows on an existing one (<code>else if</code>).</p>
+<p>Conditional expressions may be nested, meaning that another if-clause
+follows on an existing one (<code>else if</code>).</p>
 <pre class="r"><code>if (a &gt; 10) {
   print(&quot;a is greater than 10&quot;)
 } else
@@ -434,7 +463,7 @@ if (a &gt;= 10)
 }</code></pre>
 <pre><code>## [1] &quot;a is greater than 10&quot;</code></pre>
 <p>Another example:</p>
-<pre class="r"><code># Should I renew my streaming subscription, and if so by one month for a whole year?
+<pre class="r"><code># Should I renew my streaming subscription, and if so by one month or for a whole year?
 
 no_weeks &lt;- 6 # number of remaining lockdown weeks
 if (no_weeks &lt; 4) {
@@ -448,10 +477,14 @@ if (no_weeks &lt; 4) {
 
 renew</code></pre>
 <pre><code>## [1] &quot;By a month and then see&quot;</code></pre>
-<p>The function <code>ifelse()</code> allows elementwise evaluation of the condition.</p>
+<p>The function <code>ifelse()</code> allows elementwise evaluation of
+the condition.</p>
 <pre class="r"><code>age &lt;- 31
 ifelse (age &lt;= 30, &quot;I am 30 or younger&quot;, &quot;I&#39;m older than 30&quot;)</code></pre>
-<p><code>ifelse()</code> is most useful for evaluating elements of a vector according to a specific condition. We illustrate this by just slightly changing above example to see how many participants in (a hypothetical) class are younger or older than 30 years.</p>
+<p><code>ifelse()</code> is most useful for evaluating elements of a
+vector according to a specific condition. We illustrate this by just
+slightly changing the above example to see how many participants in (a
+hypothetical) class are younger or older than 30 years.</p>
 <pre class="r"><code>(ages &lt;- sample(22:35, 30, replace = TRUE))
 (age_groups &lt;- ifelse (ages &lt;= 30, &quot;Younger than or just 30&quot;, &quot;Older than 30&quot;))
 
@@ -459,11 +492,26 @@ ifelse (age &lt;= 30, &quot;I am 30 or younger&quot;, &quot;I&#39;m older than 3
 table(age_groups)</code></pre>
 </div>
 </div>
-<div id="for-loops" class="section level1">
+<div id="for-loops" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> For-Loops</h1>
-<p>You will often hear that loops should be avoided in R code wherever possible because in certain cases they can make your code slower. Nevertheless, they are an important element in programming. We use them, for example, for iterating (parts of) code blocks with different parameters or initial values. R offers three different loop structures: <code>repeat</code>, <code>while</code> and <code>for</code>, where the latter is the most commonly used.</p>
-<p>The <code>for</code> loop iterates through all elements of a provided vector: <code>for (i in M) {command block}</code>. See the help page <code>?&quot;for&quot;</code>.</p>
-<p>Below, we show two different ways of defining the vector that the <code>for</code> loop cycles through. In the first example, the vector is defined first and the loop cycles through each element of the vector. In the second example, we define the vector in the call of the <code>for</code> loop by <code>1:length(x)</code>. This expression means that we cycle through all indices of the vector <code>x</code> from index 1 to the last. (Note that the loop could also start at any other index value, e.g. <code>3:length(x)</code>)</p>
+<p>You will often hear that loops should be avoided in R code wherever
+possible because in certain cases they can make your code slower.
+Nevertheless, they are an important element in programming. We use them,
+for example, for iterating (parts of) code blocks with different
+parameters or initial values. R offers three different loop structures:
+<code>repeat</code>, <code>while</code> and <code>for</code>, where the
+latter is the most commonly used.</p>
+<p>The <code>for</code> loop iterates through all elements of a provided
+vector: <code>for (i in M) {command block}</code>. See the help page
+<code>?"for"</code>.</p>
+<p>Below, we show two different ways of defining the vector that the
+<code>for</code> loop cycles through. In the first example, the vector
+is defined first and the loop cycles through each element of the vector.
+In the second example, we define the vector in the call of the
+<code>for</code> loop by <code>1:length(x)</code>. This expression means
+that we cycle through all indices of the vector <code>x</code> from
+index 1 to the last. (Note that the loop could also start at any other
+index value, e.g. <code>3:length(x)</code>)</p>
 <pre class="r"><code>x &lt;- c(101:120)
 
 # Option 1: cycle through each element of x
@@ -475,31 +523,41 @@ for (i in x) {
 for (i in 1:length(x)){
   print(i)
 }</code></pre>
-<p>Now, we use <code>for</code> loops to roll dices.</p>
+<p>Now, we use <code>for</code> loops to roll dice.</p>
 <pre class="r"><code>x &lt;- c(1:100)
 # roll a dice 100 times and print result into console
 for (i in x) {
   print(sample(1:6, 1))
 }
 
-# roll a dice 100 times and build the cumulative sum of the faces. For this define an empty vector y that stored the comulative sums.
-y &lt;- numeric(length(x))
+# roll a dice 100 times and build the cumulative sum of the faces. For this define a place holder variable that is then used to store the cumulative sum within the for loop.
+y &lt;- 0
 for (i in 1:length(x)){
-  y[i] &lt;- sample(1:6, 1) + y[i-1]
-}
+  y &lt;- y + sample(1:6,1)
+  
+  # stop after 100 times
+  if (i &gt;= 100){
+    break
+  } # end of if 
+  
+} # end of for
 y
 
 # Stop rolling the dice as soon as the cumulative sum is higher than 150
-y &lt;- numeric(length(x))
+y &lt;- 0
 for (i in 1:length(x)){
-  y[i] &lt;- sample(1:6, 1) + y[i-1]
-  if (y[i] &gt;=150) {
+  
+  y &lt;- y + sample(1:6,1)
+  
+  # stop after 100 times OR after the cumulative sum is higher than 150
+  if (i &gt;= 100 | y &gt;= 150){
     break
-  }
-}
+  } # end of if 
+  
+} # end of for
 y
 
-# This does almost the same thing, but using a while loop. Look up the help page of ?tail
+# This does almost the same thing but uses a while loop. Look up the help page of ?tail
 
 y &lt;- 0
 while(tail(y, 1) &lt; 150){
@@ -507,10 +565,18 @@ while(tail(y, 1) &lt; 150){
 }
 y</code></pre>
 </div>
-<div id="functions" class="section level1">
+<div id="functions" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Functions</h1>
-<p>R and the contributed packages contain a myriad of built-in functions. Still, it might be useful to write your own functions at some point. For example, you can combine a number of consecutive commands under one name/function. This facilitates recurring computations and improves clarity of your scripts.</p>
-<p>Function definitions always start with <code>function()</code> followed by a command block in curly brackets <code>{}</code>. Obligatory and optional arguments are defined in the round brackets (). You can define arguments with and without default settings, and the argument list may also be emtpy.</p>
+<p>R and the contributed packages contain a myriad of built-in
+functions. Still, it might be useful to write your own functions at some
+point. For example, you can combine several consecutive commands under
+one name/function. This facilitates recurring computations and improves
+the clarity of your scripts.</p>
+<p>Function definitions always start with <code>function()</code>
+followed by a command block in curly brackets <code>{}</code>.
+Obligatory and optional arguments are defined in the round brackets ().
+You can define arguments with and without default settings, and the
+argument list may also be empty.</p>
 <pre class="r"><code># function without arguments:
 greetings &lt;- function() {
   print(&#39;Hello world&#39;)
@@ -529,7 +595,9 @@ greetings &lt;- function(name, greet = &#39;Hello&#39;) {
 }
 greetings(&#39;students&#39;)
 greetings(&#39;students&#39;, &#39;Wake up&#39;)</code></pre>
-<p>Ideally, you write own functions to simplify calculations or workflows that you often need. Let’s try an example for converting km to miles and vice versa.</p>
+<p>Ideally, you write your own functions to simplify calculations or
+workflows that you often need. Let’s try an example for converting km to
+miles and vice versa.</p>
 <pre class="r"><code># define the functions
 km_to_miles &lt;- function(km){
   km * 0.62137
@@ -544,11 +612,33 @@ km_to_miles(80)</code></pre>
 <pre><code>## [1] 49.7096</code></pre>
 <pre class="r"><code>miles_to_km(50)</code></pre>
 <pre><code>## [1] 80.46735</code></pre>
+<p>R automatically returns the last output of function. You can also
+specify what is to be returned. Compare the two examples below to
+understand the difference.</p>
+<pre class="r"><code>km_miles_conversion &lt;- function(km, mi){
+  km * 0.62137
+  mi/0.62137 
+  
+}
+
+km_miles_conversion2 &lt;- function(km, mi){
+  miles &lt;- km * 0.62137
+  km_new &lt;- mi/0.62137 
+  
+  return(c(miles, km_new))
+}
+
+km_miles_conversion(80,50) </code></pre>
+<pre><code>## [1] 80.46735</code></pre>
+<pre class="r"><code>km_miles_conversion2(80,50) </code></pre>
+<pre><code>## [1] 49.70960 80.46735</code></pre>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Task 1: Write a function that calculates degrees Fahrenheit from degrees Celsius, and another function for the other way around.</p>
+<p>Task 1: Write a function that calculates degrees Fahrenheit from
+degrees Celsius and another function for the other way around.</p>
 <p><br></p>
-<p>Task 2: Use a for-loop to add the following two vectors element-wise to each other:</p>
+<p>Task 2: Use a for-loop to add the following two vectors element-wise
+to each other:</p>
 <ul>
 <li><code>vec1 &lt;- 1:10</code></li>
 <li><code>vec2 &lt;- seq(10, 100, 10)</code></li>
@@ -562,7 +652,7 @@ km_to_miles(80)</code></pre>
 <br>
 <hr />
 <div id="footer">
-<p>Damaris Zurell, Simon Kapitza, Jette Reeg 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
+<p>Ecology & Macroecology Lab, Univ. Potsdam 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
 </div>
 
 </html>

@@ -13,7 +13,8 @@
 
 <title>Simple data wrangling</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -64,6 +65,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -84,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -309,7 +314,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -322,7 +327,7 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     R practicals
      
     <span class="caret"></span>
@@ -332,16 +337,16 @@ div.tocify {
       <a href="1_GettingStarted.html">1. Getting started in R</a>
     </li>
     <li>
-      <a href="2_OperatorsObjects.html">2. Operators and objects</a>
+      <a href="2_GrammarPackagesHelp.html">2. Grammar, packages, help</a>
     </li>
     <li>
-      <a href="3_DataImportExport.html">3. Data import and export</a>
+      <a href="3_Visualisation.html">3. Visualising data</a>
     </li>
     <li>
-      <a href="4_Visualisation.html">4. Visualising data</a>
+      <a href="4_OperatorsObjects.html">4. Operators and objects</a>
     </li>
     <li>
-      <a href="5_SimpleStats.html">5. Descriptive statistics and random numbers</a>
+      <a href="5_DataImportExport.html">5. Data import and export</a>
     </li>
     <li>
       <a href="6_ControlFlows.html">6. Control flows</a>
@@ -382,30 +387,38 @@ div.tocify {
 <hr />
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
-<p>Open the RStudio project that we created in the previous session. We recommend to use this RStudio project for the entire course and within the RStudio project create separate R scripts for each session.</p>
+<p>Open the RStudio project that we created in the previous session. We
+recommend to use this RStudio project for the entire course and within
+the RStudio project create separate R scripts for each session.</p>
 <ul>
-<li>Open the previously prepared R script file for practical #7.<br />
-</li>
-<li>If you haven’t created the file yet: Create a new empty R script by going to the tab “File”, select “New File” and then “R script”. In the new R script, type <code># Session 7: Simple data wrangling</code> and save the file in your folder “scripts” within your project folder, e.g. as “7_DataWrangling.R”</li>
+<li>Create a new empty R script by going to the tab “File”, select “New
+File” and then “R script”. In the new R script, type
+<code># Session 7: Simple data wrangling</code> and save the file in
+your folder “scripts” within your project folder, e.g. as
+“7_DataWrangling.R”</li>
 </ul>
 </div>
-<p>R offers different options for inspecting, subsetting and manipulating data. We use the iris data that is contained in the R distribution</p>
+<p>R offers different options for inspecting, subsetting and
+manipulating data. We use the iris data that is contained in the R
+distribution</p>
 <pre class="r"><code>data(iris)
 
-# Inspect the first five lines
+# Inspect the first six lines
 head(iris)
 
-# Inspect the last five lines
+# Inspect the last six lines
 tail(iris)
 
 # Check data structure:
 str(iris)</code></pre>
-<div id="extract-data" class="section level1">
+<div id="extract-data" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Extract data</h1>
 <p>We have already seen how to subset columns by indexing:</p>
 <pre class="r"><code>iris[, c(&#39;Petal.Length&#39;)]
 summary(iris[, c(&#39;Petal.Length&#39;)])</code></pre>
-<p>Rows can also be extracted using indexing, or by using the function <code>subset()</code>. Here, we need the logical and relational operators mentioned earlier</p>
+<p>Rows can also be extracted using indexing, or by using the function
+<code>subset()</code>. Here, we need the logical and relational
+operators mentioned earlier</p>
 <pre class="r"><code># selecting rows using indexing
 iris[iris$Species == &#39;virginica&#39;, ]
 iris[iris$Species == &#39;virginica&#39; &amp; iris$Sepal.Length &gt; 6.5, ]
@@ -414,38 +427,60 @@ iris[iris$Species == &#39;virginica&#39; &amp; iris$Sepal.Length &gt; 6.5, ]
 subset(iris, Species == &#39;virginica&#39;)
 subset(iris, Species == &#39;virginica&#39; &amp; Sepal.Length &gt; 6.5)</code></pre>
 </div>
-<div id="joinmerge-data" class="section level1">
+<div id="joinmerge-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Join/merge data</h1>
-<p>When processing data, it is often necessary to join/merge different data sets. As a simple example, we create two data frames, one with a price list for groceries and one with our shopping list.</p>
+<p>When processing data, it is often necessary to join/merge different
+data sets. As a simple example, we create two data frames, one with a
+price list for groceries and one with our shopping list.</p>
 <pre class="r"><code>prices_market &lt;- data.frame(product=c(&#39;apples&#39;, &#39;tomatoes&#39;, &#39;blueberries&#39;, &#39;strawberries&#39;), price_per_kg = c(2.5, 3.5, 5.20, 4.50))
 shopping_list &lt;- data.frame(product = c(&#39;apples&#39;, &#39;strawberries&#39;, &#39;bananas&#39;), amount_in_kg = c(1.5, 0.5, 2))</code></pre>
-<p>We now use the function <code>merge()</code> for joining the two data frames. Thereby, we have the option of ignoring non-matching entries or filling these up with NAs.</p>
+<p>We now use the function <code>merge()</code> for joining the two data
+frames. Thereby, we have the option of ignoring non-matching entries or
+filling these up with NAs.</p>
 <pre class="r"><code># The joined data frame contains only matching entries:
 merge(prices_market, shopping_list, by = &#39;product&#39;)
 
 # NAs will be added for the non-matching entries
 merge(prices_market, shopping_list, by = &#39;product&#39;, all = TRUE)</code></pre>
 </div>
-<div id="family-apply" class="section level1">
-<h1><span class="header-section-number">3</span> Family <code>apply</code></h1>
-<p>If you want to do complex operations on matrices, data frames or lists, <code>apply()</code> and its derivates are most often the tool of choice as they run a lot faster than loops. This is what is often termed <em>vectorizing</em> your code.</p>
-<p><code>apply()</code> allows row-wise and column-wise execution of functions over matrices, data.frames and arrays. Thereby, the argument <code>MARGIN</code> refers to the dimension you want the operation to run over (1 means row-wise, 2 column-wise). Also you have to provide an argument <code>FUN</code> that specifies which function you want to run over the array. In the following examples, we calculate the mean.</p>
+<div id="family-apply" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Family
+<code>apply</code></h1>
+<p>If you want to do complex operations on matrices, data frames or
+lists, <code>apply()</code> and its derivates are most often the tool of
+choice as they run a lot faster than loops. This is what is often termed
+<em>vectorizing</em> your code.</p>
+<p><code>apply()</code> allows row-wise and column-wise execution of
+functions over matrices, data.frames and arrays. Thereby, the argument
+<code>MARGIN</code> refers to the dimension you want the operation to
+run over (1 means row-wise, 2 column-wise). Also you have to provide an
+argument <code>FUN</code> that specifies which function you want to run
+over the array. In the following examples, we calculate the mean.</p>
 <pre class="r"><code># Build a numeric matrix
 (Xmat = matrix(1:12, nrow = 4)) 
 
 # Calculate the mean of all rows
-apply(Xmat, 1, mean) 
+apply(X = Xmat, MARGIN = 1, FUN = mean) # named version
+apply(Xmat, 1, mean) # same thing, but without naming the arguments
 
 # Calculate the mean of all columns
-apply(Xmat, 2, mean) </code></pre>
-<p>You can also define own <em>anonymous</em> functions in the form <code>FUN=function(x){...}</code>.</p>
+apply(X = Xmat, MARGIN = 2, FUN = mean) # named version
+apply(Xmat, 2, mean) # same thing, but without naming the arguments</code></pre>
+<p>You can also define own <em>anonymous</em> functions in the form
+<code>FUN=function(x){...}</code>.</p>
 <pre class="r"><code>(Xdf &lt;- data.frame(x = rep(1, 10), y = rep (3, 10)))
 
 apply(Xdf, 1, FUN = function(x) {sum(x) ^ 2})</code></pre>
-<p>Also check out `<code>lapply()</code> and <code>sapply()</code> that are useful functions for operations over vectors or lists.</p>
-<div id="rowsums-rowmeans-etc" class="section level2">
-<h2><span class="header-section-number">3.1</span> rowSums(), rowMeans() etc</h2>
-<p>There are some convenient and fast implementations to form row and column sums and means for numeric matrices (or arrays) and data frames. They are equivalent to using the function <code>mean</code> or <code>sum</code> with <code>apply()</code> as above but probably easier to handle for you.</p>
+<p>Also check out `<code>lapply()</code> and <code>sapply()</code> that
+are useful functions for operations over vectors or lists.</p>
+<div id="rowsums-rowmeans-etc" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> rowSums(), rowMeans()
+etc</h2>
+<p>There are some convenient and fast implementations to form row and
+column sums and means for numeric matrices (or arrays) and data frames.
+They are equivalent to using the function <code>mean</code> or
+<code>sum</code> with <code>apply()</code> as above but probably easier
+to handle for you.</p>
 <pre class="r"><code># Calculate the mean and sum of all rows
 rowMeans(Xmat)
 rowSums(Xmat)
@@ -460,11 +495,18 @@ colSums(Xmat)
 unique(Xmat[,1])</code></pre>
 </div>
 </div>
-<div id="manipulate-data" class="section level1">
+<div id="manipulate-data" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Manipulate data</h1>
-<div id="analyse-data-by-groups" class="section level2">
-<h2><span class="header-section-number">4.1</span> Analyse data by groups</h2>
-<p><code>aggregate()</code> lets you calculate summaries of groups of your data. The grouping can be expressed with the <code>by</code> argument, but you can also use a formula syntax. In both cases, you can also summarize by multiple grouping variables. The function returns a data frame containing the calculated summaries for each group. You can think of the function as “summarizing variable x by groups Z, using function f”.</p>
+<div id="analyse-data-by-groups" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Analyse data by
+groups</h2>
+<p><code>aggregate()</code> lets you calculate summaries of groups of
+your data. The grouping can be expressed with the <code>by</code>
+argument, but you can also use a formula syntax. In both cases, you can
+also summarize by multiple grouping variables. The function returns a
+data frame containing the calculated summaries for each group. You can
+think of the function as “summarizing variable x by groups Z, using
+function f”.</p>
 <pre class="r"><code># calculate standard deviation and mean of the petal length for each iris species
 
 # grouping via &quot;by&quot; argument
@@ -478,17 +520,27 @@ aggregate(Petal.Length ~ Species, data = iris, FUN = &#39;sd&#39;) # mean
 # user-defined function: calculating the percentage of flowers with petals longer than 4.5 cm within each species
 aggregate(Petal.Length ~ Species, data = iris, FUN = function(x) length(which(x &gt; 4.5))/length(x) * 100)</code></pre>
 </div>
-<div id="manipulating-character-strings" class="section level2">
-<h2><span class="header-section-number">4.2</span> Manipulating character strings</h2>
-<p>Manipulation of strings is important for piecing together character strings, e.g. for automatically processing a list of files, for generating formulas, or when you want to add text or mathematical annotations to a plot. Here are some useful functions for string manipulations:</p>
+<div id="manipulating-character-strings" class="section level2"
+number="4.2">
+<h2><span class="header-section-number">4.2</span> Manipulating
+character strings</h2>
+<p>Manipulation of strings is important for piecing together character
+strings, e.g. for automatically processing a list of files, for
+generating formulas, or when you want to add text or mathematical
+annotations to a plot. Here are some useful functions for string
+manipulations:</p>
 <ul>
-<li><code>paste()</code>: Concatenate vectors after conversion to character</li>
-<li><code>strsplit()</code>: Split characters strings into substrings</li>
+<li><code>paste()</code>: Concatenate vectors after conversion to
+character</li>
+<li><code>strsplit()</code>: Split characters strings into
+substrings</li>
 <li><code>nchar</code>: Count number of characters</li>
 <li><code>grep()</code>: Pattern matching</li>
 <li><code>sub()</code>, <code>gsub</code>: Pattern replacement</li>
-<li><code>substr()</code>, <code>substring</code>: Extract or replace substrings</li>
-<li><code>toupper()</code>, <code>tolower()</code>: Translate characters from lower to upper case and vice versa</li>
+<li><code>substr()</code>, <code>substring</code>: Extract or replace
+substrings</li>
+<li><code>toupper()</code>, <code>tolower()</code>: Translate characters
+from lower to upper case and vice versa</li>
 </ul>
 <p>Let’s take a look at some examples.</p>
 <pre class="r"><code># make variable names
@@ -551,41 +603,66 @@ Task 4: Useful functions.
 </div> -->
 <div class="alert alert-info">
 <p><em><strong>Main exercise block 2:</strong></em></p>
-<p>We use a dataset on bird abundances at Hubbard Brook (1969-2010) and on three replicate plots (1986-2000) in the White Mountain National Forest <span class="citation">(Holmes 2019)</span> that you can download here <a href="data/hb_bird.txt"><code>hb_bird.txt</code></a>, <a href="data/mk_bird.txt"><code>mk_bird.txt</code></a>, <a href="rp_bird.txt"><code>rp_bird.txt</code></a>, <a href="data/sm_bird.txt"><code>sm_bird.txt</code></a> Read more about the metadata <a href="https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-hbr.81.7">here</a>.</p>
+<p>We use a dataset on bird abundances at Hubbard Brook (1969-2010) that
+you can download here <a
+href="data/hb_bird.txt"><code>hb_bird.txt</code></a> Read more about the
+metadata <a
+href="https://portal.edirepository.org/nis/metadataviewer?packageid=knb-lter-hbr.81.7">here</a>.</p>
 <p>Task 1: Download and import the <code>hb_bird.txt</code> data.</p>
 <ul>
-<li>Read in the <code>hb_bird</code> data using the reading function <code>read.delim()</code></li>
-<li>What is the main difference between <code>read.delim()</code> and <code>read.table()</code>?</li>
+<li>Read in the <code>hb_bird</code> data using the reading function
+<code>read.delim()</code>.</li>
+<li>What is the main difference between <code>read.delim()</code> and
+<code>read.table()</code>?</li>
 </ul>
 <p><br></p>
-<p>Task 2: Explore the data set (Hint: use <code>str()</code> to understand how the data set is structured).</p>
+<p>Task 2: Explore the data set (Hint: use <code>str()</code> to
+understand how the data set is structured).</p>
 <ul>
-<li>How many bird species are included in the <code>hb_bird</code> data?</li>
-<li>Missing data are indicated by a “t”. Find these and replace them with an <code>NA</code>. To do so, you can write a loop to iterate through all columns seperately. I provide a few more hints how to structure the loop below. However, it is often advisable to first define and test the function that should be carried out within the loop. To do so,</li>
-<li>Select the second column <code>hb_bird[,2]</code> and find all elements in this column that contains a “t”. Use the <code>grep()</code> function for this as we did above when searching for the letter <em>h</em> in the alphabet. Store the index/indices you get as result of <code>grep()</code> in a new variable, e.g. <code>row_index</code> and use this to identify the elements in the selected column that should be replaced. Also, turn the column into numeric values using the function <code>as.numeric()</code>.</li>
-<li>If all of the above works well, then put it into a <code>for</code> loop. Hint: the loop header could be <code>for (i in 2:ncol(hb_bird))</code> meaning that you loop through the indices of all columns starting at column 2. The loop index <code>i</code> can then be used to select the <em>i</em>th column, and the rest is done analogous to above.</li>
+<li>How many bird species are included in the <code>hb_bird</code>
+data?</li>
+<li>Missing data are indicated by a “t”. Find these and replace them
+with an <code>NA</code>. To do so, you can write a loop to iterate
+through all columns seperately. I provide a few more hints how to
+structure the loop below. However, it is often advisable to first define
+and test the function that should be carried out within the loop. To do
+so,</li>
+<li>Select the second column <code>hb_bird[,2]</code> and find all
+elements in this column that contain a “t”. Use the <code>grep()</code>
+function for this as we did above when searching for the letter
+<em>h</em> in the alphabet. Store the index/indices you get as result of
+<code>grep()</code> in a new variable, e.g. <code>row_index</code> and
+use this to identify the elements in the selected column that should be
+replaced. Also, turn the column into numeric values using the function
+<code>as.numeric()</code>.</li>
+<li>If all of the above works well, then put it into a <code>for</code>
+loop. Hint: the loop header could be
+<code>for (i in 2:ncol(hb_bird))</code> meaning that you loop through
+the indices of all columns starting at column 2. The loop index
+<code>i</code> can then be used to select the <em>i</em>th column, and
+the rest is done analogous to above.</li>
 <li>Run the loop over the entire data frame.</li>
-<li>Use <code>summary()</code> to explore your resulting data frame.</li>
+<li>Use <code>summary()</code> to explore your resulting data
+frame.</li>
 <li>In which year do you have most <code>NA</code>s ?</li>
-<li>Which bird species has the highest average abundance? Hint: use <code>rowMeans()</code> and take care to ignore <code>NA</code> by adding the argument <code>na.rm=T</code> in the function call.</li>
+<li>Which bird species has the highest average abundance? Hint: use
+<code>rowMeans()</code> and take care to ignore <code>NA</code> by
+adding the argument <code>na.rm=T</code> in the function call.</li>
 </ul>
 <p><br></p>
 <p>Task 3: Visualise bird abundance</p>
 <ul>
-<li>Plot the abundance over time for the bird species with the highest average abundance and the bird species with the lowest average abundance.</li>
-<li>Select three years (e.g. 1970, 1990, and 2010) and plot the abundances of all species in boxplots.</li>
-<li>Do the same data wrangling and visualisation for another bird dataset. Compare, for example the difference in total species numbers.</li>
+<li>Plot the abundance over time for the bird species with the highest
+average abundance and the bird species with the lowest average
+abundance.</li>
+<li>Select three years (e.g. 1970, 1990, and 2010) and plot the
+abundances of all species in boxplots.</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="refs" class="references">
-<div id="ref-Holmes2019">
-<p>Holmes, Richard T. 2019. “Bird Abundances at the Hubbard Brook Experimental Forest (1969-Present) and on Three Replicate Plots (1986-2000) in the White Mountain National Forest.” Environmental Data Initiative. <a href="https://doi.org/10.6073/PASTA/FA7380ACE83ABCB62C35872522D118D4">https://doi.org/10.6073/PASTA/FA7380ACE83ABCB62C35872522D118D4</a>.</p>
-</div>
-</div>
+<div id="references" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> References</h1>
 </div>
 
 <!DOCTYPE html>
@@ -594,7 +671,7 @@ Task 4: Useful functions.
 <br>
 <hr />
 <div id="footer">
-<p>Damaris Zurell, Simon Kapitza, Jette Reeg 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
+<p>Ecology & Macroecology Lab, Univ. Potsdam 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
 </div>
 
 </html>
