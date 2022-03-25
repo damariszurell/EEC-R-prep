@@ -444,7 +444,7 @@ alternative ways to do this without <code>attach()</code> in the next
 practical. Then, make very simple scatterplots using only the data for
 <em>I. setosa</em>.</p>
 <pre class="r"><code>attach(setosa)</code></pre>
-<pre><code>## Die folgenden Objekte sind maskiert von setosa (pos = 3):
+<pre><code>## The following objects are masked from setosa (pos = 3):
 ## 
 ##     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species</code></pre>
 <pre class="r"><code># explicitly provide x and y axis
@@ -458,9 +458,9 @@ plot(Sepal.Length ~ Sepal.Width)</code></pre>
 
 # now, the plot commands return error messages.
 plot(x = Sepal.Width, y = Sepal.Length)</code></pre>
-<pre><code>## Error in plot(x = Sepal.Width, y = Sepal.Length): Objekt &#39;Sepal.Width&#39; nicht gefunden</code></pre>
+<pre><code>## Error in plot(x = Sepal.Width, y = Sepal.Length): object &#39;Sepal.Width&#39; not found</code></pre>
 <pre class="r"><code>plot(Sepal.Length ~ Sepal.Width)</code></pre>
-<pre><code>## Error in eval(predvars, data, env): Objekt &#39;Sepal.Length&#39; nicht gefunden</code></pre>
+<pre><code>## Error in eval(predvars, data, env): object &#39;Sepal.Length&#39; not found</code></pre>
 <pre class="r"><code># the formula methods allows you to add the named argument for data. This is not possible for the first version. You will learn ways to work around this problem in the following practical.
 plot(Sepal.Length ~ Sepal.Width, data = setosa)</code></pre>
 <p><img src="3_Visualisation_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
