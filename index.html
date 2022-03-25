@@ -14,17 +14,25 @@
 
 <title>R introductory course</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -38,11 +46,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -55,32 +58,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -90,10 +69,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -110,40 +85,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -171,7 +122,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -183,7 +134,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -194,10 +145,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -209,7 +173,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -276,7 +239,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -289,7 +252,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     R practicals
      
     <span class="caret"></span>
@@ -299,16 +262,16 @@ $(document).ready(function () {
       <a href="1_GettingStarted.html">1. Getting started in R</a>
     </li>
     <li>
-      <a href="2_OperatorsObjects.html">2. Operators and objects</a>
+      <a href="2_GrammarPackagesHelp.html">2. Grammar, packages, help</a>
     </li>
     <li>
-      <a href="3_DataImportExport.html">3. Data import and export</a>
+      <a href="3_Visualisation.html">3. Visualising data</a>
     </li>
     <li>
-      <a href="4_Visualisation.html">4. Visualising data</a>
+      <a href="4_OperatorsObjects.html">4. Operators and objects</a>
     </li>
     <li>
-      <a href="5_SimpleStats.html">5. Descriptive statistics and random numbers</a>
+      <a href="5_DataImportExport.html">5. Data import and export</a>
     </li>
     <li>
       <a href="6_ControlFlows.html">6. Control flows</a>
@@ -337,29 +300,33 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
 <h1 class="title toc-ignore">R introductory course</h1>
-<h4 class="author">Ecology &amp; Macrecology group, University of Potsdam</h4>
+<h4 class="author">Ecology &amp; Macrecology group, University of
+Potsdam</h4>
 
 </div>
 
 
 <p><img src="figures/Mathnatlogo.svg" width="15%" /></p>
-<p>The preparatory block course <strong>Introduction to R</strong> is a facultative course in the Master programme “Ecology, Evolution and Conservation (EEC)” at the University of Potsdam. The main goal is to provide a basic understanding of R and a reference site for future use throughout the Master programme.</p>
-<p>This site provides the tutorials for learning R and individual tasks for the exercises. Topics include:</p>
+<p>The preparatory block course <strong>Introduction to R</strong> is a
+facultative course in the Master programme “Ecology, Evolution and
+Conservation (EEC)” at the University of Potsdam. The main goal is to
+provide a basic understanding of R and a reference site for future use
+throughout the Master programme.</p>
+<p>This site provides the tutorials for learning R and individual tasks
+for the exercises. Topics include:</p>
 <ul>
 <li>Getting started with R and RStudio</li>
 <li>R Grammar, operators, data types</li>
 <li>Data import and export</li>
 <li>Visualising data</li>
-<li>Simple descriptive statistics, random numbers</li>
 <li>Control flows, loops and functions</li>
 <li>Simple data wrangling</li>
 </ul>
-<p>There are two main exercise blocks after practical 4 (“visualising data”) and practical 7 (“simple data wrangling”). Although the course is not graded, I highly recommend doing the exercises for practise. Other practicals also have exercises at the end - you will have about 15 minutes after each practical to complete as many as you can for your own reference and simply to try out how R works and getting used coding early on. Later in the course I will post solutions to all exercises and you will have the opportunity to discuss your questions on the last day of the course.</p>
 
 <!DOCTYPE html>
 <html>
@@ -367,7 +334,7 @@ $(document).ready(function () {
 <br>
 <hr />
 <div id="footer">
-<p>Damaris Zurell, Simon Kapitza, Jette Reeg 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
+<p>Ecology & Macroecology Lab, Univ. Potsdam 2021 <a href="http://creativecommons.org/licenses/by/4.0/" >(CC BY 4.0)</a>.  </p>
 </div>
 
 </html>
@@ -398,7 +365,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
