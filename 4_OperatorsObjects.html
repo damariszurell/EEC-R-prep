@@ -703,13 +703,13 @@ using sample(). As arguments, it takes a scalar or vector from which to
 draw, and the number of samples to draw. Per default, samples are drawn
 without replacement.</p>
 <pre class="r"><code>sample(1:30, size = 20) # without replacement</code></pre>
-<pre><code>##  [1] 23  1  6 28 16  7  5 21 26 13 15 20 29 30  9 10 14  8 18 12</code></pre>
+<pre><code>##  [1] 15 21  6 12 11 17  2 24 26 30 13 27  5  1 16 10  8 14 25 29</code></pre>
 <pre class="r"><code>sample(30, size = 20) # same</code></pre>
-<pre><code>##  [1] 18 17 21  4 26 23  2 20 25 28 14 10 16 15 27  7 12  8 30 22</code></pre>
+<pre><code>##  [1] 20  8 18  4 28  3 12 23  7 11 22 10 25  2 13 24 29 17  9 26</code></pre>
 <pre class="r"><code>sample(1:30, size = 20, replace = TRUE) # with replacement</code></pre>
-<pre><code>##  [1]  7 14 19 13 10  9 15 23  9 15 29 28 10  3  6 14 27  1 24  2</code></pre>
+<pre><code>##  [1] 25 18 28 17 26  1  6 28 20 14 12 24  6 28 28  4  7 17  1 17</code></pre>
 <pre class="r"><code>sample(letters, 10)</code></pre>
-<pre><code>##  [1] &quot;c&quot; &quot;v&quot; &quot;y&quot; &quot;o&quot; &quot;w&quot; &quot;g&quot; &quot;u&quot; &quot;n&quot; &quot;k&quot; &quot;a&quot;</code></pre>
+<pre><code>##  [1] &quot;f&quot; &quot;v&quot; &quot;e&quot; &quot;j&quot; &quot;b&quot; &quot;d&quot; &quot;p&quot; &quot;y&quot; &quot;g&quot; &quot;r&quot;</code></pre>
 </div>
 <div id="indexing" class="section level1" number="9">
 <h1><span class="header-section-number">9</span> Indexing</h1>
@@ -818,25 +818,25 @@ are:</p>
 <p><em><em>Calling a function without loading its package:</em></em></p>
 <pre class="r"><code># try to load ggplot function
 ggplot() # ggplot2 package not loaded</code></pre>
-<pre><code>## Error in ggplot(): could not find function &quot;ggplot&quot;</code></pre>
+<pre><code>## Error in ggplot(): konnte Funktion &quot;ggplot&quot; nicht finden</code></pre>
 <p><em><em>Calls to unassigned variables:</em></em></p>
 <pre class="r"><code>seq(from = k, to = 10, by = 2) # k is not yet assigned</code></pre>
-<pre><code>## Error in seq(from = k, to = 10, by = 2): object &#39;k&#39; not found</code></pre>
+<pre><code>## Error in seq(from = k, to = 10, by = 2): Objekt &#39;k&#39; nicht gefunden</code></pre>
 <p><em><em>Incorrect function arguments:</em></em></p>
 <pre class="r"><code>seq(from = 2, to = 10, by = 2, 1) # the final 1 is incorrect</code></pre>
-<pre><code>## Error in seq.default(from = 2, to = 10, by = 2, 1): too many arguments</code></pre>
+<pre><code>## Error in seq.default(from = 2, to = 10, by = 2, 1): zu viele Argumente</code></pre>
 <pre class="r"><code>seq(from = c(2, 3), to = 10, by = 2) # `from` argument shouldn&#39;t be a vector</code></pre>
-<pre><code>## Error in seq.default(from = c(2, 3), to = 10, by = 2): &#39;from&#39; must be of length 1</code></pre>
+<pre><code>## Error in seq.default(from = c(2, 3), to = 10, by = 2): &#39;from&#39; muss Länge 1 haben</code></pre>
 <pre class="r"><code>seq(from = 2, to = 10, by = -2) # `by` argument should be positive</code></pre>
-<pre><code>## Error in seq.default(from = 2, to = 10, by = -2): wrong sign in &#39;by&#39; argument</code></pre>
+<pre><code>## Error in seq.default(from = 2, to = 10, by = -2): falsches Vorzeichen im &#39;by&#39; Argument</code></pre>
 <p><em><em>Missing function arguments:</em></em></p>
 <pre class="r"><code>mean(na.rm = TRUE) # missing vector</code></pre>
-<pre><code>## Error in mean.default(na.rm = TRUE): argument &quot;x&quot; is missing, with no default</code></pre>
+<pre><code>## Error in mean.default(na.rm = TRUE): Argument &quot;x&quot; fehlt (ohne Standardwert)</code></pre>
 <p><em><em>Syntax (“grammar”) mistakes:</em></em></p>
 <pre class="r"><code>seq(from = 2, to = 10 by = 2) # missing a comma
 seq(from == 2, to = 10, by = 2) # extra eq sign
 seq(from = 2, to = 10, by = 2)) # extra closing bracket</code></pre>
-<pre><code>## Error: &lt;text&gt;:1:23: unexpected symbol
+<pre><code>## Error: &lt;text&gt;:1:23: unerwartetes Symbol
 ## 1: seq(from = 2, to = 10 by
 ##                           ^</code></pre>
 <p>How to solve errors:<br />
