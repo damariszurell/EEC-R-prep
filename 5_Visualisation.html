@@ -11,7 +11,7 @@
 
 
 
-<title>Grammar, packages and help</title>
+<title>Visualising data</title>
 
 <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -380,7 +380,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Grammar, packages and help</h1>
+<h1 class="title toc-ignore">Visualising data</h1>
 
 </div>
 
@@ -393,124 +393,215 @@ div.tocify {
 <div class="alert alert-info">
 <p><strong>RStudio project</strong></p>
 <p>Open the RStudio project that we created in the previous session. We
-recommend using this RStudio project for the entire course and within
+recommend to use this RStudio project for the entire course and within
 the RStudio project create separate R scripts for each session.</p>
 <ul>
 <li>Create a new empty R script by going to the tab “File”, select “New
 File” and then “R script”. In the new R script, type
-<code># Session 2: Grammar and packages</code> and save the file in your
+<code># Session 5: Visualising data</code> and save the file in your
 folder “scripts” within your project folder, e.g. as
-“2_GrammarPackages.R”</li>
+“5_Visualisation.R”</li>
 </ul>
 </div>
-<div id="grammar-functions-and-arguments" class="section level1"
-number="1">
-<h1><span class="header-section-number">1</span> Grammar: functions and
-arguments</h1>
-<p>R comes with a huge list of commands, which we call function. To a
-function, it needs to be followed by brackets <code>()</code>.</p>
-<pre class="r"><code>sum()</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre class="r"><code>sum(1, 3)</code></pre>
-<pre><code>## [1] 4</code></pre>
-<p>Within the brackets, we can provide additional arguments to the
-function. Some functions always expect additional arguments, and some
-functions don’t. In the above example, <code>sum()</code> also works
-without additional arguments. The function’s default assumes that we
-have provided a zero vector and thus the output is a <code>0</code>. If
-we provide a vector of numeric values, the function will return the sum
-of these values.</p>
-<p>Some functions have named arguments. On example is the function
-<code>rep()</code>, which creates a vector of replicates (we will learn
-more about vectors in the next section).</p>
-<pre class="r"><code>rep(x = 2, times = 10)</code></pre>
-<pre><code>##  [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
-<pre class="r"><code>rep(2, 10)</code></pre>
-<pre><code>##  [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
-<p>In this example, both expressions give the same results because we
-provided the arguments in the same order as the function expects. With
-named arguments, we can also change the order.</p>
-<pre class="r"><code>rep(times = 10, x = 2)</code></pre>
-<pre><code>##  [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
-<pre class="r"><code>rep(10, 2)</code></pre>
-<pre><code>## [1] 10 10</code></pre>
+<div id="base-graphics-in-r" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Base graphics in R</h1>
+<p>R has many base functions for plotting graphics. So-called
+<em>high-level</em> graphic functions produce complete, independent
+graphics such as boxplots, histograms or scatterplots along with axes
+labels and titles. You can modify these according to your needs by
+optional arguments, e.g. labels, line widths, point symbols,
+colours.</p>
+<p>Basic R comes with several exemplary data sets - type
+<code>data()</code> to see a list of these. The <code>iris</code> data
+set gives, for example, the measurements in centimeters of the variables
+sepal length and width and petal length and width, respectively, for 50
+flowers from each of 3 iris species (see also the help file). We load
+the dataset by using the aforementioned function <code>data()</code> and
+the name of the dataset.</p>
+<div class="figure">
+<img src="figures/I_setosa.png" style="width:50.0%" alt="" />
+<p class="caption">I. setosa flower.</p>
 </div>
-<div id="load-and-install-packages" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Load and install
-packages</h1>
-<p>There are thousands of extra packages available for R, containing
-additional functions. Those functions can only be used if you have their
-respective package installed. You can see the list of your installed
-packages by typing: <code>library()</code></p>
-<p>The same command is used for loading a specific package into the
-workspace = make it available for this session:</p>
-<pre class="r"><code># loads the package raster:
-library(ggplot2)
-# removes package from current workspace:
-detach(package:ggplot2)</code></pre>
-<p>If you don’t have the packages above, install them in the package
-manager or by running the command</p>
-<pre class="r"><code>install.packages(&quot;ggplot2&quot;, dependencies = TRUE)</code></pre>
-</div>
-<div id="getting-help" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Getting help</h1>
-<p>R comes with an extensive, built-in help system, several manuals,
-help pages for every available function and many additional
-documents.</p>
-<p>You can access the built-in manuals by typing:</p>
-<pre class="r"><code>help.start()</code></pre>
-<p>Help pages for specific functions can be accessed with help() or with
-abbreviation ?.</p>
-<pre class="r"><code># help page for arithmetic mean:
-help(mean)
-# the same:
-?mean</code></pre>
-<p>Most functions come with examples:</p>
-<pre class="r"><code>example(mean)</code></pre>
-<p>Some function calls need to be surrounded by quotation marks when
-calling help, e.g. special characters or expressions with syntactic
-meaning such as if, for und function.</p>
-<pre class="r"><code>?&quot;*&quot;
-?&quot;if&quot;</code></pre>
-<p>A useful short cut to access the help page for a function, is to
-press <code>F1</code> after you selected a function within your code by
-clicking on it. This will automatically open the respective help
-page.</p>
-<p>If you have forgotten the exact name of a function, you can search
-all function names, titles and keywords by typing:</p>
-<pre class="r"><code>help.search(&quot;mean&quot;)
-# the same:
-??mean</code></pre>
-<p>Search through all (installed) functions that contain the word in
-their function call:</p>
-<pre class="r"><code>apropos(&quot;mean&quot;)</code></pre>
-<p>Look at all functions contained in <code>base</code> package by
-typing:</p>
-<pre class="r"><code>library(help = base)</code></pre>
-<p>Some package authors offer additional documents or tutorials called
-vignettes:</p>
-<pre class="r"><code># list all available vignettes of the installed(!) packages:
-vignette()
+<pre class="r"><code>str(iris) # gives you an overview over the structure/content of the data set</code></pre>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>Now, start with visualizing only the data for one of the three
+species from the data set: I. setosa. The function <code>subset()</code>
+can be used to subset a data set based on certain conditions. The subset
+is then assigned to a new object with <code>&lt;-</code></p>
+<pre class="r"><code># this creates a subset of all the data with &#39;setosa&#39; in the &#39;Species&#39; column
+setosa &lt;- subset(iris, Species == &quot;setosa&quot;)</code></pre>
+<p>We now make very simple scatterplots using only the data for <em>I.
+setosa</em>.</p>
+<pre class="r"><code># explicitly provide x and y axis. Use the $ sign to indicate which column of the dataset you want to use
+plot(x = setosa$Sepal.Width, y = setosa$Sepal.Length)</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code># the formula method allows you to add the named argument for data. This is not possible for the previous plot function call.
+plot(Sepal.Length ~ Sepal.Width, data=setosa)</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>You can customize the plot with various options. See
+<code>?par</code> for options.</p>
+<pre class="r"><code>plot(x = setosa$Sepal.Width, y = setosa$Sepal.Length, pch = 19, col = &#39;salmon&#39;,
+     xlab = &#39;Sepal width [cm]&#39;, ylab = &#39;Sepal length [cm]&#39;,
+     main = &#39;Relationship between I. setosa sepal width and length&#39;)</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>You can change the plot type using the <code>type</code>
+argument.</p>
+<pre class="r"><code>plot(setosa$Sepal.Length, type = &#39;l&#39;)</code></pre>
+<p>So-called <em>low-level</em> graphic functions let you add certain
+elements to existing plots, e.g. lines, labels, legends etc. Also, you
+can make mathematical annotations (<code>?plotmath</code>).</p>
+<pre class="r"><code># Set the plot margin size; see &quot;?par&quot;
+par(mar = c(5, 4, 4, 4) + 0.1)
 
-# opens the vignette as pdf or html:
-vignette(&quot;ggplot2-specs&quot;)</code></pre>
-<p>Upon opening a new R session, some useful information will be printed
-to the console, mainly on version number and copyright. You can also
-extract this and other useful information by typing commands, e.g.</p>
-<pre class="r"><code>sessionInfo()
-citation()</code></pre>
-<p>The last command is important for citing the correct packages in your
-theses or any other publication.</p>
-<div class="alert alert-info">
-<p><em><strong>Exercises:</strong></em></p>
+plot(x = setosa$Sepal.Width, y = setosa$Sepal.Length, 
+     pch = 19, # change point symbol
+     col = &#39;salmon&#39;,  # change colour of points
+     xlab = &#39;Width [cm]&#39;, ylab = &#39;Length [cm]&#39;,
+     main = &#39;Relationship between I. setosa sepal width and length&#39;,
+     ylim = c(0, max(setosa$Sepal.Length)),  # add y axis limit
+     xlim = c(0, max(setosa$Sepal.Width))    # add x axis limit
+)
+
+# add regression line
+abline(lm(setosa$Sepal.Length ~ setosa$Sepal.Width), col = &#39;salmon3&#39;, lwd = 2)
+
+# add points for petal length and width, and add the corresponding regression line
+points(x = setosa$Petal.Width, y = setosa$Petal.Length, col = &#39;CornFlowerBlue&#39;, pch = 19)
+abline(lm(setosa$Petal.Length ~ setosa$Petal.Width), col = &#39;blue3&#39;, lwd = 2)
+
+# add legend in the topleft corner
+legend(&quot;topleft&quot;, 
+       legend = c(&quot;Sepals&quot;, &quot;Petals&quot;), 
+       col = c(&quot;salmon&quot;, &quot;CornFlowerBlue&quot;), 
+       pch = c(19, 19))
+
+# add legend in the bottomright corner - what are the differences to the previous?
+legend(&quot;bottomright&quot;, 
+       legend = c(&quot;Sepals&quot;, &quot;Petals&quot;), 
+       col = c(&quot;salmon&quot;, &quot;CornFlowerBlue&quot;), 
+       lwd = 2,
+       bty=&#39;n&#39;
+       )</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Histograms and boxplots:</p>
+<pre class="r"><code># open a new graphic device. Use the function matching your system and disable the others by commenting them out using &#39;#&#39;.
+quartz(w = 6, h = 6) # MacOS
+
+windows(w = 6, h = 6) # Windows
+
+x11(w = 6, h = 6) # linux
+
+
+
+hist(setosa$Sepal.Length)
+
+# create a boxplot for the entire iris data set to show the Sepal length of each species
+boxplot(Sepal.Length ~ Species, data=iris)</code></pre>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
 <ul>
-<li>The package ‘ggplot2’ is often used to generate graphics. What is
-the command to plot a graphic with ggplot2?
-<!-- (Let students search for the function) --> Is there a useful
-cheatsheet for ggplot2?</li>
+<li>Load the data set “Orange” using <code>data()</code>. Plot
+<em>circumference</em> against <em>age</em> of the Orange trees.
+Remember to check that you have the correct data set attached.</li>
+<li>Use a triangle as the plotting symbol (defined using the argument
+<code>pch</code>). Check out the help page <code>?points</code> to find
+out which <code>pch</code> number corresponds to a triangle. Plot green
+triangles.</li>
+<li>Add a regression line to the plot.</li>
 </ul>
 </div>
-<p>References</p>
+</div>
+<div id="plotting-with-ggplot2" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Plotting with
+<code>ggplot2</code></h1>
+<p><code>ggplot2</code> is a visualisation library that allows more
+elegant and versatile plotting. It follows quite a different philosophy
+than base graphics. Plots are built step by step. This basic template
+can be used for different types of plots:</p>
+<p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) +  &lt;GEOM_FUNCTION&gt;()</code></p>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<p>The ggplot() function binds the plot to a specific data frame using
+the data argument.</p>
+<pre class="r"><code>ggplot(data = iris)     # this provides a blank ggplot object</code></pre>
+<p>Using the aesthetic function <code>aes()</code> we can define the
+geometric and statistical objects (color, size, shape, and
+position).</p>
+<pre class="r"><code>p &lt;- ggplot(data = iris, mapping = aes(x = Sepal.Width, y = Sepal.Length))</code></pre>
+<p>Using the <code>geom_</code> functions, we can add the geometric
+shapes representing the data, e.g.: - <code>geom_point()</code> for
+scatter plots, dot plots, etc. - <code>geom_boxplot()</code> for
+boxplots - <code>geom_line()</code> for trend lines, time series,
+etc.</p>
+<pre class="r"><code>p + geom_point()</code></pre>
+<pre class="r"><code># you can also do it in one go
+ggplot(data = iris, mapping = aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="alert alert-success" role="alert">
+<p><strong>Test it yourself</strong></p>
+<ul>
+<li>Use the <code>ggplot2</code> functions to plot
+<em>circumference</em> against <em>age</em> of the Orange trees as you
+did above.</li>
+</ul>
+</div>
+<p>We can modify this plot by adding colours, transparency etc.. Note
+that if you want to make the colour, shape etc. dependent on the values
+in your data, the arguments must be specified within the
+<code>aes()</code> function. To specify a colour, shape, etc. for all
+data points, regardless of their value, the argument must be given
+outside of <code>aes()</code>.</p>
+<pre class="r"><code>p + geom_point(color = &#39;salmon&#39;) # color specified outside of aes-function to set one value for all data points
+
+# add transparency:
+p + geom_point(color = &#39;salmon&#39;, alpha = 0.5) 
+
+# assign different colours to different Iris species
+p + geom_point(aes(color = Species)) # color specified inside of aes-function to map color values to the data</code></pre>
+<pre class="r"><code># assign different symbols to Iris species:
+p + geom_point(aes(color = Species, shape = Species))</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Add a linear model or Loess smoother (only I. setosa):</p>
+<pre class="r"><code># regression line:
+p &lt;- ggplot(data = setosa, mapping = aes(x = Sepal.Width, y = Sepal.Length))
+p + geom_point() + geom_smooth(method=&quot;lm&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<pre class="r"><code># smoother:
+p + geom_point() + geom_smooth(method = &quot;loess&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Boxplot:</p>
+<pre class="r"><code>ggplot(data = iris, mapping = aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot()</code></pre>
+<p><img src="5_Visualisation_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="alert alert-info">
+<p><em><strong>Main exercise block 1:</strong></em></p>
+<p>Task 1: Use the Iris data set</p>
+<!-- Let students repeat exercises of the tutorial -->
+<ul>
+<li>Create a subset for <em>I. versicolor</em> and plot correlation
+between petal width and length with base r graphics. Include a
+regression line and make sure axis titles are meaningful.<br />
+</li>
+<li>Add points for I. setosa and I. virginica. (hint: when you add
+values the x and y-axis range isn’t adjusted and some values might not
+be shown. Adjust the x and y axis ranges to make sure all values are
+shown. Use the <code>ylim</code> argument in the <code>plot()</code>
+function for this.)</li>
+<li>Add a legend</li>
+</ul>
+<p><br></p>
+<p>Task 2: Take a look at the built-in data set
+<code>ChickWeight</code>. Plot the results of the experiment in a way
+that shows the potential effect of diet on the early growth of chicks.
+Hint: use a boxplot!</p>
+</div>
+<!-- # References -->
 </div>
 
 <!DOCTYPE html>

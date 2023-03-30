@@ -13,7 +13,7 @@
 
 <title>Control flows - ifelse, loops and functions</title>
 
-<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -150,11 +150,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -183,8 +187,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -192,16 +196,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -344,13 +341,13 @@ div.tocify {
       <a href="2_GrammarPackagesHelp.html">2. Grammar, packages, help</a>
     </li>
     <li>
-      <a href="3_Visualisation.html">3. Visualising data</a>
+      <a href="3_OperatorsObjects.html">3. Operators and objects</a>
     </li>
     <li>
-      <a href="4_OperatorsObjects.html">4. Operators and objects</a>
+      <a href="4_DataImportExport.html">4. Data import and export</a>
     </li>
     <li>
-      <a href="5_DataImportExport.html">5. Data import and export</a>
+      <a href="5_Visualisation.html">5. Visualising data</a>
     </li>
     <li>
       <a href="6_ControlFlows.html">6. Control flows</a>
@@ -637,8 +634,10 @@ km_miles_conversion(80,50) </code></pre>
 <p>Task 1: Write a function that calculates degrees Fahrenheit from
 degrees Celsius and another function for the other way around.</p>
 <p><br></p>
-<p>Task 2: Use a for-loop to add the following two vectors element-wise
-to each other:</p>
+<p>Task 2: Build two nested for-loops cycling through each element of
+<code>vec1</code> and <code>vec2</code> and sum these up. You can store
+the results in a new variable or simply print the results in the console
+using <code>print()</code>:</p>
 <ul>
 <li><code>vec1 &lt;- 1:10</code></li>
 <li><code>vec2 &lt;- seq(10, 100, 10)</code></li>
