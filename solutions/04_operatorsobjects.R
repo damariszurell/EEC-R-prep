@@ -59,16 +59,15 @@ airquality$city <- "New York"
 airquality$year <- 1973
 
 # Are there any missing values? 
-summary(airquality) # quick way to get an overview
 is.na(airquality$Ozone) # can be done for every column
 # or
+summary(airquality) # quicker way to get an overview
 
 # Select only those measurements where you have information on all variables and store it in another object.
 airquality2 <- na.omit(airquality)
 
-# Calculate the mean mean temperature concentration with and without accounting for missing values.
+# Calculate the mean ozone concentration with and without accounting for missing values.
 mean(airquality$Ozone)
-mean(airquality$Ozone, na.rm=T)
 mean(airquality2$Ozone)
 
 # What was the mean temperature in May? Was it colder or warmer than in September?

@@ -700,13 +700,13 @@ using sample(). As arguments, it takes a scalar or vector from which to
 draw, and the number of samples to draw. Per default, samples are drawn
 without replacement.</p>
 <pre class="r"><code>sample(1:30, size = 20) # without replacement</code></pre>
-<pre><code>##  [1] 12 24 21 13 27 14  6 28 11  5 26 16 18 30 29 17  9 15  3  1</code></pre>
+<pre><code>##  [1] 25 17 30 22 26  6  5 21 19 16 12  8  1 23 13 24 28 29  2  3</code></pre>
 <pre class="r"><code>sample(30, size = 20) # same</code></pre>
-<pre><code>##  [1]  7  2 28  5 19 24 14 29  4  9 20  1 17 23 12 16 22 15 10 13</code></pre>
+<pre><code>##  [1] 24 16  8  3 18 25 26 17 10  6  9 11 20 27 19 28  4 13 29 30</code></pre>
 <pre class="r"><code>sample(1:30, size = 20, replace = TRUE) # with replacement</code></pre>
-<pre><code>##  [1]  9  7 26  3 22 10 30  1 30  7 22 27 12 16  9 30 29 28 25  1</code></pre>
+<pre><code>##  [1] 20  7 16  6  7 14  4 17 20 28 11 19 11 25 25  4 19 22  3 17</code></pre>
 <pre class="r"><code>sample(letters, 10)</code></pre>
-<pre><code>##  [1] &quot;c&quot; &quot;s&quot; &quot;q&quot; &quot;e&quot; &quot;m&quot; &quot;j&quot; &quot;y&quot; &quot;p&quot; &quot;k&quot; &quot;z&quot;</code></pre>
+<pre><code>##  [1] &quot;t&quot; &quot;v&quot; &quot;q&quot; &quot;f&quot; &quot;m&quot; &quot;o&quot; &quot;s&quot; &quot;c&quot; &quot;y&quot; &quot;n&quot;</code></pre>
 </div>
 <div id="indexing" class="section level1" number="9">
 <h1><span class="header-section-number">9</span> Indexing</h1>
@@ -854,8 +854,7 @@ community across various coding languages and disciplines).</li>
 </ul>
 <div class="alert alert-info">
 <p><em><strong>Exercises:</strong></em></p>
-<p>Task 1: Take a look at the <code>iris</code> data set we worked with
-in the previous practical:</p>
+<p>Task 1: Take a look at the <code>iris</code> data set:</p>
 <ul>
 <li>What are the 3 different Iris species?
 <!-- learn how to read the different elements esp. factors --><br />
@@ -886,9 +885,8 @@ this information as additional columns <code>city</code> and
 you have information on all variables and store it in another object.
 <!-- use na.omit(), assign to new object --><br />
 </li>
-<li>Calculate the mean temperature with and without accounting for
-missing values.
-<!-- select from a data.frame and apply function --><br />
+<li>Calculate the mean ozone with and without accounting for missing
+values. <!-- select from a data.frame and apply function --><br />
 </li>
 <li>What was the mean temperature in May? Was it colder or warmer than
 in September? <!-- use logic operator --><br />
